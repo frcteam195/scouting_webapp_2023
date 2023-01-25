@@ -1,0 +1,15 @@
+body{
+    background-color: #500778;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#question{
+    background-color: white;
+    color: black;
+    position: absolute;
+    bottom: 2.5%;
+    top: 2.5%;
+    left: 2.5%;
+    right: 2.5%;
+    border-radius: 5px;
+    padding: 5px;
+}
