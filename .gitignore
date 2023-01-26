@@ -1,0 +1,116 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+/installation.log
+
+# IDEs and editors
+.idea/
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+.venv/*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+venv
+__pycache__
+/package-lock.json
+wsgi-api/.idea
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# compiled output
+/dist
+/tmpharm
+/out-tsc
+# dependenciesktop:/zdrive/work/git/nmrbox_website$ nano .gitignore 
+/node_modules
+/node_env
+/installation.log
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+/backend/config.ini
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+venv
+__pycache__
+/package-lock.json
+wsgi-api/.idea
+/wsgi-api/venv/
+.idea
+frontend/package-lock.json
+frontend/package-lock.json
+frontend/src/app/services/api.service.ts
+frontend/package-lock.json
+frontend/package.json
+builds/*
+
