@@ -13,3 +13,39 @@ body{
     border-radius: 5px;
     padding: 5px;
 }
+#blue{
+    background-color: blue;
+    color: white;
+    text-align: left;
+}
+#red{
+    background-color: red;
+    color: white;
+    text-align: right;
+}
+#initialNext{
+    background-color: #500778;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+#initialNext:hover{
+    background-color: white;
+    color: #500778;
+}
+#headerButton{
+    background-color: #500778;
+    color: white;
+    padding: 2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    width: 80px;
+}

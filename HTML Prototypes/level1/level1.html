@@ -6,13 +6,129 @@
     </head>
     <body>
         <div id="question">
-            <table *ngIf="display==1">
-                <tr>
-                    <th>Level 1</th>
-                </tr>
-            </table>
-
+            <div id="header" style="display: none;">
+                <table align="center">
+                    <tr>
+                        <td><button onclick="lastBox()" id="headerButton">Previous</button></td>
+                        <td><h1 style="text-align: center;width: 200px;" id="headerText">Title</h1></td>
+                        <td><button onclick="nextBox()" id="headerButton">Next</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="home">
+                <h1 style="text-align: center;">Welcome to Level 1 Scouting!</h1>
+                <h2 style="text-align: center;">Match #</h2>
+                <h2 style="text-align: center; color: red;">Team 254: The Cheesy Poofs</h2>
+                <h3 style="text-align: center;">Scouter Name: <select style="align-items: center;width: 250px;"></select></h3>
+                <table border="1" align="center">
+                    <tr>
+                        <th id="blue" style="width: 75px;">Blue Alliance</th>
+                        <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></img></td>
+                        <th id="red" style="width: 75px;">Red Alliance</th>
+                    </tr>
+                    <tr>
+                        <td id="blue">254</td>
+                        <td id="red">195</td>
+                    </tr>
+                    <tr>
+                        <td id="blue">1678</td>
+                        <td id="red">1114</td>
+                    </tr>
+                    <tr>
+                        <td id="blue">4414</td>
+                        <td id="red">2056</td>
+                    </tr>
+                </table>
+                <div style="height: 20px;"></div>
+                <button onclick="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
+            </div>
+            <div id="pre" style="display: none;">
+                Pre Game
+            </div>
+            <div id="auto" style="display: none;">
+                Automonous
+            </div>
+            <div id="tele" style="display: none;">
+                Tele operated
+            </div>
+            <div id="end" style="display: none;">
+                Endgame
+            </div>
+            <div id="post" style="display: none;">
+                Post Game
+            </div>
+            <div id="final" style="display: none;">
+                Final Screen
+                <button onclick="returnBox()" style="margin: 0 auto; display: block;" id="initialNext">Return</button>    
+            </div>
         </div>
     </body>
-    <script scr="level1.js"></script>
+    <script>
+        var stage=0; //variable to keep track of what is currently being displayed
+        var numberBox=6; //static value for total number of boxes - 1
+
+        function nextBox(){ //increment stage by one till a max and update boxes
+            stage++;
+            if (stage > numberBox){
+                stage = numberBox;
+            }
+            console.log(stage);
+            updateBox();
+        }
+
+        function lastBox(){ //de increment stage by one till 0 and updates boxes
+            stage--;
+            if (stage < 0){
+                stage = 0;
+            }
+            updateBox();
+        }
+
+        function returnBox(){
+            stage = 0;
+            updateBox();
+        }
+
+        function updateBox(){
+            homeBox = document.getElementById("home"); //get each box object
+            preBox = document.getElementById("pre");
+            autoBox = document.getElementById("auto");
+            teleBox = document.getElementById("tele");
+            endBox = document.getElementById("end");
+            postBox = document.getElementById("post");
+            finalBox = document.getElementById("final");
+            header = document.getElementById("header");
+            headerText = document.getElementById("headerText");
+            homeBox.style.display = "none"; //set each box invisible
+            preBox.style.display = "none";
+            autoBox.style.display = "none";
+            teleBox.style.display = "none"; 
+            endBox.style.display = "none";
+            postBox.style.display = "none";
+            finalBox.style.display = "none";
+            if (stage == 0){ //make one box visible
+                homeBox.style.display = "block";
+                header.style.display = "none"; //hide header
+            } else if(stage == 1){
+                preBox.style.display = "block";
+                header.style.display = "block"; //show header
+                headerText.innerHTML = "Pre Game"; //set header text
+            } else if(stage == 2){
+                autoBox.style.display = "block";
+                headerText.innerHTML = "Auto";
+            } else if(stage == 3){
+                teleBox.style.display = "block";
+                headerText.innerHTML = "Tele";
+            } else if(stage == 4){
+                endBox.style.display = "block";
+                headerText.innerHTML = "End Game";
+            } else if(stage == 5){
+                postBox.style.display = "block";
+                headerText.innerHTML = "Post Game";
+            } else if(stage == 6){
+                finalBox.style.display = "block";
+                header.style.display = "none"; //hide header
+            }
+        }
+    </script>
 </html>
