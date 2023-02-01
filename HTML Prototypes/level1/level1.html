@@ -6,12 +6,15 @@
     </head>
     <body>
         <div id="question">
-            <div id="header" style="display: none;">
-                <table align="center">
+            <div id="header" style="display: none;"> 
+                <table align="center" id="headerTable">
                     <tr>
-                        <td><button onclick="lastBox()" id="headerButton">Previous</button></td>
-                        <td><h1 style="text-align: center;width: 200px;" id="headerText">Title</h1></td>
-                        <td><button onclick="nextBox()" id="headerButton">Next</button></td>
+                        <td><button onclick="lastBox()" id="headerButton">Previous</button></td> 
+                        <td style="text-align: center;width: 200px; font-weight: bold; font-size: larger;" id="headerText"><h1 >Title</h1></td>
+                        <td><button onclick="nextBox()" id="headerButton">Next</button></td> 
+                    </tr>
+                    <tr>
+                        <th colspan="3" id="red" style="text-align: center;">254 - The Cheesy Poofs</th>
                     </tr>
                 </table>
             </div>
@@ -43,10 +46,18 @@
                 <button onclick="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
             </div>
             <div id="pre" style="display: none;">
-                Pre Game
+                <form>
+                    <p><b>Preload?</b></p>
+                    <input type="radio" id="Yes" name="preload" value="1">
+                    <label for="Yes">Yes</label><br>
+                    <input type="radio" id="No" name="preload" value="0">
+                    <label for="No">No</label><br>
+                </form>
             </div>
             <div id="auto" style="display: none;">
-                Automonous
+                <button id="node1" onclick="cycle('node1')" style="background-color: red;">Node</button>
+                <button id="node2" onclick="cycle('node2')" style="background-color: red;">Node</button>
+                <button id="node3" onclick="cycle('node3')" style="background-color: red;">Node</button>
             </div>
             <div id="tele" style="display: none;">
                 Tele operated
@@ -63,9 +74,28 @@
             </div>
         </div>
     </body>
+
+
+
+
+
+
+
     <script>
         var stage=0; //variable to keep track of what is currently being displayed
         var numberBox=6; //static value for total number of boxes - 1
+        var states=0;
+
+        function cycle(name){
+            button = document.getElementById(name);
+            if (button.style.backgroundColor == "red"){
+                button.style.backgroundColor = "purple";
+            } else if (button.style.backgroundColor == "purple"){
+                button.style.backgroundColor = "yellow";
+            } else if (button.style.backgroundColor == "yellow"){
+                button.style.backgroundColor = "red";
+            }
+        }
 
         function nextBox(){ //increment stage by one till a max and update boxes
             stage++;

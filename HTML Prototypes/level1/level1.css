@@ -41,11 +41,17 @@ body{
 #headerButton{
     background-color: #500778;
     color: white;
-    padding: 2px 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: large;
+    padding: 2px 2px;
     font-weight: bold;
-    width: 80px;
+    width: 100px;
+}
+#headerTable{
+    padding: 0;
+    overflow: hidden;
+    border-collapse: collapse;
+    border: 3px solid #500778;
 }
