@@ -4,7 +4,7 @@
         <link rel="icon" type="image/x-icon" href="logo.ico">
         <link rel="stylesheet" href="level1.css">
     </head>
-    <body>
+    <body onload="startup()">
         <div id="question">
             <div id="header" style="display: none;"> 
                 <table align="center" id="headerTable">
@@ -23,7 +23,7 @@
                 <h2 style="text-align: center;">Match #</h2>
                 <h2 style="text-align: center; color: red;">Team 254: The Cheesy Poofs</h2>
                 <h3 style="text-align: center;">Scouter Name: <select style="align-items: center;width: 250px;"></select></h3>
-                <table border="1" align="center">
+                <table id-"homeTable" align="center">
                     <tr>
                         <th id="blue" style="width: 75px;">Blue Alliance</th>
                         <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></img></td>
@@ -55,9 +55,12 @@
                 </form>
             </div>
             <div id="auto" style="display: none;">
-                <button id="node1" onclick="cycle('node1')" style="background-color: red;">Node</button>
-                <button id="node2" onclick="cycle('node2')" style="background-color: red;">Node</button>
-                <button id="node3" onclick="cycle('node3')" style="background-color: red;">Node</button>
+                <table border="1" id="nodeTable">
+                </table>
+
+                <div id="nodeDiv">
+
+                </div>
             </div>
             <div id="tele" style="display: none;">
                 Tele operated
@@ -85,6 +88,7 @@
         var stage=0; //variable to keep track of what is currently being displayed
         var numberBox=6; //static value for total number of boxes - 1
         var states=0;
+        const nodeValues = new Array(27);
 
         function cycle(name){
             button = document.getElementById(name);
@@ -95,6 +99,51 @@
             } else if (button.style.backgroundColor == "yellow"){
                 button.style.backgroundColor = "red";
             }
+        }
+
+        function startup(){ //set up auto nodes when the website is opened
+            table = document.getElementById("nodeTable"); //find table
+            var counter = 1; //variable to count and assign numbers to cells
+            for(var i = 0; i < 3; i++){ //loop to make rows
+                var row = table.insertRow(i); //insert row into table
+                for(var t = 0; t < 9; t++){ //loop to make cells
+                    var cell = row.insertCell(t); // insert cell into row
+                    var newNode = document.createElement("button"); //make a button
+                    newNode.id = "node" + counter; //assign it a name and a id
+                    newNode.name = "node"; //use the name to format all button in the css code
+                    if (t==3 || t==4 || t==5) { //assign buttons a type depending on if they are in the community co op zone
+                        newNode.type = "community";
+                    } else {
+                        newNode.type = "other";
+                    }
+                    newNode.innerHTML = counter; //set the button text to its number
+                    newNode.setAttribute("onclick", "assignNodeArray(" + (counter - 1) + ")"); //add the function that will happen when the button is clicked, idk what to name it so i called it harish
+                    cell.appendChild(newNode); //put the button in the cell that we made
+                    counter++; //increment the number by 1
+                }
+            }
+            for (i=0;i < nodeValues.length; i++){ //assign vallues to node value array
+                nodeValues[i] = 0;
+                document.getElementById("nodeDiv").innerHTML = nodeValues; //test code
+            }
+        }
+
+        function assignNodeArray(nodeNumber){
+            console.log(nodeNumber);
+            button = document.getElementById("node" + (nodeNumber + 1))
+            if (nodeValues[nodeNumber]==0){ //if the node is 0, change to green and set to 1
+                nodeValues[nodeNumber]=1;
+                button.style.backgroundColor = "green";
+            } else { //if node is 1, set node to 0 and original color
+                nodeValues[nodeNumber]=0;
+                if (nodeNumber==3 || nodeNumber==4 || nodeNumber==5 || nodeNumber==12 || nodeNumber==13 || nodeNumber==14 || nodeNumber==21 || nodeNumber==22 || nodeNumber==23){
+                    button.style.backgroundColor = "#02d8e9"; //sets it back to cyan if its in the middle
+                } else {
+                    button.style.backgroundColor = "gray";//sets it to gray otherwise
+                }
+            }
+
+            document.getElementById("nodeDiv").innerHTML = nodeValues; //test code
         }
 
         function nextBox(){ //increment stage by one till a max and update boxes
