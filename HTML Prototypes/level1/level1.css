@@ -64,7 +64,9 @@ body{
     border-collapse: collapse;
     border: 3px solid #500778;
 }
-#auto table, #auto td, #auto tr{
+
+
+#nodeTable, #nodeTable td, #nodeTable tr{
     border: 4px solid black;
     border-collapse: collapse;
     padding: 0px;
@@ -78,15 +80,35 @@ body{
     font-size: larger;
     font-weight: bold;
 }
-[type = "community"]{
-    background-color: #02d8e9;
+.cube{
+    background-color: purple;
     border-style: outset;
-    border-color: #02d8e9;
+    border-color: purple;
     border-width: 5px;
 }
-[type = "other"]{
+.other{
     background-color: gray;
     border-style: outset;
     border-color: gray;
     border-width: 5px;
+}
+.cone{
+    background-color: yellow;
+    border-style: outset;
+    border-color: yellow;
+    border-width: 5px;
+}
+
+#autoPickupTable{
+    width: 100%;
+    border-style: none;
+}
+.pickup{
+    display: block;
+    margin: auto;
+    width: 80px;
+    height: 80px;
+    background-color: gray;
+    border: 4px solid black;
+    border-collapse: collapse;
 }
