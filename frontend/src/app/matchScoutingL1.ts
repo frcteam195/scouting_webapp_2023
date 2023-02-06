@@ -1,4 +1,4 @@
-export class matchScoutingL1 {
+export class MatchScoutingL1 {
     allianceStationID: number;
     autoGamePiece1: number;
     autoGamePiece2: number;
@@ -69,7 +69,7 @@ constructor(allianceStationID: number,
     matchNum: number,
     matchScoutingID: number,
     postBrokeDown: number,
-    postGoodPartner: number
+    postGoodPartner: number,
     postReorientCone: number,
     postShelfPickup: number,
     postSubsystemBroke: number,
