@@ -1,1 +1,18 @@
 <p>level1 works!</p>
+
+<b>&nbsp;Scouter: </b>
+<select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
+    <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}}</option>
+</select>
+
+<input type="hidden" [(ngModel)]='scouter'>
+
+
+<table>
+    <tr *ngFor="let m of apiMatchL1_filter">
+    
+        <td align="center">{{ m.matchNum }}</td>
+        <td align="center">{{ m.scoutingStatus }}</td>
+    
+    </tr>
+</table>

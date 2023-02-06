@@ -1,14 +1,14 @@
-export class scouters {
+export class Scouters {
     firstName: string;
     lastName: string;
-    scouterID: string;
+    scouterID: number;
     
 
 constructor
 (
     firstName: string,
     lastName: string,
-    scouterID: string,
+    scouterID: number,
      ){
     this.firstName=firstName;
     this.lastName=lastName;
