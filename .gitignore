@@ -103,13 +103,10 @@ Thumbs.db
 
 venv
 __pycache__
-/package-lock.json
+
 wsgi-api/.idea
 /wsgi-api/venv/
 .idea
-frontend/package-lock.json
-frontend/package-lock.json
-frontend/package-lock.json
-frontend/package.json
+
 builds/*
 
