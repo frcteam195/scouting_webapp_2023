@@ -2,7 +2,7 @@
 
 <b>&nbsp;Scouter: </b>
 <select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
-    <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}}</option>
+    <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
 </select>
 
 <input type="hidden" [(ngModel)]='scouter'>
