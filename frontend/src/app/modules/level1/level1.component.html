@@ -11,8 +11,10 @@
 <table>
     <tr *ngFor="let m of apiMatchL1_filter">
     
-        <td align="center">{{ m.matchNum }}</td>
-        <td align="center">{{ m.scoutingStatus }}</td>
+        <td align="center">Match: {{ m.matchNum }}</td>
+        <td align="center">Red Alliance: {{ m.red1 }}</td>
+        <td align="center">{{ m.red2 }}</td>
+        <td align="center">{{ m.red3 }}</td>
     
     </tr>
 </table>

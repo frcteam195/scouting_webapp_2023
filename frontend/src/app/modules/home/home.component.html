@@ -8,3 +8,16 @@
 <a routerLink="/pit"><button type="button" title="Pit Scouting">Pit</button></a>
 <br>
 <a routerLink="/admin"><button type="button" title="Admin Page">Admin</button></a>
+
+
+
+<table>
+    <tr *ngFor="let e of apiEvent">
+    
+        <td align="center">
+            {{ e.BAeventID }} - {{ e.eventName }} <br>
+            {{ e.eventLocation }} <br>
+            {{ e.eventStartDate }}            
+        </td>
+    </tr>
+</table>

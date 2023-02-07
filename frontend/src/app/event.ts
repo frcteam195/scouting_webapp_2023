@@ -1,12 +1,12 @@
-export class Events {
-BAeventID: string;
-eventID: number;
-eventName: string;
-currentEvent: number;
-eventStartDate: number;
-timeZone: string;
-eventEndDate: number;
-eventLocation: string; 
+export class Event {
+    BAeventID: string;
+    eventID: number;
+    eventName: string;
+    currentEvent: number;
+    eventStartDate: number;
+    timeZone: string;
+    eventEndDate: number;
+    eventLocation: string; 
 
 constructor(
     BAeventID: string,
@@ -16,7 +16,7 @@ constructor(
     eventStartDate: number,
     timeZone: string,
     eventEndDate: number,
-    eventLocation: string, ){
+    eventLocation: string ){
     this.eventID=eventID;
     this.eventName=eventName;
     this.currentEvent=currentEvent;

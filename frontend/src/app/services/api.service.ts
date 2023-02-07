@@ -1,9 +1,10 @@
 import { MatchScoutingL1 } from '../matchScoutingL1';
-import {matchScoutingL2} from '../matchScoutingL2';
+import { MatchScoutingL2 } from '../matchScoutingL2';
 import { Scouters } from './../scouters';
 import {Injectable} from '@angular/core';
 import {ReplaySubject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Event } from '../event';
 
  
 
@@ -14,8 +15,8 @@ export class ApiService {
 
   public ScouterReplay: ReplaySubject<Scouters[]>;
   public MatchL1Replay: ReplaySubject<MatchScoutingL1[]>;
-  public MatchL2Replay: ReplaySubject<matchScoutingL2[]>;
-  public EventReplay: ReplaySubject<Events[]>;
+  public MatchL2Replay: ReplaySubject<MatchScoutingL2[]>;
+  public EventReplay: ReplaySubject<Event[]>;
 
 
 
@@ -32,7 +33,7 @@ export class ApiService {
     this.ScouterReplay = new ReplaySubject(1);
     this.MatchL1Replay = new ReplaySubject(1);
     this.MatchL2Replay = new ReplaySubject(1);
-    this.events = new ReplaySubject(1);
+    this.EventReplay = new ReplaySubject(1);
 
 
 
@@ -73,28 +74,30 @@ export class ApiService {
         console.error('Could not load Matches data from server or cache!');
       }
     });
-    this.http.get<matchScoutingL2[]>(this.apiUrl + '/matchscouting').subscribe(response => {
+
+    this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2').subscribe(response => {
       // Store the response in the ReplaySubject, which components can use to access the data
-      this.MatchL2Replay.next(response as matchScoutingL2[]);
+      this.MatchL2Replay.next(response as MatchScoutingL2[]);
       // Might as well store it while we have it
       localStorage.setItem('MatchL2', JSON.stringify(response));
     }, () => {
       try {
         // Send the cached data
-        this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as matchScoutingL2[]);
+        this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
       } catch (err) {
         console.error('Could not load Matches data from server or cache!');
       }
     });
-    this.http.get<events[]>(this.apiUrl + '/matchscouting').subscribe(response => {
+
+    this.http.get<Event[]>(this.apiUrl + '/event').subscribe(response => {
       // Store the response in the ReplaySubject, which components can use to access the data
-      this.events.next(response as events[]);
+      this.EventReplay.next(response as Event[]);
       // Might as well store it while we have it
-      localStorage.setItem('Events', JSON.stringify(response));
+      localStorage.setItem('Event', JSON.stringify(response));
     }, () => {
       try {
         // Send the cached data
-        this.eventReplay.next(JSON.parse(localStorage.getItem('events')!) as events[]);
+        this.EventReplay.next(JSON.parse(localStorage.getItem('Event')!) as Event[]);
       } catch (err) {
         console.error('Could not load Matches data from server or cache!');
       }
