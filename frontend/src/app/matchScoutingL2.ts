@@ -28,6 +28,7 @@ export class MatchScoutingL2 {
     sturdiness: number;
     scoringEff: number;
     team: string;
+    teamName: string;
     teamMatchNum: number;
 
 constructor(allianceStationID: number,
@@ -59,6 +60,7 @@ constructor(allianceStationID: number,
     sturdiness: number,
     scoringEff: number,
     team: string,
+    teamName: string,
     teamMatchNum: number,){
     this.allianceStationID=allianceStationID;
     this.blue1 = blue1
@@ -89,5 +91,6 @@ constructor(allianceStationID: number,
     this.sturdiness = sturdiness
     this.scoringEff = scoringEff
     this.team = team
+    this.teamName = teamName
     this.teamMatchNum = teamMatchNum
 }}

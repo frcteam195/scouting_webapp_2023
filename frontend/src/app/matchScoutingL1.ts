@@ -36,6 +36,7 @@ export class MatchScoutingL1 {
     scouterID: number;
     scoutingStatus: number;
     team: string;
+    teamName: string;
     teamMatchNum: number;
     teleConeCMTY: number;
     teleConeHigh: number;
@@ -86,6 +87,7 @@ constructor(allianceStationID: number,
     scouterID: number,
     scoutingStatus: number,
     team: string,
+    teamName: string,
     teamMatchNum: number,
     teleConeCMTY: number,
     teleConeHigh: number,
@@ -135,6 +137,7 @@ constructor(allianceStationID: number,
     this.scouterID = scouterID
     this.scoutingStatus = scoutingStatus
     this.team = team
+    this.teamName = teamName
     this.teamMatchNum = teamMatchNum
     this.teleConeCMTY = teleConeCMTY
     this.teleConeHigh = teleConeHigh
