@@ -1,9 +1,6 @@
 <p>level1 works!</p>
 
-<b>&nbsp;Scouter: </b>
-<select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
-    <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
-</select>
+
 
 <input type="hidden" [(ngModel)]='scouter'>
 
@@ -18,3 +15,248 @@
     
     </tr>
 </table>
+
+<body onload="startup()">
+    <div id="question">
+        <div id="header" style="display: none;"> 
+            <table align="center" id="headerTable">
+                <tr>
+                    <td><button (click)="lastBox()" id="headerButton">Previous</button></td> 
+                    <td style="text-align: center;width: 200px; font-weight: bold; font-size: larger;" id="headerText"><h1 >Title</h1></td>
+                    <td><button (click)="nextBox()" id="headerButton">Next</button></td> 
+                </tr>
+                <tr>
+                    <th colspan="3" id="blue" style="text-align: center;">254 - The Cheesy Poofs</th>
+                </tr>
+            </table>
+        </div>
+        <div id="home">
+            <h1 style="text-align: center;">Welcome to Level 1 Scouting!</h1>
+            <h2 style="text-align: center;">Match #</h2>
+            <h2 style="text-align: center; color: blue;">Team 254: The Cheesy Poofs</h2>
+            <h3 style="text-align: center;">Scouter Name: 
+                <select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
+                    <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
+                </select></h3>
+            <table id="homeTable" align="center">
+                <tr>
+                    <th id="blue" style="width: 75px;">Blue Alliance</th>
+                    <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></td>
+                    <th id="red" style="width: 75px;">Red Alliance</th>
+                </tr>
+                <tr>
+                    <td id="blue">254</td>
+                    <td id="red">195</td>
+                </tr>
+                <tr>
+                    <td id="blue">1678</td>
+                    <td id="red">1114</td>
+                </tr>
+                <tr>
+                    <td id="blue">4414</td>
+                    <td id="red">2056</td>
+                </tr>
+            </table>
+            <div style="height: 20px;"></div>
+            <button (click)="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
+
+            
+        </div>
+        <div id="pre" style="display: none;">
+            <br>
+            <table id="preTable" style="width: 100%;" border="0">
+                <tr>
+                    <th align="center" style="width:33%;font-size: xx-large;">Starting Position</th>
+                    <td align="center" rowspan="4" style="width:33%px;"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px"></td>
+                    <td rowspan="2" style="text-align: center;font-size: xx-large;">
+                        <form>
+                            <p><b>Preload?</b></p>
+                            <input type="radio" id="Yes" name="preload" value="1">
+                            <label for="Yes">Yes</label><br>
+                            <input type="radio" id="No" name="preload" value="0">
+                            <label for="No">No</label><br>
+                        </form>
+                        <form>
+                            <p><b>Did they show?</b></p>
+                            <input type="radio" id="Yes" name="show" value="1">
+                            <label for="Yes">Yes</label><br>
+                            <input type="radio" id="No" name="show" value="0">
+                            <label for="No">No</label><br>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071957904221020240/image.png" width="400px"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="auto" style="display: none;">
+            <p></p>
+            <table id="nodeTable"></table>
+            <br>
+            <table id="autoDropdownTable" border="0">
+                <tr>
+                    <td>
+                        <form>
+                            <label for="moveBns"><h2>Move Bonus:</h2></label>
+                            <p></p>
+                            <select name="moveBns" id="moveBns">
+                                <option value="0">Did not move</option>
+                                <option value="1">Move w/o bonus</option>
+                                <option value="3">Move w/ bonus</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <label for="chargestn"><h2>Charge Station:</h2></label>
+                            <p></p>
+                            <select name="chargestn" id="chargestn">
+                                <option value="0">No attempt</option>
+                                <option value="1">Failed attempt</option>
+                                <option value="3">Docked no engage</option>
+                                <option value="4">Docked w/ engage</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <form>
+                            <label for="penalties"><h2>Penalties:</h2></label>
+                            <p></p>
+                            <select name="penalties" id="penalties">
+                                <option value="0">No penalties</option>
+                                <option value="1">Crossed Line</option>
+                                <option value="3">Touched Pieces</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <h2 style="text-align: center;">Pickup Positions</h2>
+            <table id="autoPickupTable" border="0">
+                <tr>
+                    <td><button class="pickup" id="pickup1" onclick="pickupSelection(1)"></button></td>
+                    <td><button class="pickup" id="pickup2" onclick="pickupSelection(2)"></button></td>
+                    <td><button class="pickup" id="pickup3" onclick="pickupSelection(3)"></button></td>
+                    <td><button class="pickup" id="pickup4" onclick="pickupSelection(4)"></button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="tele" style="display: none;">
+            <br>
+            <table id="teleTable" border="0">
+                <tr>
+                    <th>CONE</th>
+                    <td></td>
+                    <th>CUBE</th>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(0)" style="background-color: red;">-</button></td>
+                                <td id="inc0">0</td>
+                                <td><button onclick="incUp(0)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <th>HIGH</th>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(1)" style="background-color: red;">-</button></td>
+                                <td id="inc1">0</td>
+                                <td><button onclick="incUp(1)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(2)" style="background-color: red;">-</button></td>
+                                <td id="inc2">0</td>
+                                <td><button onclick="incUp(2)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <th>MID</th>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(3)" style="background-color: red;">-</button></td>
+                                <td id="inc3">0</td>
+                                <td><button onclick="incUp(3)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(4)" style="background-color: red;">-</button></td>
+                                <td id="inc4">0</td>
+                                <td><button onclick="incUp(4)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <th>LOW</th>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(5)" style="background-color: red;">-</button></td>
+                                <td id="inc5">0</td>
+                                <td><button onclick="incUp(5)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(6)" style="background-color: red;">-</button></td>
+                                <td id="inc6">0</td>
+                                <td><button onclick="incUp(6)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <th>COMMUNITY</th>
+                    <td>
+                        <table class="incrementor">
+                            <tr>
+                                <td><button onclick="incDown(7)" style="background-color: red;">-</button></td>
+                                <td id="inc7">0</td>
+                                <td><button onclick="incUp(7)" style="background-color: green;">+</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        <div id="end" style="display: none;">
+            Endgame
+        </div>
+        <div id="post" style="display: none;">
+            Post Game
+        </div>
+        <div id="final" style="display: none;">
+            <table align="center">
+                <tr>
+                    <td><h1 style="text-align: center;">Thank you for scouting the match!</h1></td>
+                </tr>
+                <tr>
+                    <td align="center"><img src="https://media.discordapp.net/attachments/709829587323977811/1032728164364992653/makesweet-y27of7.gif"></td>
+                </tr>
+                <tr>
+                    <td><button onclick="returnBox()" style="margin: 0 auto; display: block;" id="initialNext">Return</button> </td>
+                </tr>
+            </table> 
+        </div>
+    </div>
+    
+</body>
