@@ -14,7 +14,7 @@ export class Level2Component implements OnInit {
   apiScouters: Scouters[] = [];
   apiMatchL2: MatchScoutingL2[] = [];
   apiMatchL2_filter: MatchScoutingL2[] = [];
-  scouter: number = 0;
+  scouter: number = -1;
   display: number = 1;
   effort: number = 0;
   
@@ -39,14 +39,19 @@ export class Level2Component implements OnInit {
   ngOnInit(): void {
   }
 
+  select(scouter: number) {
+    // Sets Scouter to be passed to next record
+    this.scouter = scouter;
+
+  }
+
   changeDisplay(d_value: number, scouter: number) {
     this.display = this.display + d_value;  
 
-    if(this.display > 1 && scouter === null) {
+    if(this.display > 1 && scouter < 1) {
       alert("Please select a Scouter Name");
       this.display = 1;
     }
-
 
     if(this.display > 4) {
       this.display = 1;
@@ -100,8 +105,11 @@ export class Level2Component implements OnInit {
       for (const m of this.apiMatchL2) {
 
         if (m.scoutingStatus === null ) { 
-          //Break out of for loop once the first unscouted record is found
+          // Set scouter to existing scouter value
+          m.scouterID = this.scouter;
+
           this.apiMatchL2_filter.push(m);
+          //Break out of for loop once the first unscouted record is found
           break;
         }
        } 
