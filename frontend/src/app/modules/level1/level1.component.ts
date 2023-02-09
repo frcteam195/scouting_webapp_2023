@@ -42,7 +42,7 @@ export class Level1Component implements OnInit {
   ngOnInit(): void { 
     var table: HTMLTableElement = <HTMLTableElement> document.getElementById("nodeTable");//find table
     var counter = 1; //variable to count and assign numbers to cells
-    for(var i = 0; i < 3; i++){ //loop to make rows
+    /* for(var i = 0; i < 3; i++){ //loop to make rows
         var row = table!.insertRow(i); //insert row into table
         for(var t = 0; t < 9; t++){ //loop to make cells
             var cell = row.insertCell(t); // insert cell into row
@@ -62,8 +62,8 @@ export class Level1Component implements OnInit {
             cell.appendChild(newNode); //put the button in the cell that we made
             counter++; //increment the number by 1
         }
-    }
-    for (i=0;i < this.nodePositions.length; i++){ //assign vallues to node value array
+    } */
+    for (var i=0;i < this.nodePositions.length; i++){ //assign vallues to node value array
         this.nodePositions[i] = 0;
     }
     for (i=0;i<this.autoPickup.length;i++){
@@ -101,6 +101,16 @@ export class Level1Component implements OnInit {
     } else {
       this.apiMatchL1_filter = [];
     }
+  }
+
+  getYesNoClass(value: number, actual: number){
+    if(value == actual && value == 1) {
+        return 'button_green';
+      } else if (value == actual && value == 0) {
+        return 'button_red';
+      } else {
+        return 'button_rank';
+      }
   }
 
   stage: number=0; //variable to keep track of what is currently being displayed

@@ -1,12 +1,30 @@
-body{
+body {
     background-color: #500778;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-#home table, #home td,#home tr,#home th{
+  }
+  #home table, #home td, #home tr, #home th {
     border: 4px solid black;
     border-collapse: collapse;
-}
-#question{
+  }
+  .preYesNo td{
+    padding: 10px;
+  }
+  .button_green, .button_rank, .button_red{
+    width: 50px;
+    height: 50px;
+    font-size: larger;
+    color: white;
+  }
+  .button_green{
+    background-color: green;
+  }
+  .button_red{
+    background-color: red;
+  }
+  .button_rank{
+    background-color: gray;
+  }
+  #question {
     background-color: white;
     color: black;
     position: absolute;
@@ -16,20 +34,20 @@ body{
     right: 1%;
     border-radius: 3px;
     padding: 8px;
-}
-#blue{
+  }
+  #blue {
     background-color: blue;
     color: white;
     text-align: left;
     padding: 5px;
-}
-#red{
+  }
+  #red {
     background-color: red;
     color: white;
     text-align: right;
     padding: 5px;
-}
-#initialNext{
+  }
+  #initialNext {
     background-color: #500778;
     color: white;
     padding: 16px 32px;
@@ -39,12 +57,12 @@ body{
     font-size: 16px;
     border-radius: 12px;
     font-weight: bold;
-}
-#initialNext:hover{
+  }
+  #initialNext:hover {
     background-color: white;
     color: #500778;
-}
-#headerButton{
+  }
+  #headerButton {
     background-color: #500778;
     color: white;
     text-align: center;
@@ -57,53 +75,50 @@ body{
     border-style: outset;
     border-color: #500778;
     border-width: 3px;
-}
-#header table, #header td, #header tr, #header th{
+  }
+  #header table, #header td, #header tr, #header th {
     padding: 0;
     overflow: hidden;
     border-collapse: collapse;
     border: 3px solid #500778;
-}
-
-
-#nodeTable, #nodeTable td, #nodeTable tr{
+  }
+  #nodeTable, #nodeTable td, #nodeTable tr {
     border: 4px solid black;
     border-collapse: collapse;
     padding: 0px;
-}
-#nodeTable{
+  }
+  #nodeTable {
     width: 100%;
-}
-[name = "node"]{
+  }
+  [name = "node"] {
     width: 100%;
     height: 80;
     font-size: larger;
     font-weight: bold;
-}
-.cube{
+  }
+  .cube {
     background-color: purple;
     border-style: outset;
     border-color: purple;
     border-width: 5px;
-}
-.other{
+  }
+  .other {
     background-color: gray;
     border-style: outset;
     border-color: gray;
     border-width: 5px;
-}
-.cone{
+  }
+  .cone {
     background-color: yellow;
     border-style: outset;
     border-color: yellow;
     border-width: 5px;
-}
-
-#autoPickupTable{
+  }
+  #autoPickupTable {
     width: 100%;
     border-style: none;
-}
-.pickup{
+  }
+  .pickup {
     display: block;
     margin: auto;
     width: 80px;
@@ -111,50 +126,47 @@ body{
     background-color: gray;
     border: 4px solid black;
     border-collapse: collapse;
-}
-
-#autoDropdownTable {
+  }
+  #autoDropdownTable {
     width: 100%;
     border-style: none;
-}
-#autoDropdownTable td {
+  }
+  #autoDropdownTable td {
     width: 33.33%;
     text-align: center;
-}
-#autoDropdownTable select {
+  }
+  #autoDropdownTable select {
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#teleTable table:not(.incrementor *){
+  }
+  #teleTable table {
     border-collapse: collapse;
-} 
-#teleTable th:not(.incrementor *), #teleTable td:not(.incrementor *) {
+  }
+  #teleTable th, #teleTable td {
     padding: 8px;
     border-bottom: 4px solid black;
-}
-
-.incrementor table, .incrementor td, .incrementor tr, .incrementor .th {
+  }
+  .incrementor table, .incrementor td, .incrementor tr, .incrementor .th {
     border: 4px solid black;
     border-collapse: collapse;
-}
-.incrementor{
+  }
+  .incrementor {
     font-size: larger;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;   
-}
-.incrementor td{
+    font-weight: bold;
+  }
+  .incrementor td {
     width: 50px;
     height: 50px;
     padding: 0;
     text-align: center;
     border: none;
-}
-.incrementor button{
+  }
+  .incrementor button {
     width: 50px;
     height: 50px;
     border-radius: 0;
     text-align: center;
     font-size: xx-large;
-}
-
+  }
+  
