@@ -34,7 +34,7 @@
     <tr>
         <td align="center" colspan="2">
             <b>&nbsp;Scouter Name: </b><br>
-            <select class="form-control" type="text" name="Scouter" [(ngModel)] = "m.scouterID" >
+            <select class="form-control" type="text" name="Scouter" [(ngModel)] = "m.scouterID" (ngModelChange)="select($event)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
             </select>
 
