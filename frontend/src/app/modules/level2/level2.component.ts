@@ -43,7 +43,7 @@ export class Level2Component implements OnInit {
     this.display = this.display + d_value;  
 
     if(this.display > 1 && scouter === null) {
-      alert("Please select a Scouter Name " + scouter);
+      alert("Please select a Scouter Name");
       this.display = 1;
     }
 

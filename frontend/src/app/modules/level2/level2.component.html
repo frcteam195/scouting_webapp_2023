@@ -76,12 +76,12 @@
             <b>Speed</b>
         </td>
         <td>
-            <button class="button_rank">NA</button>
-            <button class="button_rank">1</button>
-            <button class="button_rank">2</button>
-            <button class="button_rank">3</button>
-            <button class="button_rank">4</button>
-            <button class="button_rank">5</button>
+            <button (click)="m.speed = 0"  [ngClass]="getClass(m.speed,0)">NA</button>
+            <button (click)="m.speed = 1"  [ngClass]="getClass(m.speed,1)">1</button>
+            <button (click)="m.speed = 2"  [ngClass]="getClass(m.speed,2)">2</button>
+            <button (click)="m.speed = 3"  [ngClass]="getClass(m.speed,3)">3</button>
+            <button (click)="m.speed = 4"  [ngClass]="getClass(m.speed,4)">4</button>
+            <button (click)="m.speed = 5"  [ngClass]="getClass(m.speed,5)">5</button>
         </td>        
     </tr>
     <tr>
