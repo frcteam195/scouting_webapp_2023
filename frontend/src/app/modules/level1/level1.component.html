@@ -17,7 +17,7 @@
 </table>
 
 <body onload="startup()">
-    <div id="question">
+    <div id="question" *ngFor="let m of apiMatchL1_filter">
         <div id="header" style="display: none;"> 
             <table align="center" id="headerTable">
                 <tr>
@@ -69,20 +69,22 @@
                     <th align="center" style="width:33%;font-size: xx-large;">Starting Position</th>
                     <td align="center" rowspan="4" style="width:33%px;"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px"></td>
                     <td rowspan="2" style="text-align: center;font-size: xx-large;">
-                        <form>
-                            <p><b>Preload?</b></p>
-                            <input type="radio" id="Yes" name="preload" value="1">
-                            <label for="Yes">Yes</label><br>
-                            <input type="radio" id="No" name="preload" value="0">
-                            <label for="No">No</label><br>
-                        </form>
-                        <form>
-                            <p><b>Did they show?</b></p>
-                            <input type="radio" id="Yes" name="show" value="1">
-                            <label for="Yes">Yes</label><br>
-                            <input type="radio" id="No" name="show" value="0">
-                            <label for="No">No</label><br>
-                        </form>
+                        <table align="center" border="0" class="preYesNo">
+                            <tr>
+                                <td colspan="2"><b>Preload?<br></b></td>
+                            </tr>
+                            <tr align="center">
+                                <td><button (click)="m.preLoad = 1" [ngClass]="getYesNoClass(m.preLoad, 1)">Y</button></td>
+                                <td><button (click)="m.preLoad = 0" [ngClass]="getYesNoClass(m.preLoad, 0)">N</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><b><br><br><br>Did they show?<br></b></td>
+                            </tr>
+                            <tr align="center">
+                                <td><button (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
+                                <td><button (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">N</button></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
