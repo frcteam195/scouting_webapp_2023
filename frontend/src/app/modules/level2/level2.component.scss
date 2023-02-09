@@ -11,9 +11,44 @@ table, th, td {
     width:30px;
     height:30px;
     margin-left: 4px;
+    background-color: #EEEEEE;
 }
 
 .radio_col {
     width: 30px;
     text-align: center;
+}
+
+.button_green {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: green;
+    color: white;
+}
+
+.button_red {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: red;
+    color: white;
+}
+
+
+input[type=text] {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+    text-align: center;
+}
+
+.red_all {
+    color: red;
+    font-weight: bold;
+}
+
+.blue_all {
+    color: blue;
+    font-weight: bold;
 }

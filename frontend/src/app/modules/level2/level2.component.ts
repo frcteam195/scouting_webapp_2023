@@ -39,22 +39,52 @@ export class Level2Component implements OnInit {
   ngOnInit(): void {
   }
 
-  select(scouterID: number) {
-    this.scouter = scouterID;
-  }
+  changeDisplay(d_value: number, scouter: number) {
+    this.display = this.display + d_value;  
 
-  changeDisplay(d_value: number) {
-    this.display = this.display + d_value;
+    if(this.display > 1 && scouter === null) {
+      alert("Please select a Scouter Name " + scouter);
+      this.display = 1;
+    }
+
+
     if(this.display > 4) {
       this.display = 1;
     }
   }
 
-  changeButton(b_value: number) {
-     console.log ("Value: [" + b_value + "]");
-     //this.updateForm.controls['effort'].setValue(b_value);
-     //console.log ("Effort: [" + this.apiMatchL2_filter?.[0].effort + "]"); 
+  getClass(value: number, b_type: number) {
+
+    if(value == b_type) {
+      return 'button_green';
+    } else {
+      return 'button_rank';
+    }
+
   }
+
+  getClass2(value: number, b_type: number) {
+
+    if(value == b_type && value == 1) {
+      return 'button_green';
+    } else if (value == b_type && value == 0) {
+      return 'button_red';
+    } else {
+      return 'button_rank';
+    }
+
+  }
+
+  getClass3(value: number) {
+
+    if(value > 3) {
+      return 'blue_all';
+    } else {
+      return 'red_all';
+    }
+
+  }
+
 
   regenerateFilter() {
     console.log("regenerateFilter: Start: ");
