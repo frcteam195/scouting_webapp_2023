@@ -1,0 +1,25 @@
+table { 
+    width: 320px;
+    height: 420px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+
+.button_rank {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: #EEEEEE;
+}
+
+
+.button_green {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: green;
+    color: white;
+}

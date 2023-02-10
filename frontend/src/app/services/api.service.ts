@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {ReplaySubject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Event } from '../event';
+import { PitScouting } from '../pitScouting';
 
  
 
@@ -17,6 +18,7 @@ export class ApiService {
   public MatchL1Replay: ReplaySubject<MatchScoutingL1[]>;
   public MatchL2Replay: ReplaySubject<MatchScoutingL2[]>;
   public EventReplay: ReplaySubject<Event[]>;
+  public PitReplay: ReplaySubject<PitScouting[]>;
 
 
 
@@ -34,6 +36,7 @@ export class ApiService {
     this.MatchL1Replay = new ReplaySubject(1);
     this.MatchL2Replay = new ReplaySubject(1);
     this.EventReplay = new ReplaySubject(1);
+    this.PitReplay = new ReplaySubject(1);
 
 
 
@@ -104,6 +107,21 @@ export class ApiService {
     });
 
 
+    this.http.get<PitScouting[]>(this.apiUrl + '/pitscouting').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.PitReplay.next(response as PitScouting[]);
+      // Might as well store it while we have it
+      localStorage.setItem('Pit', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.PitReplay.next(JSON.parse(localStorage.getItem('Pit')!) as PitScouting[]);
+      } catch (err) {
+        console.error('Could not load Matches data from server or cache!');
+      }
+    });
+
+
 
 
 
@@ -111,10 +129,18 @@ export class ApiService {
   }
 
 
+  savePitData(pit: PitScouting[]){
+    localStorage.setItem('Pit', JSON.stringify(pit));
 
+    //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
+    
+    this.http.post<PitScouting[]>(this.apiUrl + '/pit-update', JSON.stringify(pit), options).subscribe();
 
+    console.log("Updating Pit Scouting Records");
 
-
+  }
 
 
 }

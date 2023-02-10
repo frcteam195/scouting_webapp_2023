@@ -1,0 +1,43 @@
+
+<table>
+    <tr>
+    
+        <td align="center" colspan="4" height="20"><b>Pit Scouting</b></td>    
+    
+    </tr>
+
+    <tr>
+        <td align="center" colspan="4">
+            <b>&nbsp;Scouter Name: </b><br>
+            <select class="form-control" type="text" name="Scouter" [(ngModel)]="scouter" (change)="select(scouter)">
+                <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <div *ngFor="let p of apiPit; let i = index">
+                
+                <div *ngIf="i%2 == 0">
+                    <a (click)="pitPage( p.team, scouter )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div *ngFor="let p of apiPit; let i = index">
+                <div *ngIf="i%2 != 0">
+                    <a (click)="pitPage( p.team, scouter )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+
+    <tr>
+        <td align="left" colspan="4">
+            <a routerLink="/"><button type="button" title="Home">Home</button></a>
+        </td>
+    </tr>
+</table>
