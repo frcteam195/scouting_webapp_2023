@@ -113,6 +113,7 @@ export class Level1Component implements OnInit {
       }
   }
 
+
   stage: number=0; //variable to keep track of what is currently being displayed
   numberBox: number=6; //static value for total number of boxes - 1
   nodePositions:number[] = new Array(4); //array of positions of selected nodes

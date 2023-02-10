@@ -155,13 +155,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <table class="incrementor">
-                            <tr>
-                                <td><button onclick="incDown(0)" style="background-color: red;">-</button></td>
-                                <td id="inc0">0</td>
-                                <td><button onclick="incUp(0)" style="background-color: green;">+</button></td>
-                            </tr>
-                        </table>
+                        <button class="button_rank" (click)="m.teleConeHigh > 0 && m.teleConeHigh = m.teleConeHigh - 1">-</button>
+                        <input type="text" class="form-control" id="teleConeHigh" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeHigh" name="teleConeHigh">
+                        <button class="button_rank" (click)="m.teleConeHigh = m.teleConeHigh + 1">+</button>
                     </td>
                     <th>HIGH</th>
                     <td>
