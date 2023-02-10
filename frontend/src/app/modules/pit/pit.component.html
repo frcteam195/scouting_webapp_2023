@@ -1,1 +1,161 @@
-<p>pit works!</p>
+<div *ngFor="let p of apiPit_filter">
+
+
+    <!-- Main Level 2 Page -->
+    <table *ngIf="display==1">
+        <tr>
+        
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>
+
+        <tr>
+            <td align="left">
+                <a routerLink="/pitlist"><button type="button" title="Team List">Team List</button></a>
+            </td>
+            <td align="right">
+                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- Start Level 2 In Match Page -->
+    
+    <table *ngIf="display==2">
+        <tr>
+        
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>
+
+
+    
+        <tr>
+            <td align="left">
+                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+            </td>
+            <td align="right">
+                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
+            </td>
+        </tr>
+    </table>
+    
+    
+    
+    
+    
+    
+    <!-- Start Level 2 Offense Page -->
+    
+    <table *ngIf="display==3">
+        <tr>
+        
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>
+
+
+    
+        <tr>
+            <td align="left">
+                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+            </td>
+            <td align="right">
+                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <!-- Start Level 2 Defense Page -->
+    
+    
+    <table *ngIf="display==4">
+        <tr>
+        
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>
+
+        <tr>
+            <td >
+                <b>Manuver</b>
+            </td>
+            <td>
+                <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
+                <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
+                <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
+                <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
+                <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
+                <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
+            </td>        
+        </tr>
+
+    
+        <tr>
+            <td align="left">
+                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+            </td>
+            <td align="right">
+                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
+            </td>
+        </tr>
+    </table>
+
+
+        <!-- Start Level 2 Defense Page -->
+    
+    
+        <table *ngIf="display==5">
+            <tr>
+            
+                <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+            
+            </tr>
+            <tr >
+            
+                <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+            
+            </tr>
+    
+    
+        
+            <tr>
+                <td align="left">
+                    <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+                </td>
+                <td align="right">
+                    <button (click)="save()">Save</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">
+                    &nbsp;
+                </td>
+                <td align="left">
+                    <a routerLink="/pitlist"><button type="button" title="Team List">Close</button></a>
+                </td>
+            </tr>
+        </table>
+    
+    </div>

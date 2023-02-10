@@ -1,3 +1,4 @@
+import { PitListComponent } from './modules/pit-list/pit-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
@@ -22,10 +23,13 @@ const routes: Routes = [{
     path: 'level2/:match',
     component: Level2Component    
   },{
+    path: 'pitlist',
+    component: PitListComponent
+  },{
     path: 'pit',
     component: PitComponent    
   },{
-    path: 'pit/:team',
+    path: 'pit/:team/:scouter',
     component: PitComponent    
   },{
     path: 'admin',
@@ -33,7 +37,7 @@ const routes: Routes = [{
   }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

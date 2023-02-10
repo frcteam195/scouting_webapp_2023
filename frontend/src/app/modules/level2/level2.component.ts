@@ -16,8 +16,7 @@ export class Level2Component implements OnInit {
   apiMatchL2_filter: MatchScoutingL2[] = [];
   scouter: number = -1;
   display: number = 1;
-  effort: number = 0;
-  
+
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) {
 
@@ -89,7 +88,6 @@ export class Level2Component implements OnInit {
     }
 
   }
-
 
   regenerateFilter() {
     console.log("regenerateFilter: Start: ");

@@ -1,85 +1,75 @@
-export class MatchScoutingL2 {
-    buddyClimb: number;
+export class PitScouting {
     buildComments: string;
     buildQuality: number;
-    buildType: number;
-    centerGravity: number;
-    driveBase: number;
+    buildTypeID: number;
+    centerGravityTypeID: number;
+    dedicatedGroundIntake: number;
+    driveBaseTypeID: number;
+    driveMotorTypeID: number;
     driveTypeID: number;
     electricalComments: string;
     electricalQuality: number;
     eventID: number;
     generalComments: string;
-    height: number;
-    intakeType: number;
-    manipulator: number;
-    motorType: number;
-    robotLength: number;
+    imageLink: string;
+    manipulatorTypeID: number;
     robotDurability: number;
+    robotHeight: number;
+    robotLength: number;
+    robotWidth: number;
     scouterID: number;
     scoutingStatus: number;
-    synced2MS: number;
-    speed: number;
-    sturdiness: number;
-    scoringEff: number;
+    superClimbTypeID: number;
     team: string;
     teamName: string;
-    teamMatchNum: number;
-    width: number;
 
 constructor(
-    buddyClimb: number,
     buildComments: string,
     buildQuality: number,
-    buildType: number,
-    centerGravity: number,
-    driveBase: number,
+    buildTypeID: number,
+    centerGravityTypeID: number,
+    dedicatedGroundIntake: number,
+    driveBaseTypeID: number,
+    driveMotorTypeID: number,
     driveTypeID: number,
     electricalComments: string,
     electricalQuality: number,
     eventID: number,
     generalComments: string,
-    height: number,
-    intakeType: number,
-    manipulator: number,
-    motorType: number,
-    robotLength: number,
+    imageLink: string,
+    manipulatorTypeID: number,
     robotDurability: number,
+    robotLength: number,
+    robotHeight: number,
+    robotWidth: number,
     scouterID: number,
     scoutingStatus: number,
-    synced2MS: number,
-    speed: number,
-    sturdiness: number,
-    scoringEff: number,
+    superClimbTypeID: number,
     team: string,
-    teamName: string,
-    teamMatchNum: number,
-    width: number,){
-    this.buddyClimb = buddyClimb
+    teamName: string){
     this.buildComments = buildComments
     this.buildQuality = buildQuality
-    this.buildType = buildType
-    this.centerGravity = centerGravity
-    this.driveBase = driveBase
+    this.buildTypeID = buildTypeID
+    this.centerGravityTypeID = centerGravityTypeID
+    this.dedicatedGroundIntake = dedicatedGroundIntake
+    this.driveBaseTypeID = driveBaseTypeID
+    this.driveMotorTypeID = driveMotorTypeID
     this.driveTypeID = driveTypeID
     this.electricalComments = electricalComments
     this.electricalQuality = electricalQuality
     this.eventID = eventID
     this.generalComments = generalComments
-    this.height = height
-    this.intakeType = intakeType
-    this.manipulator = manipulator
-    this.motorType = motorType
-    this.robotLength = robotLength
+    this.imageLink = imageLink
+    this.manipulatorTypeID = manipulatorTypeID
     this.robotDurability = robotDurability
+    this.robotHeight = robotHeight
+    this.robotLength = robotLength
+    this.robotWidth = robotWidth
     this.scouterID = scouterID
     this.scoutingStatus = scoutingStatus
-    this.synced2MS = synced2MS
-    this.speed = speed
-    this.sturdiness = sturdiness
-    this.scoringEff = scoringEff
+    this.superClimbTypeID = superClimbTypeID
     this.team = team
     this.teamName = teamName
-    this.teamMatchNum = teamMatchNum
-    this.width = width
-}}
+    }
+
+}
