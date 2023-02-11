@@ -1,10 +1,14 @@
+div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifs
+}
+
 table { 
     width: 320px;
     height: 420px;
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 0px solid black;
 }
 
 .button_rank {
@@ -37,8 +41,8 @@ table, th, td {
 
 
 input[type=text] {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin-left: 4px;
     text-align: center;
 }
