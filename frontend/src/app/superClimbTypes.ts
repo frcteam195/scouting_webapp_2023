@@ -1,4 +1,4 @@
-export class MatchScoutingL1 {
+export class SuperClimbType {
     superClimbTypeID: number;
     superClimbType: string
 
