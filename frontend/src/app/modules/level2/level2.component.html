@@ -205,20 +205,6 @@
         </td>
    
     </tr>
-
-
-    <tr>
-        <td align="center">
-            <b>Effort</b>
-        </td>
-        <td align="center" colspan="2">
-            <button class="button_rank" (click)="m.effort > 0 && m.effort = m.effort - 1">-</button>
-            <input type="text" class="form-control" id="effort" readonly
-            #ctrl="ngModel" [(ngModel)]="m.effort" name="effort">
-            <button class="button_rank" (click)="m.effort = m.effort + 1">+</button>
-        </td>    
-     
-    </tr>
     <tr>
         <td><b>Good Offensive Bot:</b></td>
         <td align="right"><button (click)="m.goodOffBot = 1"  [ngClass]="getClass2(m.goodOffBot,1)">Y</button></td>
