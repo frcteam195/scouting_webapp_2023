@@ -103,6 +103,28 @@ export class Level1Component implements OnInit {
     }
   }
 
+  getLetterColor(team: string){
+    for (let m of this.apiMatchL1_filter){
+        if (team==m.red1 || team==m.red2 || team==m.red3){
+            return "redLetter";
+        } else if (team==m.blue1 || team==m.blue2 || team==m.blue3){
+            return "blueLetter";
+        }
+    }
+    return "broken";
+  }
+
+  getColor(team: string){
+    for (let m of this.apiMatchL1_filter){
+        if (team==m.red1 || team==m.red2 || team==m.red3){
+            return "red";
+        } else if (team==m.blue1 || team==m.blue2 || team==m.blue3){
+            return "blue";
+        }
+    }
+    return "broken";
+  }
+
   getYesNoClass(value: number, actual: number){
     if(value == actual && value == 1) {
         return 'button_green';
