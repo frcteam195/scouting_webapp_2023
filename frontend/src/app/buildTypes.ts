@@ -1,4 +1,4 @@
-export class buildTypes {
+export class BuildTypes {
     buildTypeID: number;
     buildType: string
 

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DriveBaseTypes } from 'src/app/drivebasetypes';
+import { DriveMotorTypes } from 'src/app/drivemotortypes';
+import { ManipulatorTypes } from 'src/app/manipulatortypes';
 import { ApiService } from 'src/app/services/api.service';
 import { PitScouting } from '../../pitScouting';
 import { Scouters } from '../../scouters';
+import { BuildTypes } from '../../buildTypes'
+import { SuperClimbTypes } from '../../superClimbTypes'
+import { CenterGravityTypes } from '../../centerGravityTypes'
 
 @Component({
   selector: 'app-pit',
@@ -18,6 +24,12 @@ export class PitComponent implements OnInit {
   scouter: number = -1;
   display: number = 1;
   team: string = '195';
+  apiDriveBaseTypes: DriveBaseTypes[] = [];
+  apiDriveMotorTypes: DriveMotorTypes[] = [];
+  apiManipulatorTypes: ManipulatorTypes[] = [];
+  apiBuildTypes: BuildTypes[] = [];
+  apiSuperClimbTypes: SuperClimbTypes[] = [];
+  apiCenterGravityTypes: CenterGravityTypes[] = [];
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
 
@@ -33,6 +45,29 @@ export class PitComponent implements OnInit {
       this.apiScouters = types;
     });
 
+    this.apiService.DriveBaseTypesReplay.subscribe(types => {
+      this.apiDriveBaseTypes = types;
+    });
+
+    this.apiService.DriveMotorTypesReplay.subscribe(types => {
+      this.apiDriveMotorTypes = types;
+    });
+
+    this.apiService.ManipulatorTypesReplay.subscribe(types => {
+      this.apiManipulatorTypes = types;
+    });
+
+    this.apiService.BuildTypesReplay.subscribe(types => {
+      this.apiBuildTypes = types;
+    });
+
+    this.apiService.SuperClimbTypesReplay.subscribe(types => {
+      this.apiSuperClimbTypes = types;
+    });
+
+    this.apiService.CenterGravityTypesReplay.subscribe(types => {
+      this.apiCenterGravityTypes = types;
+    });
 
    }
 
