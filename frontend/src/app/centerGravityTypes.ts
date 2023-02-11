@@ -1,4 +1,4 @@
-export class CenterGravityType {
+export class CenterGravityTypes {
     centerGravityTypeID: number;
     centerGravityType: string
 
