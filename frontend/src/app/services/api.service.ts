@@ -6,7 +6,12 @@ import {ReplaySubject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Event } from '../event';
 import { PitScouting } from '../pitScouting';
-
+import { DriveBaseTypes } from '../drivebasetypes';
+import { DriveMotorTypes } from '../drivemotortypes';
+import { ManipulatorTypes } from '../manipulatortypes';
+import { SuperClimbTypes } from '../superClimbTypes';
+import { BuildTypes } from '../buildTypes';
+import { CenterGravityTypes } from '../centerGravityTypes';
  
 
 @Injectable({
@@ -19,7 +24,12 @@ export class ApiService {
   public MatchL2Replay: ReplaySubject<MatchScoutingL2[]>;
   public EventReplay: ReplaySubject<Event[]>;
   public PitReplay: ReplaySubject<PitScouting[]>;
-
+  public DriveBaseTypesReplay: ReplaySubject<DriveBaseTypes[]>;
+  public DriveMotorTypesReplay: ReplaySubject<DriveMotorTypes[]>;
+  public ManipulatorTypesReplay: ReplaySubject<ManipulatorTypes[]>;
+  public SuperClimbTypesReplay: ReplaySubject<SuperClimbTypes[]>;
+  public BuildTypesReplay: ReplaySubject<BuildTypes[]>;
+  public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
 
 
 
@@ -37,7 +47,12 @@ export class ApiService {
     this.MatchL2Replay = new ReplaySubject(1);
     this.EventReplay = new ReplaySubject(1);
     this.PitReplay = new ReplaySubject(1);
-
+    this.DriveBaseTypesReplay = new ReplaySubject(1);
+    this.DriveMotorTypesReplay = new ReplaySubject(1);
+    this.ManipulatorTypesReplay = new ReplaySubject(1);
+    this.SuperClimbTypesReplay = new ReplaySubject(1);
+    this.BuildTypesReplay = new ReplaySubject(1);
+    this.CenterGravityTypesReplay = new ReplaySubject(1);
 
 
     // Automatically load the data once when the application starts
@@ -89,6 +104,90 @@ export class ApiService {
         this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
       } catch (err) {
         console.error('Could not load Matches data from server or cache!');
+      }
+    });
+
+    this.http.get<DriveBaseTypes[]>(this.apiUrl + '/drivebasetypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.DriveBaseTypesReplay.next(response as DriveBaseTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('DriveBaseTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.DriveBaseTypesReplay.next(JSON.parse(localStorage.getItem('DriveBaseTypes')!) as DriveBaseTypes[]);
+      } catch (err) {
+        console.error('Could not load Drive Base Types data from server or cache!');
+      }
+    });
+
+    this.http.get<DriveMotorTypes[]>(this.apiUrl + '/drivemotortypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.DriveMotorTypesReplay.next(response as DriveMotorTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('DriveMotorTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.DriveMotorTypesReplay.next(JSON.parse(localStorage.getItem('DriveMotorTypes')!) as DriveMotorTypes[]);
+      } catch (err) {
+        console.error('Could not load Drive Motor Types data from server or cache!');
+      }
+    });
+
+    this.http.get<ManipulatorTypes[]>(this.apiUrl + '/manipulatortypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.ManipulatorTypesReplay.next(response as ManipulatorTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('ManipulatorTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.ManipulatorTypesReplay.next(JSON.parse(localStorage.getItem('ManipulatorTypes')!) as ManipulatorTypes[]);
+      } catch (err) {
+        console.error('Could not load Manipulator Types data from server or cache!');
+      }
+    });
+
+    this.http.get<SuperClimbTypes[]>(this.apiUrl + '/superclimbtypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.SuperClimbTypesReplay.next(response as SuperClimbTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('SuperClimbTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.SuperClimbTypesReplay.next(JSON.parse(localStorage.getItem('SuperClimbTypes')!) as SuperClimbTypes[]);
+      } catch (err) {
+        console.error('Could not load Super Climb Types data from server or cache!');
+      }
+    });
+
+    this.http.get<BuildTypes[]>(this.apiUrl + '/buildtypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.BuildTypesReplay.next(response as BuildTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('BuildTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.BuildTypesReplay.next(JSON.parse(localStorage.getItem('BuildTypes')!) as BuildTypes[]);
+      } catch (err) {
+        console.error('Could not load Build Types data from server or cache!');
+      }
+    });
+
+    this.http.get<CenterGravityTypes[]>(this.apiUrl + '/centergravitytypes').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.CenterGravityTypesReplay.next(response as CenterGravityTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('CenterGravityTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.CenterGravityTypesReplay.next(JSON.parse(localStorage.getItem('CenterGravityTypes')!) as CenterGravityTypes[]);
+      } catch (err) {
+        console.error('Could not load Center of Gravity Types data from server or cache!');
       }
     });
 
