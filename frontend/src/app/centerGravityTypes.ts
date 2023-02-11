@@ -1,4 +1,4 @@
-export class MatchScoutingL1 {
+export class CenterGravityType {
     centerGravityTypeID: number;
     centerGravityType: string
 
