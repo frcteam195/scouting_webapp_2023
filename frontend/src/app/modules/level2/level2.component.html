@@ -5,34 +5,34 @@
 <table *ngIf="display==1">
     <tr>
     
-        <td align="center" colspan="2" height="20"><b>Level 2 Scouting</b></td>    
+        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2" height="20">Match {{ m.matchNum }}</td>
+        <td align="center" colspan="4" height="20">Match {{ m.matchNum }}</td>
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
+        <td align="center" colspan="4"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
     
     </tr>
     <tr >
     
-        <td align="left" class="red_all">Red Alliance<br>
+        <td align="left" colspan="2" class="red_all">Red Alliance<br>
             {{ m.red1 }}<br>
             {{ m.red2 }}<br>
             {{ m.red3 }}<br>
         </td>
-        <td align="right" class="blue_all">Blue Alliance<br>
+        <td align="right" colspan="2" class="blue_all">Blue Alliance<br>
             {{ m.blue1 }}<br>
             {{ m.blue2 }}<br>
             {{ m.blue3 }}<br>
         </td>
     </tr>
     <tr>
-        <td align="center" colspan="2">
+        <td align="center" colspan="4">
             <b>&nbsp;Scouter Name: </b><br>
             <select class="form-control" type="text" name="Scouter" [(ngModel)] = "m.scouterID" (ngModelChange)="select($event)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
@@ -43,10 +43,10 @@
     </tr>
 
     <tr>
-        <td align="left">
+        <td align="center" colspan="2">
             <a routerLink="/"><button type="button" title="Home">Home</button></a>
         </td>
-        <td align="right">
+        <td align="center" colspan="2">
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -57,25 +57,25 @@
 <table *ngIf="display==2">
     <tr>
     
-        <td align="center" colspan="2" height="20"><b>Level 2 Scouting</b></td>    
+        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2" height="20">Match {{ m.matchNum }}</td>
+        <td align="center" colspan="4" height="20">Match {{ m.matchNum }}</td>
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
+        <td align="center" colspan="4"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
     
     </tr>
 
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Speed</b>
         </td>
-        <td>
+        <td align="left" colspan="2">
             <button (click)="m.speed = 0"  [ngClass]="getClass(m.speed,0)">NA</button>
             <button (click)="m.speed = 1"  [ngClass]="getClass(m.speed,1)">1</button>
             <button (click)="m.speed = 2"  [ngClass]="getClass(m.speed,2)">2</button>
@@ -85,10 +85,10 @@
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Manuver</b>
         </td>
-        <td>
+        <td align="left" colspan="2">
             <button (click)="m.maneuverability = 0"  [ngClass]="getClass(m.maneuverability,0)">NA</button>
             <button (click)="m.maneuverability = 1"  [ngClass]="getClass(m.maneuverability,1)">1</button>
             <button (click)="m.maneuverability = 2"  [ngClass]="getClass(m.maneuverability,2)">2</button>
@@ -98,10 +98,10 @@
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Sturdy</b>
         </td>
-        <td>
+        <td align="left" colspan="2">
             <button (click)="m.sturdiness = 0"  [ngClass]="getClass(m.sturdiness,0)">NA</button>
             <button (click)="m.sturdiness = 1"  [ngClass]="getClass(m.sturdiness,1)">1</button>
             <button (click)="m.sturdiness = 2"  [ngClass]="getClass(m.sturdiness,2)">2</button>
@@ -111,62 +111,62 @@
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Climb</b>
         </td>
-        <td>
-            <button class="button_rank">NA</button>
-            <button class="button_rank">1</button>
-            <button class="button_rank">2</button>
-            <button class="button_rank">3</button>
-            <button class="button_rank">4</button>
-            <button class="button_rank">5</button>
+        <td align="left" colspan="2">
+            <button (click)="m.climb = 0"  [ngClass]="getClass(m.climb,0)">NA</button>
+            <button (click)="m.climb = 1"  [ngClass]="getClass(m.climb,1)">1</button>
+            <button (click)="m.climb = 2"  [ngClass]="getClass(m.climb,2)">2</button>
+            <button (click)="m.climb = 3"  [ngClass]="getClass(m.climb,3)">3</button>
+            <button (click)="m.climb = 4"  [ngClass]="getClass(m.climb,4)">4</button>
+            <button (click)="m.climb = 5"  [ngClass]="getClass(m.climb,5)">5</button>
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Effort</b>
         </td>
-        <td>
-            <button class="button_rank">NA</button>
-            <button class="button_rank">1</button>
-            <button class="button_rank">2</button>
-            <button class="button_rank">3</button>
-            <button class="button_rank">4</button>
-            <button class="button_rank">5</button>
+        <td align="left" colspan="2">
+            <button (click)="m.effort = 0"  [ngClass]="getClass(m.effort,0)">NA</button>
+            <button (click)="m.effort = 1"  [ngClass]="getClass(m.effort,1)">1</button>
+            <button (click)="m.effort = 2"  [ngClass]="getClass(m.effort,2)">2</button>
+            <button (click)="m.effort = 3"  [ngClass]="getClass(m.effort,3)">3</button>
+            <button (click)="m.effort = 4"  [ngClass]="getClass(m.effort,4)">4</button>
+            <button (click)="m.effort = 5"  [ngClass]="getClass(m.effort,5)">5</button>
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Scoring Eff</b>
         </td>
-        <td>
-            <button class="button_rank">NA</button>
-            <button class="button_rank">1</button>
-            <button class="button_rank">2</button>
-            <button class="button_rank">3</button>
-            <button class="button_rank">4</button>
-            <button class="button_rank">5</button>
+        <td align="left" colspan="2">
+            <button (click)="m.scoringEff = 0"  [ngClass]="getClass(m.scoringEff,0)">NA</button>
+            <button (click)="m.scoringEff = 1"  [ngClass]="getClass(m.scoringEff,1)">1</button>
+            <button (click)="m.scoringEff = 2"  [ngClass]="getClass(m.scoringEff,2)">2</button>
+            <button (click)="m.scoringEff = 3"  [ngClass]="getClass(m.scoringEff,3)">3</button>
+            <button (click)="m.scoringEff = 4"  [ngClass]="getClass(m.scoringEff,4)">4</button>
+            <button (click)="m.scoringEff = 5"  [ngClass]="getClass(m.scoringEff,5)">5</button>
         </td>        
     </tr>
     <tr>
-        <td >
+        <td align="center" colspan="2">
             <b>Intake Eff</b>
         </td>
-        <td>
-            <button class="button_rank">NA</button>
-            <button class="button_rank">1</button>
-            <button class="button_rank">2</button>
-            <button class="button_rank">3</button>
-            <button class="button_rank">4</button>
-            <button class="button_rank">5</button>
+        <td align="left" colspan="2">
+            <button (click)="m.intakeEff = 0"  [ngClass]="getClass(m.intakeEff,0)">NA</button>
+            <button (click)="m.intakeEff = 1"  [ngClass]="getClass(m.intakeEff,1)">1</button>
+            <button (click)="m.intakeEff = 2"  [ngClass]="getClass(m.intakeEff,2)">2</button>
+            <button (click)="m.intakeEff = 3"  [ngClass]="getClass(m.intakeEff,3)">3</button>
+            <button (click)="m.intakeEff = 4"  [ngClass]="getClass(m.intakeEff,4)">4</button>
+            <button (click)="m.intakeEff = 5"  [ngClass]="getClass(m.intakeEff,5)">5</button>
         </td>        
     </tr>
     <tr>
-        <td align="left">
+        <td align="center" colspan="2">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
         </td>
-        <td align="right">
+        <td align="center" colspan="2">
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -183,32 +183,35 @@
 <table *ngIf="display==3">
     <tr>
     
-        <td align="center" colspan="2" height="20"><b>Level 2 Scouting</b></td>    
+        <td align="center" colspan="3" height="20"><b>Level 2 Scouting</b></td>    
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2" height="20">Match {{ m.matchNum }}</td>
+        <td align="center" colspan="3" height="20">Match {{ m.matchNum }}</td>
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
+        <td align="center" colspan="3"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
     
     </tr>
     <tr>
-        <td colspan="4" align="center">
-            <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentOff">{{ m.commentOff }}</textarea>;
+        <td align="center" colspan="3"><b>Offensive Comments</b></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">
+            <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentOff">{{ m.commentOff }}</textarea>
         </td>
    
     </tr>
 
 
     <tr>
-        <td >
+        <td align="center">
             <b>Effort</b>
         </td>
-        <td>
+        <td align="center" colspan="2">
             <button class="button_rank" (click)="m.effort > 0 && m.effort = m.effort - 1">-</button>
             <input type="text" class="form-control" id="effort" readonly
             #ctrl="ngModel" [(ngModel)]="m.effort" name="effort">
@@ -217,28 +220,15 @@
      
     </tr>
     <tr>
-        <td colspan="4">
-            <b>Good Offensive Bot:</b>
-
-            <button (click)="m.goodOffBot = 1"  [ngClass]="getClass2(m.goodOffBot,1)">Y</button>
-            <button (click)="m.goodOffBot = 0"  [ngClass]="getClass2(m.goodOffBot,0)">N</button>
-        </td>   
+        <td><b>Good Offensive Bot:</b></td>
+        <td align="right"><button (click)="m.goodOffBot = 1"  [ngClass]="getClass2(m.goodOffBot,1)">Y</button></td>
+        <td align="left"><button (click)="m.goodOffBot = 0"  [ngClass]="getClass2(m.goodOffBot,0)">N</button></td> 
     </tr>
     <tr>
-
-        <td colspan="4">
-            <b>Scouter ID:</b>
-
-            <input type="text" class="form-control" id="scouter" readonly
-            #ctrl="ngModel" [(ngModel)]="m.scouterID" name="scouter">
-        </td>
-   
-    </tr>
-    <tr>
-        <td align="left">
+        <td align="center" colspan="1">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
         </td>
-        <td align="right" colspan="6">
+        <td align="center" colspan="2">
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -252,29 +242,57 @@
 <table *ngIf="display==4">
     <tr>
     
-        <td align="center" colspan="2" height="20"><b>Level 2 Scouting</b></td>    
+        <td align="center" colspan="3" height="20"><b>Level 2 Scouting</b></td>    
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2" height="20">Match {{ m.matchNum }}</td>
+        <td align="center" colspan="3" height="20">Match {{ m.matchNum }}</td>
     
     </tr>
     <tr >
     
-        <td align="center" colspan="2"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
+        <td align="center" colspan="3"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
     
     </tr>
     <tr>
-        <td>
-            Level 2 Defense Page
+        <td align="center" colspan="3"><b>Defensive Comments</b></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">
+            <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentDef">{{ m.commentDef }}</textarea>
         </td>
+   
+    </tr>
+
+
+
+
+    <tr>
+        <td><b>Good Defensive Bot:</b></td>
+        <td><button (click)="m.goodDefBot = 1"  [ngClass]="getClass2(m.goodDefBot,1)">Y</button></td>
+        <td><button (click)="m.goodDefBot = 0"  [ngClass]="getClass2(m.goodDefBot,0)">N</button></td>   
     </tr>
     <tr>
-        <td align="left">
+        <td><b>Played defense in community:</b></td>
+        <td><button (click)="m.defCommunity = 1"  [ngClass]="getClass2(m.defCommunity,1)">Y</button></td>
+        <td><button (click)="m.defCommunity = 0"  [ngClass]="getClass2(m.defCommunity,0)">N</button></td>  
+    </tr>
+    <tr>
+        <td><b>Played defense in center field:</b></td>
+        <td><button (click)="m.defCenter = 1"  [ngClass]="getClass2(m.defCenter,1)">Y</button></td>
+        <td><button (click)="m.defCenter = 0"  [ngClass]="getClass2(m.defCenter,0)">N</button></td>  
+    </tr>
+    <tr>
+        <td><b>Played defense in loading zone:</b></td>
+        <td><button (click)="m.defLZ = 1"  [ngClass]="getClass2(m.defLZ,1)">Y</button></td>
+        <td><button (click)="m.defLZ = 0"  [ngClass]="getClass2(m.defLZ,0)">N</button></td>  
+    </tr>
+    <tr>
+        <td align="center" colspan="1">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
-        </td>
-        <td align="right">
+        </td>  
+        <td align="center" colspan="2">
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
