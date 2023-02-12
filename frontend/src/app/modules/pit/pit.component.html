@@ -17,13 +17,22 @@
             <td align="center" colspan="2" height="40" class="heading"><b>Dimensions</b></td>
         </tr>
         <tr>
-            <td align="center" colspan="2"><b>Length</b><input type='integer' /><b>in</b></td>
+            <td align="right"><b>Length</b></td>
+            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
         </tr>
         <tr>
-            <td align="left">
+            <td align="right"><b>Width</b></td>
+            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
+        </tr>
+        <tr>
+            <td align="right"><b>Height</b></td>
+            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
+        </tr>
+        <tr>
+            <td align="right">
                 <a routerLink="/pitlist"><button type="button" title="Team List">Team List</button></a>
             </td>
-            <td align="right">
+            <td align="left">
                 <button (click)="changeDisplay(1,p.scouterID)">Next</button>
             </td>
         </tr>
@@ -42,7 +51,7 @@
             <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
         
         </tr>
-
+        
 
     
         <tr>
@@ -142,14 +151,22 @@
                 <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
             
             </tr>
-    
+            <tr>
+                <td align="center" colspan="3"><b>General Comments</b></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
+                </td>
+           
+            </tr>
     
         
             <tr>
-                <td align="left">
+                <td align="right">
                     <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
                 </td>
-                <td align="right">
+                <td align="left">
                     <button (click)="save()">Save</button>
                 </td>
             </tr>

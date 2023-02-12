@@ -1,6 +1,7 @@
 table { 
     width: 320px;
     height: 420px;
+    margin-top: 0%;
 }
 
 table, th, td {
@@ -14,7 +15,9 @@ table, th, td {
     margin-left: 4px;
     background-color: #EEEEEE;
 }
-
+input[type='number']{
+    width: 45px;
+} 
 
 .button_green {
     width:30px;
