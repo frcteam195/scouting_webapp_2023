@@ -20,6 +20,7 @@ export class Level1Component implements OnInit {
   apiMatchL1: MatchScoutingL1[] = [];
   apiMatchL1_filter: MatchScoutingL1[] = [];
   scouter: number = 0;
+  orientation: string="show";
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -161,6 +162,32 @@ export class Level1Component implements OnInit {
             m.rampStartTime = Number(m.rampStartTime.toString().substring(0, m.rampStartTime.toString().length - 1));
         } 
         this.updateNumPad();
+    }
+  }
+
+  show(num: string){
+    if (num=="normal"){
+        if(this.orientation=="show"){
+            return "show";
+        } else if (this.orientation=="hide") {
+            return "hide";
+        }
+    }
+    if (num=="inverted"){
+        if(this.orientation=="show"){
+            return "hide";
+        } else if (this.orientation=="hide") {
+            return "show";
+        }
+    }
+    return "show";
+  }
+
+  showHide(){
+    if(this.orientation=="show"){
+        this.orientation="hide";
+    } else {
+        this.orientation="show";
     }
   }
 

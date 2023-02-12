@@ -21,10 +21,12 @@
             <select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
             </select></h3>
-        <table id="homeTable" align="center">
+        <button id="initialNext" style="margin: 0 auto; display: block;" (click)="showHide()">Invert veiw</button>
+        <br>
+        <table id="homeTable" align="center" [ngClass]="show('normal')">
             <tr>
                 <th class="blue" style="width: 75px;">Blue Alliance</th>
-                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074150520710778910/fieldnormal.png" height="200px"></td>
                 <th class="red" style="width: 75px;">Red Alliance</th>
             </tr>
             <tr>
@@ -38,6 +40,25 @@
             <tr>
                 <td class="blue">{{ m.blue3 }}</td>
                 <td class="red">{{ m.red3 }}</td>
+            </tr>
+        </table>
+        <table id="homeTable" align="center" [ngClass]="show('inverted')">
+            <tr>
+                <td class="red">{{ m.red3 }}</td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074150425672024104/fieldnormal.png" height="200px"></td>
+                <td class="blue">{{ m.blue3 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red2 }}</td>
+                <td class="blue">{{ m.blue2 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red1 }}</td>
+                <td class="blue">{{ m.blue1 }}</td>
+            </tr>
+            <tr>
+                <th class="red" style="width: 75px;">Red Alliance</th>
+                <th class="blue" style="width: 75px;">Blue Alliance</th>
             </tr>
         </table>
         <div style="height: 20px;"></div>

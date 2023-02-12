@@ -50,6 +50,12 @@
 .redLetter {
   color: red;
 }
+.hide {
+  position: absolute;
+  left: -99999px;
+}
+
+
 #initialNext {
   background-color: #500778;
   color: white;
