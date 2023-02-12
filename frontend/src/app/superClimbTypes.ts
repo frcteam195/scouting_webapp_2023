@@ -1,4 +1,4 @@
-export class SuperClimbType {
+export class SuperClimbTypes {
     superClimbTypeID: number;
     superClimbType: string
 
