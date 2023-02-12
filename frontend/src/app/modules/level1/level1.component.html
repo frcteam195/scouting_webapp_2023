@@ -1,3 +1,4 @@
+<div id="body">
 
 <div id="question" *ngFor="let m of apiMatchL1_filter">
     <div id="header" style="display: none;"> 
@@ -262,7 +263,67 @@
         </table></td></tr></table>
     </div>
     <div id="end" style="display: none;">
-        Endgame
+        <br>
+        <table style="width: 100%;" align="center">
+            <tr>
+                <th style="width: 50%;">Charge Time</th>
+                <th style="width: 25%; border-right: 4px solid black;">Charge Status</th>
+                <td style="width: 25%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)">Buddy Climb - Was Helped</button></td>
+            </tr>
+            <tr>
+                <td rowspan="6">
+
+                    <table align="center" class="numpad">
+                        <tr>
+                            <th colspan="3" style="border: 4px solid black;width: 450px;height: 25px;" id="numPadBox">0</th>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('7')">7</button></td>
+                            <td><button (click)="numPad('8')">8</button></td>
+                            <td><button (click)="numPad('9')">9</button></td>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('4')">4</button></td>
+                            <td><button (click)="numPad('5')">5</button></td>
+                            <td><button (click)="numPad('6')">6</button></td>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('1')">1</button></td>
+                            <td><button (click)="numPad('2')">2</button></td>
+                            <td><button (click)="numPad('3')">3</button></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button (click)="numPad('0')">0</button></td>
+                            <td><button style="background-color: red;" (click)="remNumPad()"></button></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
+                <td><button (click)="m.rampAssist = 1"  [ngClass]="getRankClass(m.rampAssist,1)">Buddy Climb - Helped</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 4"  [ngClass]="getRankClass(m.ramp,4)">Docked - Not Engaged</button></td>
+                <td><button (click)="m.rampAssist = 0"  [ngClass]="getRankClass(m.rampAssist,0)">No Buddy Climb</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 3"  [ngClass]="getRankClass(m.ramp,3)">Parked</button></td>
+                <th style="border-top: 4px solid black; padding-top: 4px;">Climb Position</th>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">No Attempt - Kept Scoring</button></td>
+                <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)">Fully On - Side</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 1"  [ngClass]="getRankClass(m.ramp,1)">Failed Attempt</button></td>
+                <td><button (click)="m.rampPos = 1"  [ngClass]="getRankClass(m.rampPos,1)">Fully On - Center</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">Not Attemp</button></td>
+                <td><button (click)="m.rampPos = 0"  [ngClass]="getRankClass(m.rampPos,0)">Hanging Off</button></td>
+            </tr>
+        </table>
     </div>
     <div id="post" style="display: none;">
         <table>
@@ -313,3 +374,5 @@
     </div>
 </div>
     
+
+</div>

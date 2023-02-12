@@ -3,6 +3,7 @@ import { Scouters } from '../../scouters';
 import { MatchScoutingL1 } from '../../matchScoutingL1';
 import { ApiService } from 'src/app/services/api.service';
 import { FormBuilder } from '@angular/forms';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 
 
@@ -135,6 +136,40 @@ export class Level1Component implements OnInit {
       }
   }
 
+  getRankClass(value: number, acutal: number){
+    if(value == acutal) {
+        return 'button_green';
+      } else {
+        return 'button_rank';
+      }
+  }
+
+  numPad(numb: string){
+    for(let m of this.apiMatchL1_filter){
+        if(m.rampStartTime==null){
+            m.rampStartTime=Number(numb);
+        } else {
+            m.rampStartTime = Number(m.rampStartTime.toString() + numb);
+        }
+        this.updateNumPad();
+    }
+  }
+
+  remNumPad(){
+    for(let m of this.apiMatchL1_filter){
+        if(m.rampStartTime){
+            m.rampStartTime = Number(m.rampStartTime.toString().substring(0, m.rampStartTime.toString().length - 1));
+        } 
+        this.updateNumPad();
+    }
+  }
+
+  updateNumPad(){
+    for(let m of this.apiMatchL1_filter){
+        const box: HTMLElement = document.getElementById("numPadBox") as HTMLElement;
+        box!.innerHTML = m.rampStartTime.toString();
+    }
+  }
 
   stage: number=0; //variable to keep track of what is currently being displayed
   numberBox: number=6; //static value for total number of boxes - 1
