@@ -83,6 +83,38 @@
         
         </tr>
 
+        <tr >
+            <td align="center">
+                <b>&nbsp;drivebasetype: </b> 
+            </td>
+            <td>
+                <select class="form-control" type="text" name="Drive Base Type"> 
+                    <option *ngFor="let d of apiDriveBaseTypes;" [value]="d.driveBaseTypeID">{{d.driveBaseType}}</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr >
+            <td align="center">
+                <b>&nbsp;drivemotortype: </b> 
+            </td>
+            <td>
+                <select class="form-control" type="text" name="Drive Motor Type"> 
+                    <option *ngFor="let d of apiDriveMotorTypes;" [value]="d.driveMotorTypeID">{{d.driveMotorType}}</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr >
+            <td align="center">
+                <b>&nbsp;manipulatortype: </b> 
+            </td>
+            <td>
+                <select class="form-control" type="text" name="Manipulator Type"> 
+                    <option *ngFor="let d of apiManipulatorTypes;" [value]="d.manipulatorTypeID">{{d.manipulatorType}}</option>
+                </select>
+            </td>
+        </tr>
 
     
         <tr>
@@ -111,20 +143,38 @@
         
         </tr>
 
-        <tr>
-            <td >
-                <b>Manuver</b>
+        <tr >
+            <td align="center">
+                <b>&nbsp;superclimbtype: </b> 
             </td>
             <td>
-                <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
-                <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
-                <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
-                <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
-                <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
-                <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
-            </td>        
+                <select class="form-control" type="text" name="Super Climb Type"> 
+                    <option *ngFor="let d of apiSuperClimbTypes;" [value]="d.superClimbTypeID">{{d.superClimbType}}</option>
+                </select>
+            </td>
         </tr>
 
+        <tr >
+            <td align="center">
+                <b>&nbsp;buildtype: </b> 
+            </td>
+            <td>
+                <select class="form-control" type="text" name="Build Type"> 
+                    <option *ngFor="let d of apiBuildTypes;" [value]="d.buildTypeID">{{d.buildType}}</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr >
+            <td align="center">
+                <b>&nbsp;c.o.g.type: </b> 
+            </td>
+            <td>
+                <select class="form-control" type="text" name="Center of Gravity Type"> 
+                    <option *ngFor="let d of apiCenterGravityTypes;" [value]="d.centerGravityTypeID">{{d.centerGravityType}}</option>
+                </select>
+            </td>
+        </tr>
     
         <tr>
             <td align="left">
@@ -151,6 +201,53 @@
                 <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
             
             </tr>
+
+    
+            <tr>
+                <td >
+                    <b>Durability</b>
+                </td>
+                <td>
+                    <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
+                    <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
+                    <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
+                    <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
+                    <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
+                    <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
+                </td>        
+            </tr>
+
+            <tr>
+                <td >
+                    <b>Build Quality</b>
+                </td>
+                <td>
+                    <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
+                    <button (click)="p.buildQuality = 1"  [ngClass]="getClass(p.buildQuality,1)">1</button>
+                    <button (click)="p.buildQuality = 2"  [ngClass]="getClass(p.buildQuality,2)">2</button>
+                    <button (click)="p.buildQuality = 3"  [ngClass]="getClass(p.buildQuality,3)">3</button>
+                    <button (click)="p.buildQuality = 4"  [ngClass]="getClass(p.buildQuality,4)">4</button>
+                    <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
+                </td>        
+            </tr>
+
+            <tr>
+                <td align="center" colspan="2"><b> Build Comments</b><input type='string' /></td>
+            </tr>
+
+            <tr>
+                <td >
+                    <b>Electrical Quality</b>
+                </td>
+                <td>
+                    <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
+                    <button (click)="p.electricalQuality = 1"  [ngClass]="getClass(p.electricalQuality,1)">1</button>
+                    <button (click)="p.electricalQuality = 2"  [ngClass]="getClass(p.electricalQuality,2)">2</button>
+                    <button (click)="p.electricalQuality = 3"  [ngClass]="getClass(p.electricalQuality,3)">3</button>
+                    <button (click)="p.electricalQuality = 4"  [ngClass]="getClass(p.electricalQuality,4)">4</button>
+                    <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
+                </td>        
+
             <tr>
                 <td align="center" colspan="3"><b>General Comments</b></td>
             </tr>
@@ -159,8 +256,12 @@
                     <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
                 </td>
            
+
             </tr>
     
+            <tr>
+                <td align="center" colspan="2"><b> Electrical Comments</b><input type='string' /></td>
+            </tr>
         
             <tr>
                 <td align="right">
