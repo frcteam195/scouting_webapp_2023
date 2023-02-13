@@ -1,3 +1,4 @@
+<div id="body">
 
 <div id="question" *ngFor="let m of apiMatchL1_filter">
     <div id="header" style="display: none;"> 
@@ -20,10 +21,12 @@
             <select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
             </select></h3>
-        <table id="homeTable" align="center">
+        <button id="initialNext" style="margin: 0 auto; display: block;" (click)="showHide()">Invert veiw</button>
+        <br>
+        <table id="homeTable" align="center" [ngClass]="show('normal')">
             <tr>
                 <th class="blue" style="width: 75px;">Blue Alliance</th>
-                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395507239178261/Scouting_Field_Layout_Diagram_CyberScouter_Field_Crop.png" height="200px"></td>
                 <th class="red" style="width: 75px;">Red Alliance</th>
             </tr>
             <tr>
@@ -39,6 +42,25 @@
                 <td class="red">{{ m.red3 }}</td>
             </tr>
         </table>
+        <table id="homeTable" align="center" [ngClass]="show('inverted')">
+            <tr>
+                <td class="red">{{ m.red3 }}</td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395520077926612/Scouting_Field_Layout_Diagram_inverted.png" height="200px"></td>
+                <td class="blue">{{ m.blue3 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red2 }}</td>
+                <td class="blue">{{ m.blue2 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red1 }}</td>
+                <td class="blue">{{ m.blue1 }}</td>
+            </tr>
+            <tr>
+                <th class="red" style="width: 75px;">Red Alliance</th>
+                <th class="blue" style="width: 75px;">Blue Alliance</th>
+            </tr>
+        </table>
         <div style="height: 20px;"></div>
         <button (click)="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
 
@@ -49,7 +71,9 @@
         <table id="preTable" style="width: 100%;" border="0">
             <tr>
                 <th align="center" style="width:33%;font-size: xx-large;">Starting Position</th>
-                <td align="center" rowspan="4" style="width:33%px;"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px"></td>
+                <td align="center" rowspan="4" style="width:33%px;">
+                    <img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px">
+                </td>
                 <td rowspan="2" style="text-align: center;font-size: xx-large;">
                     <table align="center" border="0" class="preYesNo">
                         <tr>
@@ -70,7 +94,15 @@
                 </td>
             </tr>
             <tr>
-                <td align="center"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071957904221020240/image.png" width="400px"></td>
+                <td align="center">
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396732860924054/Blue_Community.png" [ngClass]="showPre('BNorm')" width="300px">
+                    <div [ngClass]="showPre('RNorm')">
+                        <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622332624916/Red_Community.png" width="300px">
+                        <button>Hello</button>
+                    </div>
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396621703487499/Blue_Community_inverted.png" [ngClass]="showPre('BInv')" width="300px">
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622907252857/Red_Community_inverted.png" [ngClass]="showPre('RInv')" width="300px">
+                </td>
             </tr>
         </table>
     </div>
@@ -120,10 +152,10 @@
         <h2 style="text-align: center;">Pickup Positions</h2>
         <table id="autoPickupTable" border="0">
             <tr>
-                <td><button class="pickup" id="pickup1" onclick="pickupSelection(1)"></button></td>
-                <td><button class="pickup" id="pickup2" onclick="pickupSelection(2)"></button></td>
-                <td><button class="pickup" id="pickup3" onclick="pickupSelection(3)"></button></td>
-                <td><button class="pickup" id="pickup4" onclick="pickupSelection(4)"></button></td>
+                <td><button [ngClass]="pickupClass(1)" (click)="pickupSelection(1)"></button></td>
+                <td><button [ngClass]="pickupClass(2)" (click)="pickupSelection(2)"></button></td>
+                <td><button [ngClass]="pickupClass(3)" (click)="pickupSelection(3)"></button></td>
+                <td><button [ngClass]="pickupClass(4)" (click)="pickupSelection(4)"></button></td>
             </tr>
         </table>
     </div>
@@ -262,10 +294,71 @@
         </table></td></tr></table>
     </div>
     <div id="end" style="display: none;">
-        Endgame
+        <br>
+        <table style="width: 100%;" align="center">
+            <tr>
+                <th style="width: 50%;">Charge Time</th>
+                <th style="width: 25%; border-right: 4px solid black;">Charge Status</th>
+                <td style="width: 25%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)">Buddy Climb - Was Helped</button></td>
+            </tr>
+            <tr>
+                <td rowspan="6">
+
+                    <table align="center" class="numpad">
+                        <tr>
+                            <th colspan="3" style="border: 4px solid black;width: 450px;height: 25px;" id="numPadBox">0</th>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('7')">7</button></td>
+                            <td><button (click)="numPad('8')">8</button></td>
+                            <td><button (click)="numPad('9')">9</button></td>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('4')">4</button></td>
+                            <td><button (click)="numPad('5')">5</button></td>
+                            <td><button (click)="numPad('6')">6</button></td>
+                        </tr>
+                        <tr>
+                            <td><button (click)="numPad('1')">1</button></td>
+                            <td><button (click)="numPad('2')">2</button></td>
+                            <td><button (click)="numPad('3')">3</button></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button (click)="numPad('0')">0</button></td>
+                            <td><button style="background-color: red;" (click)="remNumPad()"></button></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
+                <td><button (click)="m.rampAssist = 1"  [ngClass]="getRankClass(m.rampAssist,1)">Buddy Climb - Helped</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 4"  [ngClass]="getRankClass(m.ramp,4)">Docked - Not Engaged</button></td>
+                <td><button (click)="m.rampAssist = 0"  [ngClass]="getRankClass(m.rampAssist,0)">No Buddy Climb</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 3"  [ngClass]="getRankClass(m.ramp,3)">Parked</button></td>
+                <th style="border-top: 4px solid black; padding-top: 4px;">Climb Position</th>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">No Attempt - Kept Scoring</button></td>
+                <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)">Fully On - Side</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 1"  [ngClass]="getRankClass(m.ramp,1)">Failed Attempt</button></td>
+                <td><button (click)="m.rampPos = 1"  [ngClass]="getRankClass(m.rampPos,1)">Fully On - Center</button></td>
+            </tr>
+            <tr>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">Not Attemp</button></td>
+                <td><button (click)="m.rampPos = 0"  [ngClass]="getRankClass(m.rampPos,0)">Hanging Off</button></td>
+            </tr>
+        </table>
     </div>
     <div id="post" style="display: none;">
-        <table>
+        <br>
+        <table align="center">
             <tr>
                 <th>Subsystem Broke?</th>
                 <td><button (click)="m.postSubsystemBroke = 1" [ngClass]="getYesNoClass(m.postSubsystemBroke, 1)">Y</button></td>
@@ -313,3 +406,5 @@
     </div>
 </div>
     
+
+</div>
