@@ -21,10 +21,12 @@
             <select class="form-control" type="text" name="Scouter" [(ngModel)] = "scouter" (ngModelChange)="select($event)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
             </select></h3>
-        <table id="homeTable" align="center">
+        <button id="initialNext" style="margin: 0 auto; display: block;" (click)="showHide()">Invert veiw</button>
+        <br>
+        <table id="homeTable" align="center" [ngClass]="show('normal')">
             <tr>
                 <th class="blue" style="width: 75px;">Blue Alliance</th>
-                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1068692349493977158/image.png" height="200px"></td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395507239178261/Scouting_Field_Layout_Diagram_CyberScouter_Field_Crop.png" height="200px"></td>
                 <th class="red" style="width: 75px;">Red Alliance</th>
             </tr>
             <tr>
@@ -40,6 +42,25 @@
                 <td class="red">{{ m.red3 }}</td>
             </tr>
         </table>
+        <table id="homeTable" align="center" [ngClass]="show('inverted')">
+            <tr>
+                <td class="red">{{ m.red3 }}</td>
+                <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395520077926612/Scouting_Field_Layout_Diagram_inverted.png" height="200px"></td>
+                <td class="blue">{{ m.blue3 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red2 }}</td>
+                <td class="blue">{{ m.blue2 }}</td>
+            </tr>
+            <tr>
+                <td class="red">{{ m.red1 }}</td>
+                <td class="blue">{{ m.blue1 }}</td>
+            </tr>
+            <tr>
+                <th class="red" style="width: 75px;">Red Alliance</th>
+                <th class="blue" style="width: 75px;">Blue Alliance</th>
+            </tr>
+        </table>
         <div style="height: 20px;"></div>
         <button (click)="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
 
@@ -50,7 +71,9 @@
         <table id="preTable" style="width: 100%;" border="0">
             <tr>
                 <th align="center" style="width:33%;font-size: xx-large;">Starting Position</th>
-                <td align="center" rowspan="4" style="width:33%px;"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px"></td>
+                <td align="center" rowspan="4" style="width:33%px;">
+                    <img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px">
+                </td>
                 <td rowspan="2" style="text-align: center;font-size: xx-large;">
                     <table align="center" border="0" class="preYesNo">
                         <tr>
@@ -71,7 +94,15 @@
                 </td>
             </tr>
             <tr>
-                <td align="center"><img src="https://cdn.discordapp.com/attachments/855979035846246440/1071957904221020240/image.png" width="400px"></td>
+                <td align="center">
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396732860924054/Blue_Community.png" [ngClass]="showPre('BNorm')" width="300px">
+                    <div [ngClass]="showPre('RNorm')">
+                        <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622332624916/Red_Community.png" width="300px">
+                        <button>Hello</button>
+                    </div>
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396621703487499/Blue_Community_inverted.png" [ngClass]="showPre('BInv')" width="300px">
+                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622907252857/Red_Community_inverted.png" [ngClass]="showPre('RInv')" width="300px">
+                </td>
             </tr>
         </table>
     </div>
@@ -121,10 +152,10 @@
         <h2 style="text-align: center;">Pickup Positions</h2>
         <table id="autoPickupTable" border="0">
             <tr>
-                <td><button class="pickup" id="pickup1" onclick="pickupSelection(1)"></button></td>
-                <td><button class="pickup" id="pickup2" onclick="pickupSelection(2)"></button></td>
-                <td><button class="pickup" id="pickup3" onclick="pickupSelection(3)"></button></td>
-                <td><button class="pickup" id="pickup4" onclick="pickupSelection(4)"></button></td>
+                <td><button [ngClass]="pickupClass(1)" (click)="pickupSelection(1)"></button></td>
+                <td><button [ngClass]="pickupClass(2)" (click)="pickupSelection(2)"></button></td>
+                <td><button [ngClass]="pickupClass(3)" (click)="pickupSelection(3)"></button></td>
+                <td><button [ngClass]="pickupClass(4)" (click)="pickupSelection(4)"></button></td>
             </tr>
         </table>
     </div>
@@ -326,7 +357,8 @@
         </table>
     </div>
     <div id="post" style="display: none;">
-        <table>
+        <br>
+        <table align="center">
             <tr>
                 <th>Subsystem Broke?</th>
                 <td><button (click)="m.postSubsystemBroke = 1" [ngClass]="getYesNoClass(m.postSubsystemBroke, 1)">Y</button></td>

@@ -50,6 +50,12 @@
 .redLetter {
   color: red;
 }
+.hide {
+  position: absolute;
+  left: -99999px;
+}
+
+
 #initialNext {
   background-color: #500778;
   color: white;
@@ -118,6 +124,8 @@
   border-color: yellow;
   border-width: 5px;
 }
+
+
 #autoPickupTable {
   width: 100%;
   border-style: none;
@@ -131,6 +139,17 @@
   border: 4px solid black;
   border-collapse: collapse;
 }
+.pickedup {
+  display: block;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  background-color: green;
+  border: 4px solid black;
+  border-collapse: collapse;
+}
+
+
 #autoDropdownTable {
   width: 100%;
   border-style: none;
@@ -202,4 +221,7 @@ input {
   background-color: gray;
   font-size: large;
   font-weight: bolder;
+}
+#post table, #post td, #post tr {
+  padding: 8px;
 }
