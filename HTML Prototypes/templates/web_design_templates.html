@@ -1,0 +1,141 @@
+
+<!-- ##################################################################################### -->
+<!-- Template for Button Box incrementing and decrementing -->
+<!-- ##################################################################################### -->
+
+<td>
+    <button class="button_rank" (click)="m.effort > 0 && m.effort = m.effort - 1">-</button>
+    <input type="text" class="form-control" id="effort" readonly
+    #ctrl="ngModel" [(ngModel)]="m.effort" name="effort">
+    <button class="button_rank" (click)="m.effort = m.effort + 1">+</button>
+</td>    
+
+
+<!-- ##################################################################################### -->
+<!-- Template for 5 button boxes with one on at a time (including formatting) -->
+<!-- ##################################################################################### -->
+
+<!-- HTML -->
+<td>
+    <button (click)="m.maneuverability = 0"  [ngClass]="getClass(m.maneuverability,0)">NA</button>
+    <button (click)="m.maneuverability = 1"  [ngClass]="getClass(m.maneuverability,1)">1</button>
+    <button (click)="m.maneuverability = 2"  [ngClass]="getClass(m.maneuverability,2)">2</button>
+    <button (click)="m.maneuverability = 3"  [ngClass]="getClass(m.maneuverability,3)">3</button>
+    <button (click)="m.maneuverability = 4"  [ngClass]="getClass(m.maneuverability,4)">4</button>
+    <button (click)="m.maneuverability = 5"  [ngClass]="getClass(m.maneuverability,5)">5</button>
+</td>        
+
+
+<!-- Funtion to control formatting of buttons using ngClass
+
+getClass(value: number, b_type: number) {
+
+    if(value == b_type) {
+      return 'button_green';
+    } else {
+      return 'button_rank';
+    }
+
+  } 
+
+-->
+
+
+  <!-- CSS 
+
+  .button_rank {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: #EEEEEE;
+}
+
+.button_green {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: green;
+    color: white;
+}
+
+-->
+
+
+<!-- ##################################################################################### -->
+<!-- Template for Yes/No buttons with formatting -->
+<!-- ##################################################################################### -->
+
+<!-- HTML -->
+
+<tr>
+    <td><b>Good Offensive Bot:</b></td>
+    <td align="right"><button (click)="m.goodOffBot = 1"  [ngClass]="getClass2(m.goodOffBot,1)">Y</button></td>
+    <td align="left"><button (click)="m.goodOffBot = 0"  [ngClass]="getClass2(m.goodOffBot,0)">N</button></td> 
+</tr>
+
+
+<!-- Function to control formatting of buttons
+
+getClass2(value: number, b_type: number) {
+
+    if(value == b_type && value == 1) {
+      return 'button_green';
+    } else if (value == b_type && value == 0) {
+      return 'button_red';
+    } else {
+      return 'button_rank';
+    }
+
+  } 
+
+-->
+
+<!-- CSS
+
+.button_green {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: green;
+    color: white;
+}
+
+.button_red {
+    width:30px;
+    height:30px;
+    margin-left: 4px;
+    background-color: red;
+    color: white;
+}
+ -->
+
+
+<!-- ##################################################################################### -->
+<!-- Template for Comment Box -->
+<!-- ##################################################################################### -->
+
+<tr>
+    <td align="center" colspan="3"><b>Offensive Comments</b></td>
+</tr>
+<tr>
+    <td colspan="3" align="center">
+        <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentOff">{{ m.commentOff }}</textarea>
+    </td>
+
+</tr>
+
+
+<!-- CSS
+
+input[type=text] {
+    width: 35px;
+    height: 35px;
+    margin-left: 4px;
+    text-align: center;
+} 
+
+-->
+
+
+
+
