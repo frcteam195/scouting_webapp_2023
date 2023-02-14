@@ -1,7 +1,7 @@
 <div *ngFor="let p of apiPit_filter">
 
 
-    <!-- Main Level 2 Page -->
+    <!-- Pit - Robot Dimensions Page -->
     <table *ngIf="display==1">
         <tr>
         
@@ -38,40 +38,9 @@
         </tr>
     </table>
     
-    <!-- Start Level 2 In Match Page -->
+    <!-- Pit - Drop Down 1 Page -->
     
     <table *ngIf="display==2">
-        <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
-        </tr>
-        
-
-    
-        <tr>
-            <td align="left">
-                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-            </td>
-            <td align="right">
-                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
-            </td>
-        </tr>
-    </table>
-    
-    
-    
-    
-    
-    
-    <!-- Start Level 2 Offense Page -->
-    
-    <table *ngIf="display==3">
         <tr>
         
             <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
@@ -128,10 +97,9 @@
     </table>
     
     
-    <!-- Start Level 2 Defense Page -->
+    <!-- Pit - Drop Down 2 Page -->
     
-    
-    <table *ngIf="display==4">
+    <table *ngIf="display==3">
         <tr>
         
             <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
@@ -187,98 +155,127 @@
     </table>
 
 
-        <!-- Start Level 2 Defense Page -->
-    
-    
-        <table *ngIf="display==5">
-            <tr>
-            
-                <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-            
-            </tr>
-            <tr >
-            
-                <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-            
-            </tr>
+    <!-- Pit - Rating Page Page -->
 
-    
-            <tr>
-                <td >
-                    <b>Durability</b>
-                </td>
-                <td>
-                    <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
-                    <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
-                    <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
-                    <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
-                    <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
-                    <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
-                </td>        
-            </tr>
 
-            <tr>
-                <td >
-                    <b>Build Quality</b>
-                </td>
-                <td>
-                    <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
-                    <button (click)="p.buildQuality = 1"  [ngClass]="getClass(p.buildQuality,1)">1</button>
-                    <button (click)="p.buildQuality = 2"  [ngClass]="getClass(p.buildQuality,2)">2</button>
-                    <button (click)="p.buildQuality = 3"  [ngClass]="getClass(p.buildQuality,3)">3</button>
-                    <button (click)="p.buildQuality = 4"  [ngClass]="getClass(p.buildQuality,4)">4</button>
-                    <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
-                </td>        
-            </tr>
-
-            <tr>
-                <td align="center" colspan="2"><b> Build Comments</b><input type='string' /></td>
-            </tr>
-
-            <tr>
-                <td >
-                    <b>Electrical Quality</b>
-                </td>
-                <td>
-                    <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
-                    <button (click)="p.electricalQuality = 1"  [ngClass]="getClass(p.electricalQuality,1)">1</button>
-                    <button (click)="p.electricalQuality = 2"  [ngClass]="getClass(p.electricalQuality,2)">2</button>
-                    <button (click)="p.electricalQuality = 3"  [ngClass]="getClass(p.electricalQuality,3)">3</button>
-                    <button (click)="p.electricalQuality = 4"  [ngClass]="getClass(p.electricalQuality,4)">4</button>
-                    <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
-                </td>        
-
-            <tr>
-                <td align="center" colspan="3"><b>General Comments</b></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
-                </td>
-           
-
-            </tr>
-    
-            <tr>
-                <td align="center" colspan="2"><b> Electrical Comments</b><input type='string' /></td>
-            </tr>
+    <table *ngIf="display==4">
+        <tr>
         
-            <tr>
-                <td align="right">
-                    <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-                </td>
-                <td align="left">
-                    <button (click)="save()">Save</button>
-                </td>
-            </tr>
-            <tr>
-                <td align="left">
-                    &nbsp;
-                </td>
-                <td align="left">
-                    <a routerLink="/pitlist"><button type="button" title="Team List">Close</button></a>
-                </td>
-            </tr>
-        </table>
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>
+
+
+        <tr>
+            <td >
+                <b>Durability</b>
+            </td>
+            <td>
+                <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
+                <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
+                <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
+                <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
+                <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
+                <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
+            </td>        
+        </tr>
+
+        <tr>
+            <td >
+                <b>Build Quality</b>
+            </td>
+            <td>
+                <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
+                <button (click)="p.buildQuality = 1"  [ngClass]="getClass(p.buildQuality,1)">1</button>
+                <button (click)="p.buildQuality = 2"  [ngClass]="getClass(p.buildQuality,2)">2</button>
+                <button (click)="p.buildQuality = 3"  [ngClass]="getClass(p.buildQuality,3)">3</button>
+                <button (click)="p.buildQuality = 4"  [ngClass]="getClass(p.buildQuality,4)">4</button>
+                <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
+            </td>        
+        </tr>
+
+        <tr>
+            <td align="center" colspan="2"><b> Build Comments</b><input type='string' /></td>
+        </tr>
+
+        <tr>
+            <td >
+                <b>Electrical Quality</b>
+            </td>
+            <td>
+                <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
+                <button (click)="p.electricalQuality = 1"  [ngClass]="getClass(p.electricalQuality,1)">1</button>
+                <button (click)="p.electricalQuality = 2"  [ngClass]="getClass(p.electricalQuality,2)">2</button>
+                <button (click)="p.electricalQuality = 3"  [ngClass]="getClass(p.electricalQuality,3)">3</button>
+                <button (click)="p.electricalQuality = 4"  [ngClass]="getClass(p.electricalQuality,4)">4</button>
+                <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
+            </td>        
+
+        <tr>
+            <td align="center" colspan="2"><b> Electrical Comments</b><input type='string' /></td>
+        </tr>
+    
+        <tr>
+            <td align="left">
+                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+            </td>
+            <td align="right">
+                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+     <!-- Pit - Rating Page Page -->
+    
+    
+     <table *ngIf="display==5">
+        <tr>
+        
+            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
+        
+        </tr>  
+
+        <tr>
+            <td align="center" colspan="3"><b>General Comments</b></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
+            </td>
+       
+
+        </tr>
+
+        <tr>
+            <td align="right">
+                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
+            </td>
+            <td align="left">
+                <button (click)="save()">Save</button>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                &nbsp;
+            </td>
+            <td align="left">
+                <a routerLink="/pitlist"><button type="button" title="Team List">Close</button></a>
+            </td>
+        </tr>
+    </table>
     
     </div>
