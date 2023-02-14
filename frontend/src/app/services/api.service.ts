@@ -177,7 +177,7 @@ export class ApiService {
       }
     });
 
-    this.http.get<CenterGravityTypes[]>(this.apiUrl + '/centergravitytypes').subscribe(response => {
+    this.http.get<CenterGravityTypes[]>(this.apiUrl + '/cgtypes').subscribe(response => {
       // Store the response in the ReplaySubject, which components can use to access the data
       this.CenterGravityTypesReplay.next(response as CenterGravityTypes[]);
       // Might as well store it while we have it
