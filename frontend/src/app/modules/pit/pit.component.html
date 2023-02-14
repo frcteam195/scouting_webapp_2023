@@ -57,7 +57,7 @@
                 <b>&nbsp;drivebasetype: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Drive Base Type"> 
+                <select class="form-control" type="text" name="Drive Base Type" [(ngModel)] = "p.driveBaseTypeID"> 
                     <option *ngFor="let d of apiDriveBaseTypes;" [value]="d.driveBaseTypeID">{{d.driveBaseType}}</option>
                 </select>
             </td>
@@ -68,7 +68,7 @@
                 <b>&nbsp;drivemotortype: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Drive Motor Type"> 
+                <select class="form-control" type="text" name="Drive Motor Type" [(ngModel)] = "p.driveMotorTypeID"> 
                     <option *ngFor="let d of apiDriveMotorTypes;" [value]="d.driveMotorTypeID">{{d.driveMotorType}}</option>
                 </select>
             </td>
@@ -79,7 +79,7 @@
                 <b>&nbsp;manipulatortype: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Manipulator Type"> 
+                <select class="form-control" type="text" name="Manipulator Type" [(ngModel)] = "p.manipulatorTypeID"> 
                     <option *ngFor="let d of apiManipulatorTypes;" [value]="d.manipulatorTypeID">{{d.manipulatorType}}</option>
                 </select>
             </td>
@@ -116,7 +116,7 @@
                 <b>&nbsp;superclimbtype: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Super Climb Type"> 
+                <select class="form-control" type="text" name="Super Climb Type" [(ngModel)] = "p.superClimbTypeID"> 
                     <option *ngFor="let d of apiSuperClimbTypes;" [value]="d.superClimbTypeID">{{d.superClimbType}}</option>
                 </select>
             </td>
@@ -127,7 +127,7 @@
                 <b>&nbsp;buildtype: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Build Type"> 
+                <select class="form-control" type="text" name="Build Type" [(ngModel)] = "p.buildTypeID"> 
                     <option *ngFor="let d of apiBuildTypes;" [value]="d.buildTypeID">{{d.buildType}}</option>
                 </select>
             </td>
@@ -138,7 +138,7 @@
                 <b>&nbsp;c.o.g.type: </b> 
             </td>
             <td>
-                <select class="form-control" type="text" name="Center of Gravity Type"> 
+                <select class="form-control" type="text" name="Center of Gravity Type" [(ngModel)] = "p.centerGravityTypeID"> 
                     <option *ngFor="let d of apiCenterGravityTypes;" [value]="d.centerGravityTypeID">{{d.centerGravityType}}</option>
                 </select>
             </td>
@@ -200,7 +200,14 @@
         </tr>
 
         <tr>
-            <td align="center" colspan="2"><b> Build Comments</b><input type='string' /></td>
+            <td><b> Build Comments</b></td>
+        </tr>
+
+        <tr>
+            <td colspan="3" align="center">
+                <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
+            </td>
+       
         </tr>
 
         <tr>
@@ -216,9 +223,16 @@
                 <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
             </td>        
 
-        <tr>
-            <td align="center" colspan="2"><b> Electrical Comments</b><input type='string' /></td>
-        </tr>
+            <tr>
+                <td><b> Electrical Comments</b></td>
+            </tr>
+    
+            <tr>
+                <td colspan="3" align="center">
+                    <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
+                </td>
+           
+            </tr>
     
         <tr>
             <td align="left">
