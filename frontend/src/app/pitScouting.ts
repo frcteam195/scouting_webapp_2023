@@ -6,7 +6,6 @@ export class PitScouting {
     dedicatedGroundIntake: number;
     driveBaseTypeID: number;
     driveMotorTypeID: number;
-    driveTypeID: number;
     electricalComments: string;
     electricalQuality: number;
     eventID: number;
@@ -31,7 +30,6 @@ constructor(
     dedicatedGroundIntake: number,
     driveBaseTypeID: number,
     driveMotorTypeID: number,
-    driveTypeID: number,
     electricalComments: string,
     electricalQuality: number,
     eventID: number,
@@ -54,7 +52,6 @@ constructor(
     this.dedicatedGroundIntake = dedicatedGroundIntake
     this.driveBaseTypeID = driveBaseTypeID
     this.driveMotorTypeID = driveMotorTypeID
-    this.driveTypeID = driveTypeID
     this.electricalComments = electricalComments
     this.electricalQuality = electricalQuality
     this.eventID = eventID
