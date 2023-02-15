@@ -1,6 +1,4 @@
-<div id="body">
-
-<div id="question" *ngFor="let m of apiMatchL1_filter">
+<div id="question" [ngClass]="getDarkMode()"  *ngFor="let m of apiMatchL1_filter">
     <div id="header" style="display: none;"> 
         <table align="center" id="headerTable">
             <tr>
@@ -14,7 +12,7 @@
         </table>
     </div>
     <div id="home">
-        <h1 style="text-align: center;">Welcome to Level 1 Scouting!</h1>
+        <h1 style="text-align: center;" (click)="setDarkMode()">Welcome to Level 1 Scouting!</h1>
         <h2 style="text-align: center;">Match {{ m.matchNum }}</h2>
         <h2 style="text-align: center;" [ngClass]="getLetterColor(m.team)">Team: {{ m.team }} - {{ m.teamName }}</h2>
         <h3 style="text-align: center;">Scouter Name: 
@@ -25,40 +23,40 @@
         <br>
         <table id="homeTable" align="center" [ngClass]="show('normal')">
             <tr>
-                <th class="blue" style="width: 75px;">Blue Alliance</th>
+                <th class="blue" style="width: 75px;text-align: left;">Blue Alliance</th>
                 <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395507239178261/Scouting_Field_Layout_Diagram_CyberScouter_Field_Crop.png" height="200px"></td>
-                <th class="red" style="width: 75px;">Red Alliance</th>
+                <th class="red" style="width: 75px;text-align: right;">Red Alliance</th>
             </tr>
             <tr>
-                <td class="blue">{{ m.blue1 }}</td>
-                <td class="red">{{ m.red1 }}</td>
+                <td class="blue" style="text-align: left;">{{ m.blue1 }}</td>
+                <td class="red" style="text-align: right;">{{ m.red1 }}</td>
             </tr>
             <tr>
-                <td class="blue">{{ m.blue2 }}</td>
-                <td class="red">{{ m.red2 }}</td>
+                <td class="blue" style="text-align: left;">{{ m.blue2 }}</td>
+                <td class="red" style="text-align: right;">{{ m.red2 }}</td>
             </tr>
             <tr>
-                <td class="blue">{{ m.blue3 }}</td>
-                <td class="red">{{ m.red3 }}</td>
+                <td class="blue" style="text-align: left;">{{ m.blue3 }}</td>
+                <td class="red" style="text-align: right;">{{ m.red3 }}</td>
             </tr>
         </table>
         <table id="homeTable" align="center" [ngClass]="show('inverted')">
             <tr>
-                <td class="red">{{ m.red3 }}</td>
+                <td class="red" style="text-align: left;">{{ m.red3 }}</td>
                 <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395520077926612/Scouting_Field_Layout_Diagram_inverted.png" height="200px"></td>
-                <td class="blue">{{ m.blue3 }}</td>
+                <td class="blue" style="text-align: right;">{{ m.blue3 }}</td>
             </tr>
             <tr>
-                <td class="red">{{ m.red2 }}</td>
-                <td class="blue">{{ m.blue2 }}</td>
+                <td class="red" style="text-align: left;">{{ m.red2 }}</td>
+                <td class="blue" style="text-align: right;">{{ m.blue2 }}</td>
             </tr>
             <tr>
-                <td class="red">{{ m.red1 }}</td>
-                <td class="blue">{{ m.blue1 }}</td>
+                <td class="red" style="text-align: left;">{{ m.red1 }}</td>
+                <td class="blue" style="text-align: right;">{{ m.blue1 }}</td>
             </tr>
             <tr>
-                <th class="red" style="width: 75px;">Red Alliance</th>
-                <th class="blue" style="width: 75px;">Blue Alliance</th>
+                <th class="red" style="width: 75px;text-align: left;">Red Alliance</th>
+                <th class="blue" style="width: 75px;text-align: right;">Blue Alliance</th>
             </tr>
         </table>
         <div style="height: 20px;"></div>
@@ -94,21 +92,38 @@
                 </td>
             </tr>
             <tr>
-                <td align="center">
-                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396732860924054/Blue_Community.png" [ngClass]="showPre('BNorm')" width="300px">
+                <td align="center" class="startPosition">
+                    <div [ngClass]="showPre('BNorm')">
+                        <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396732860924054/Blue_Community.png" width="300px">
+                        <button style="left: 47%;top: 20%;" (click)="m.preStartPos=1" [ngClass]="getRankClass(m.preStartPos, 1)">1</button>
+                        <button style="left: 47%;top: 50%;" (click)="m.preStartPos=2" [ngClass]="getRankClass(m.preStartPos, 2)">2</button>
+                        <button style="left: 47%;top: 80%;" (click)="m.preStartPos=3" [ngClass]="getRankClass(m.preStartPos, 3)">3</button>
+                    </div>
                     <div [ngClass]="showPre('RNorm')">
                         <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622332624916/Red_Community.png" width="300px">
-                        <button>Hello</button>
+                        <button style="left: 53%;top: 20%;" (click)="m.preStartPos=1" [ngClass]="getRankClass(m.preStartPos, 1)">1</button>
+                        <button style="left: 53%;top: 50%;" (click)="m.preStartPos=2" [ngClass]="getRankClass(m.preStartPos, 2)">2</button>
+                        <button style="left: 53%;top: 80%;" (click)="m.preStartPos=3" [ngClass]="getRankClass(m.preStartPos, 3)">3</button>
                     </div>
-                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396621703487499/Blue_Community_inverted.png" [ngClass]="showPre('BInv')" width="300px">
-                    <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622907252857/Red_Community_inverted.png" [ngClass]="showPre('RInv')" width="300px">
+                    <div [ngClass]="showPre('BInv')">
+                        <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396621703487499/Blue_Community_inverted.png" width="300px">
+                        <button style="left: 53%;top: 20%;" (click)="m.preStartPos=3" [ngClass]="getRankClass(m.preStartPos, 3)">3</button>
+                        <button style="left: 53%;top: 50%;" (click)="m.preStartPos=2" [ngClass]="getRankClass(m.preStartPos, 2)">2</button>
+                        <button style="left: 53%;top: 80%;" (click)="m.preStartPos=1" [ngClass]="getRankClass(m.preStartPos, 1)">1</button>
+                    </div>
+                    <div [ngClass]="showPre('RInv')">
+                        <img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074396622907252857/Red_Community_inverted.png" width="300px">
+                        <button style="left: 47%;top: 20%;" (click)="m.preStartPos=3" [ngClass]="getRankClass(m.preStartPos, 3)">3</button>
+                        <button style="left: 47%;top: 50%;" (click)="m.preStartPos=2" [ngClass]="getRankClass(m.preStartPos, 2)">2</button>
+                        <button style="left: 47%;top: 80%;" (click)="m.preStartPos=1" [ngClass]="getRankClass(m.preStartPos, 1)">1</button>
+                    </div>
                 </td>
             </tr>
         </table>
     </div>
     <div id="auto" style="display: none;">
         <p></p>
-        <table id="nodeTable"></table>
+        <div id="nodeTable"></div>
         <br>
         <table id="autoDropdownTable" border="0">
             <tr>
@@ -297,9 +312,9 @@
         <br>
         <table style="width: 100%;" align="center">
             <tr>
-                <th style="width: 50%;">Charge Time</th>
-                <th style="width: 25%; border-right: 4px solid black;">Charge Status</th>
-                <td style="width: 25%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)">Buddy Climb - Was Helped</button></td>
+                <th style="width: 33%;">Charge Time</th>
+                <th style="width: 33%; border-right: 4px solid black;">Charge Status</th>
+                <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)">Buddy Climb - Was Helped</button></td>
             </tr>
             <tr>
                 <td rowspan="6">
@@ -404,7 +419,3 @@
             </tr>
         </table> 
     </div>
-</div>
-    
-
-</div>

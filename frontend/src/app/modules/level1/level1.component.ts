@@ -21,6 +21,7 @@ export class Level1Component implements OnInit {
   apiMatchL1_filter: MatchScoutingL1[] = [];
   scouter: number = 0;
   orientation: string="show";
+  darkmode: boolean=false;
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -42,31 +43,21 @@ export class Level1Component implements OnInit {
   
 
   ngOnInit(): void { 
-    var table: HTMLTableElement = <HTMLTableElement> document.getElementById("nodeTable");//find table
-    var counter = 1; //variable to count and assign numbers to cells
-    /* for(var i = 0; i < 3; i++){ //loop to make rows
-        var row = table!.insertRow(i); //insert row into table
-        for(var t = 0; t < 9; t++){ //loop to make cells
-            var cell = row.insertCell(t); // insert cell into row
-            var newNode = document.createElement("button"); //make a button
-            newNode.id = "node" + counter; //assign it a name and a id
-            newNode.name = "node"; //use the name to format all button in the css code
-            if ((t==1 || t==4 || t==7) && i < 2) { //assign buttons a type depending on if they are in the community co op zone
-                newNode.classList.add("cube");
-            } else if(i < 2) {
-                newNode.classList.add("cone");
-            } 
-            else {
-                newNode.classList.add("other");
-            }
-            //newNode.innerHTML = counter; //set the button text to its number
-            //newNode.addEventListener('click', this.assignNodeArray(counter)); //add the function that will happen when the button is clicked, idk what to name it so i called it harish
-            cell.appendChild(newNode); //put the button in the cell that we made
-            counter++; //increment the number by 1
-        }
-    } */
-    for (var i=0;i < this.nodePositions.length; i++){ //assign vallues to node value array
-        this.nodePositions[i] = 0;
+  }
+
+  setDarkMode(){
+    if (this.darkmode) {
+        this.darkmode = false;
+    } else {
+        this.darkmode = true;
+    }
+  }
+
+  getDarkMode(){
+    if (this.darkmode){
+        return "darkMode";
+    } else {
+        return "lightMode";
     }
   }
 
@@ -82,15 +73,15 @@ export class Level1Component implements OnInit {
     console.log("regenerateFilter: Start: ");
 
     if (this.apiMatchL1) {
-
+        console.log("hello");
       this.apiMatchL1_filter = [];
-
+      console.log("hello2");
       // Sort Matches by MatchNum
       this.apiMatchL1.sort((a, b) => a.matchNum - b.matchNum);
-      
+      console.log("hello3");
       // Filter
       for (const m of this.apiMatchL1) {
-
+        console.log("hi");
         if (m.scoutingStatus === null ) { 
           //Break out of for loop once the first unscouted record is found
           this.apiMatchL1_filter.push(m);
