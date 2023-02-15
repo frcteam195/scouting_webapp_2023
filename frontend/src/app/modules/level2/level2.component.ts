@@ -36,11 +36,16 @@ export class Level2Component implements OnInit {
    }
 
   ngOnInit(): void {
+    // Get Scouter Number from Browser Cache
+    this.scouter = Number(localStorage.getItem('scouter')) || -1;
   }
 
   select(scouter: number) {
     // Sets Scouter to be passed to next record
     this.scouter = scouter;
+
+    // Write Scouter Number to Browser Cache
+    localStorage.setItem('scouter', this.scouter.toString());    
 
   }
 
@@ -108,7 +113,8 @@ export class Level2Component implements OnInit {
 
         if (m.scoutingStatus === null ) { 
           // Set scouter to existing scouter value
-          m.scouterID = this.scouter;
+          //m.scouterID = this.scouter;
+          m.scouterID = Number(localStorage.getItem('scouter')) || -1;
 
           this.apiMatchL2_filter.push(m);
           //Break out of for loop once the first unscouted record is found

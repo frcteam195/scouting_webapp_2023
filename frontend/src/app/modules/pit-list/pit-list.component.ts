@@ -25,6 +25,9 @@ export class PitListComponent implements OnInit {
       this.apiPit = team;
     });
 
+    // Sort Matches by MatchNum
+    this.apiPit.sort((a, b) => Number(a.team) - Number(b.team));
+
     this.apiService.ScouterReplay.subscribe(types => {
       this.apiScouters = types;
     });
@@ -33,20 +36,29 @@ export class PitListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.scouter = Number(localStorage.getItem('scouter')) || -1;
+
   }
 
   select(scouter: number) {
     // Sets Scouter to be passed to next record
     this.scouter = scouter;
+    // Write Scouter Number to Browser Cache
+    localStorage.setItem('scouter', this.scouter.toString());
 
     console.log("Scouter: [" + this.scouter + "]");
 
   }
 
-  pitPage(team: string, scouter: number) {
+  pitPage(team: string, scouter: number, status: number) {
 
-    if (scouter < 1) {
+    if (status == 2) {
+    // do nothing if status is 2 (complete)
+    }
+    else if (scouter < 1) {
       alert("Please select a Scouter Name");
+ 
     } else {
     
       //console.log("Calling Pit Scouting Page with: team and scouterID)
