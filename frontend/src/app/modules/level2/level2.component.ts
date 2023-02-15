@@ -56,6 +56,10 @@ export class Level2Component implements OnInit {
       this.display = 1;
     }
   }
+  save() {
+    this.apiService.saveLevel2Data(this.apiMatchL2_filter);
+
+  }
 
   getClass(value: number, b_type: number) {
 

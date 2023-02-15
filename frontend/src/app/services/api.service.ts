@@ -240,6 +240,30 @@ export class ApiService {
     console.log("Updating Pit Scouting Records");
 
   }
+  saveLevel2Data(level2: MatchScoutingL2[]){
+    localStorage.setItem('MatchL2', JSON.stringify(level2));
+
+    //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
+    
+    this.http.post<MatchScoutingL2[]>(this.apiUrl + '/level2-update', JSON.stringify(level2), options).subscribe();
+
+    console.log("Updating Level 2 Scouting Records");
+
+  }
+  saveLevel1Data(level1: MatchScoutingL1[]){
+    localStorage.setItem('MatchL1', JSON.stringify(level1));
+
+    //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
+    
+    this.http.post<MatchScoutingL1[]>(this.apiUrl + '/level1-update', JSON.stringify(level1), options).subscribe();
+
+    console.log("Updating Level 1 Scouting Records");
+
+  }
 
 
 }
