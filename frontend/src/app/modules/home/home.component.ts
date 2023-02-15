@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
 
   apiEvent: Event[] = [];
-
+  eventDate: string = "";
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) { 
 
     this.apiEvent = [];
@@ -36,8 +36,13 @@ export class HomeComponent implements OnInit {
         console.log("To Date: [" + to_date + "]");
         console.log("End Date: [" + to_date.toLocaleString('en-US', {month: 'short'}) + "]");
         console.log("End Date: [" + ((to_date.getDate() > 9) ? to_date.getDate() : ('0' + to_date.getDate())) + "]");
-        console.log("End Date: [" + to_date.getFullYear() + "]");
+        console.log("EndDate: [" + to_date.getFullYear() + "]");
+        this.eventDate = from_date.toLocaleString('en-US', {month: 'short'}) + " " + ((from_date.getDate() > 9) ? from_date.getDate() : ('0' + from_date.getDate())) + " - " + to_date.toLocaleString('en-US', {month: 'short'}) + " " + ((to_date.getDate() > 9) ? to_date.getDate() : ('0' + to_date.getDate())) + ", " + to_date.getFullYear();
 
+
+        console.log("eventDate [" + this.eventDate + "]");
+
+        //e.eventStartDate = from_date.toLocaleString('en-US', {month: 'short'});
        }
 
 
