@@ -1,14 +1,24 @@
 #question {
-  background-color: white;
-  color: black;
   position: absolute;
-  bottom: 2%;
-  top: 2%;
-  left: 1%;
-  right: 1%;
-  border-radius: 3px;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
   padding: 8px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+button:active{
+    transform: scale(0.98);
+}
+.darkMode{
+  background-color: #121212;
+  color: white;
+  border-color: white;
+}
+.lightMode{
+  background-color: white;
+  color: black;
+  border-color: white;
 }
 #home table, #home td, #home tr, #home th {
   border: 4px solid black;
@@ -35,7 +45,6 @@
 .blue {
   background-color: blue;
   color: white;
-  text-align: left;
   padding: 5px;
 }
 .blueLetter {
@@ -44,7 +53,6 @@
 .red {
   background-color: red;
   color: white;
-  text-align: right;
   padding: 5px;
 }
 .redLetter {
@@ -53,6 +61,7 @@
 .hide {
   position: absolute;
   left: -99999px;
+  display: none;
 }
 
 
@@ -224,4 +233,15 @@ input {
 }
 #post table, #post td, #post tr {
   padding: 8px;
+}
+
+.startPosition button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height: 60px;
+  width: 60px;
+}
+.startPosition div {
+  position: relative;
 }
