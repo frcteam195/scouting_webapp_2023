@@ -1,12 +1,31 @@
-.button {
-    background-color: white;
-  color: black;
-  position: absolute;
-  bottom: 2%;
-  top: 2%;
-  left: 1%;
-  right: 1%;
-  border-radius: 3px;
-  padding: 8px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+button {
+  text-align: center;
+  background-color: purple;
+  color: white;
+  width: 25%;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-width: 3px;
+
+}
+
+body {
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.container {
+  display: flex;
+}
+.wrapper {
+  flex: 1;
 }
