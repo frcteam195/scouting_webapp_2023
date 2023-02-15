@@ -14,21 +14,28 @@
             </select>
         </td>
     </tr>
+    <tr>
+    
+        <td align="center" colspan="4" height="20"><br><b>Team List</b></td>    
+    
+    </tr>
 
     <tr>
         <td>&nbsp;</td>
-        <td>
+        <td align="center">
             <div *ngFor="let p of apiPit; let i = index">
                 
                 <div *ngIf="i%2 == 0">
-                    <a (click)="pitPage( p.team, scouter )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a>
+                    <!-- <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a> -->
+                    <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
                 </div>
             </div>
         </td>
-        <td>
+        <td align="center">
             <div *ngFor="let p of apiPit; let i = index">
                 <div *ngIf="i%2 != 0">
-                    <a (click)="pitPage( p.team, scouter )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a>
+                    <!-- <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a> -->
+                    <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
                 </div>
             </div>
         </td>
@@ -37,7 +44,7 @@
 
     <tr>
         <td align="left" colspan="4">
-            <a routerLink="/"><button type="button" title="Home">Home</button></a>
+            <a routerLink="/"><button type="button" title="Close">Close</button></a>
         </td>
     </tr>
 </table>
