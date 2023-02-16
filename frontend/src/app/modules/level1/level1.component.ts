@@ -224,6 +224,10 @@ returnBox(){
     this.stage = 0;
     this.updateBox();
 } 
+save() {
+    this.apiService.saveLevel1Data(this.apiMatchL1_filter);
+
+  }
 
 updateBox(){
   var homeBox = document.getElementById("home"); //get each box object
