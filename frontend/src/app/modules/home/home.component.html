@@ -4,7 +4,7 @@
     <link rel ="stylesheet" href="home.component.scss">
 </head>
 <body>
-<h1>Harry Likes Pretzels!</h1>
+<h1 class="headingFont">Harry Likes Pretzels!</h1>
 
 <br>
 <a routerLink="/level1"><button type="button" title="Level 1 Scouting">Level 1</button></a>
@@ -22,10 +22,10 @@
 <table align="center">
     <tr *ngFor="let e of apiEvent">
     
-        <td align="center">
+        <td align="center" class="eventText">
             {{ e.BAeventID }} - {{ e.eventName }} <br>
             {{ e.eventLocation }} <br>
-            {{ e.eventStartDate }}            
+            {{ this.eventDate }}            
         </td>
     </tr>
 </table>
