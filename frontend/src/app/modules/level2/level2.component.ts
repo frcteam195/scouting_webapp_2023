@@ -57,7 +57,7 @@ export class Level2Component implements OnInit {
       this.display = 1;
     }
 
-    if(this.display > 4) {
+    if(this.display > 5) {
       this.display = 1;
     }
   }
