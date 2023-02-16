@@ -9,7 +9,9 @@ button {
   border-width: 3px;
 
 }
-
+.headingFont{
+  font-family:'Courier New';
+}
 body {
   margin-left:auto;
   margin-right: auto;
@@ -28,4 +30,8 @@ img {
 }
 .wrapper {
   flex: 1;
+}
+.eventText{
+  font:bolder;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

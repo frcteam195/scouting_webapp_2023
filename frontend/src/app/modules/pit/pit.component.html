@@ -29,10 +29,9 @@
             <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
         </tr>
         <tr>
-            <td align="right">
+            <td colspan="2" align="center">
                 <a routerLink="/pitlist"><button type="button" title="Back to Team List">Close</button></a>
-            </td>
-            <td align="left">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <button (click)="changeDisplay(1,p.scouterID)">Next</button>
             </td>
         </tr>
@@ -87,10 +86,9 @@
 
     
         <tr>
-            <td align="left">
+            <td colspan ="2" align="center">
                 <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-            </td>
-            <td align="right">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <button (click)="changeDisplay(1,p.scouterID)">Next</button>
             </td>
         </tr>
@@ -145,10 +143,9 @@
         </tr>
     
         <tr>
-            <td align="left">
+            <td colspan ="2" align="center">
                 <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-            </td>
-            <td align="right">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <button (click)="changeDisplay(1,p.scouterID)">Next</button>
             </td>
         </tr>
@@ -187,7 +184,7 @@
 
         <tr>
             <td >
-                <b>Build Quality</b>
+                <b>Build<br>Quality</b>
             </td>
             <td>
                 <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
@@ -200,11 +197,11 @@
         </tr>
 
         <tr>
-            <td><b> Build Comments</b></td>
+            <td colspan="2"><b> Build Comments</b></td>
         </tr>
 
         <tr>
-            <td colspan="3" align="center">
+            <td colspan="2" align="center">
                 <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
             </td>
        
@@ -212,7 +209,7 @@
 
         <tr>
             <td >
-                <b>Electrical Quality</b>
+                <b>Electrical <br> Quality</b>
             </td>
             <td>
                 <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
@@ -224,21 +221,20 @@
             </td>        
 
             <tr>
-                <td><b> Electrical Comments</b></td>
+                <td colspan="2"><b> Electrical Comments</b></td>
             </tr>
     
             <tr>
-                <td colspan="3" align="center">
+                <td colspan="2" align="center">
                     <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
                 </td>
            
             </tr>
     
         <tr>
-            <td align="left">
+            <td colspan ="2" align="center">
                 <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-            </td>
-            <td align="right">
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <button (click)="changeDisplay(1,p.scouterID)">Next</button>
             </td>
         </tr>
