@@ -1,23 +1,26 @@
 <div *ngFor="let m of apiMatchL2_filter">
 
+    <table colspan="4" height="60">
+        <tr>
+    
+            <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="4" height="20">Match {{ m.matchNum }}</td>
+        
+        </tr>
+        <tr >
+        
+            <td align="center" colspan="4"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
+        
+        </tr>
+    </table>
 
 <!-- Main Level 2 Page -->
-<table *ngIf="display==1">
-    <tr>
+<table *ngIf="display==1" height="360">
     
-        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="4" height="20">Match {{ m.matchNum }}</td>
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="4"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
-    
-    </tr>
     <tr >
     
         <td align="left" colspan="2" class="red_all">Red Alliance<br>
@@ -43,10 +46,18 @@
     </tr>
 
     <tr>
-        <td align="center" colspan="2">
-            <a routerLink="/"><button type="button" title="Home">Home</button></a>
-        </td>
-        <td align="center" colspan="2">
+        <td align="center" colspan="4">
+            <a routerLink="/"><button type="button" title="Close">Close</button></a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -54,22 +65,7 @@
 
 <!-- Start Level 2 In Match Page -->
 
-<table *ngIf="display==2">
-    <tr>
-    
-        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="4" height="20">Match {{ m.matchNum }}</td>
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="4"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
-    
-    </tr>
+<table *ngIf="display==2" height="360">
 
     <tr>
         <td align="center" colspan="2">
@@ -163,10 +159,18 @@
         </td>        
     </tr>
     <tr>
-        <td align="center" colspan="2">
+        <td align="center" colspan="4">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
-        </td>
-        <td align="center" colspan="2">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -177,25 +181,10 @@
 
 
 
-
 <!-- Start Level 2 Offense Page -->
 
-<table *ngIf="display==3">
-    <tr>
+<table *ngIf="display==3" height="360">
     
-        <td align="center" colspan="3" height="20"><b>Level 2 Scouting</b></td>    
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="3" height="20">Match {{ m.matchNum }}</td>
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="3"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
-    
-    </tr>
     <tr>
         <td align="center" colspan="3"><b>Offensive Comments</b></td>
     </tr>
@@ -211,10 +200,18 @@
         <td align="left"><button (click)="m.goodOffBot = 0"  [ngClass]="getClass2(m.goodOffBot,0)">N</button></td> 
     </tr>
     <tr>
-        <td align="center" colspan="1">
+        <td align="center" colspan="4">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
-        </td>
-        <td align="center" colspan="2">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
         </td>
     </tr>
@@ -225,22 +222,8 @@
 <!-- Start Level 2 Defense Page -->
 
 
-<table *ngIf="display==4">
-    <tr>
+<table *ngIf="display==4" height="360">
     
-        <td align="center" colspan="3" height="20"><b>Level 2 Scouting</b></td>    
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="3" height="20">Match {{ m.matchNum }}</td>
-    
-    </tr>
-    <tr >
-    
-        <td align="center" colspan="3"  height="20" [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</td>
-    
-    </tr>
     <tr>
         <td align="center" colspan="3"><b>Defensive Comments</b></td>
     </tr>
@@ -275,15 +258,41 @@
         <td><button (click)="m.defLZ = 0"  [ngClass]="getClass2(m.defLZ,0)">N</button></td>  
     </tr>
     <tr>
-        <td align="center" colspan="1">
+        <td align="center" colspan="4">
             <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
-        </td>  
-        <td align="center" colspan="2">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <button (click)="changeDisplay(1,m.scouterID)">Next</button>
-            <button (click)="save()">Save</button>
         </td>
     </tr>
 </table>
 
+<!-- Start Level 2 save Page -->
+
+<table *ngIf="display==5" height="360">
+    
+
+    <tr>
+        <td align="center" colspan="2">
+            <button (click)="changeDisplay(-1,m.scouterID)">Previous</button>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;  
+            <button (click)="save()">Save</button>
+        </td>
+    </tr>
+</table>
 
 </div>
