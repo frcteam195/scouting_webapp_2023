@@ -31,6 +31,8 @@ export class ApiService {
   public BuildTypesReplay: ReplaySubject<BuildTypes[]>;
   public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
 
+  public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
+
 
 
   private apiUrl = 'http://localhost:5000';
@@ -53,6 +55,8 @@ export class ApiService {
     this.SuperClimbTypesReplay = new ReplaySubject(1);
     this.BuildTypesReplay = new ReplaySubject(1);
     this.CenterGravityTypesReplay = new ReplaySubject(1);
+
+    this.StoredL2Replay = new ReplaySubject(1);
 
 
     // Automatically load the data once when the application starts
@@ -250,6 +254,10 @@ export class ApiService {
     this.http.post<MatchScoutingL2[]>(this.apiUrl + '/level2-update', JSON.stringify(level2), options).subscribe();
 
     console.log("Updating Level 2 Scouting Records");
+
+    let result = localStorage.getItem(('MatchL2'));
+
+    console.log(result);
 
   }
   saveLevel1Data(level1: MatchScoutingL1[]){

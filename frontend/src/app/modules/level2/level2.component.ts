@@ -17,6 +17,8 @@ export class Level2Component implements OnInit {
   scouter: number = -1;
   display: number = 1;
 
+  apiStoreL2: MatchScoutingL2[] = [];
+
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) {
 
@@ -31,7 +33,6 @@ export class Level2Component implements OnInit {
     this.apiService.ScouterReplay.subscribe(types => {
       this.apiScouters = types;
     });
-
 
    }
 
@@ -61,8 +62,51 @@ export class Level2Component implements OnInit {
       this.display = 1;
     }
   }
-  save() {
-    this.apiService.saveLevel2Data(this.apiMatchL2_filter);
+  save(matchScoutingL2ID: number) {
+
+    // Update status in apiMatch record
+    for (const x of this.apiMatchL2) {
+
+      if (x.matchScoutingL2ID == matchScoutingL2ID ) { 
+        // Set Status to 2
+        x.scoutingStatus = 2;
+      }
+    } 
+
+    // Get responses from memory
+    this.apiService.StoredL2Replay.next(JSON.parse(localStorage.getItem('Level2')!) as MatchScoutingL2[]);
+
+    //######################################################
+    // Start - Console Log Dump
+    
+    // Loop through to print localStorage
+    this.apiService.StoredL2Replay.subscribe(match => {
+      this.apiStoreL2 = match;
+    });
+
+    for (const q of this.apiStoreL2) {
+      console.log("Match: " + q.matchNum + ", Team: " + q.team + ", Status: " + q.scoutingStatus);
+    }
+    // End - Console Log Dump
+    //######################################################
+
+    for (const o of this.apiMatchL2_filter) {
+      this.apiStoreL2.push(o);
+    }
+
+    // Write record to output filter  (Will need to move this to the "refresh" funtion later)
+    this.apiService.saveLevel2Data(this.apiStoreL2);
+
+    // Write record to Local Storage
+    this.apiService.StoredL2Replay.next(this.apiStoreL2 as MatchScoutingL2[]);
+    localStorage.setItem('Level2', JSON.stringify(this.apiStoreL2));
+
+    // run regenerate filter
+    this.regenerateFilter();
+
+    // Set Display back to 1
+    this.display = 1;
+
 
   }
 
