@@ -22,6 +22,10 @@ export class Level1Component implements OnInit {
   scouter: number = 0;
   orientation: string="show";
   darkmode: boolean=false;
+  stage: number=0; //variable to keep track of what is currently being displayed
+  numberBox: number=6; //static value for total number of boxes - 1
+  nodePositions:number[] = [0, 0, 0, 0]; //array of positions of selected nodes
+  nodesSelected: number=0; 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -40,7 +44,43 @@ export class Level1Component implements OnInit {
 
   }
 
-  
+  nodeSelect(node: number){
+    if (this.nodesSelected < 4 || this.nodePositions.includes(node)){ //if the amount of nodes selected is less than max or if the node is already selected
+        if (this.nodePositions.includes(node)){ //if the node is already selected
+            for (var i = 0; i < this.nodePositions.length; i++){
+                if (this.nodePositions[i]==node){
+                    this.nodePositions[i]=0;
+                    this.nodesSelected--;
+                    break;
+                }
+            } 
+        } else { //if the node has not been selected and total ndoes selected is less than max
+            for (var i = 0; i < this.nodePositions.length; i++){
+                if (this.nodePositions[i]==0){
+                    this.nodePositions[i]=node;
+                    this.nodesSelected++;
+                    break;
+                }
+            }
+        }
+    } else { //if max amount is selected
+        alert("Please select less than 4 nodes at any one time!");
+    }
+    for(let m of this.apiMatchL1_filter){ //set database values
+        m.autoScore1 = this.nodePositions[0];
+        m.autoScore2 = this.nodePositions[1];
+        m.autoScore3 = this.nodePositions[2];
+        m.autoScore4 = this.nodePositions[3];
+    }
+  }
+
+  getNodeClass(node: number){
+    if (this.nodePositions.includes(node)){
+        return "nodeSelected";
+    } else {
+        return "show";
+    }
+  }
 
   ngOnInit(): void { 
   }
@@ -271,10 +311,7 @@ updateBox(){
   }
 }
 
-  stage: number=0; //variable to keep track of what is currently being displayed
-  numberBox: number=6; //static value for total number of boxes - 1
-  nodePositions:number[] = new Array(4); //array of positions of selected nodes
-  nodesSelected: number=0; 
+  
 
   pickupSelection(loc: number){
     for (let m of this.apiMatchL1_filter){
