@@ -90,7 +90,8 @@ button:active{
   font-size: large;
   padding: 2px 2px;
   font-weight: bold;
-  width: 100px;
+  width: 150px;
+  height: 50px;
   border-style: outset;
   border-color: #500778;
   border-width: 3px;
@@ -102,36 +103,32 @@ button:active{
   border: 3px solid #500778;
 }
 #nodeTable, #nodeTable td, #nodeTable tr {
-  border: 4px solid black;
+  border: 6px solid black;
   border-collapse: collapse;
   padding: 0px;
 }
 #nodeTable {
-  width: 100%;
+  width: 90%;
+  background-color: gray;
 }
-[name = "node"] {
+.nodeSelected, .cube, .cone, .other {
   width: 100%;
-  height: 80;
+  height: 80px;
   font-size: larger;
   font-weight: bold;
 }
 .cube {
   background-color: purple;
-  border-style: outset;
-  border-color: purple;
-  border-width: 5px;
+  border: none;
 }
 .other {
   background-color: gray;
-  border-style: outset;
-  border-color: gray;
-  border-width: 5px;
-}
+  border: none;}
 .cone {
   background-color: yellow;
-  border-style: outset;
-  border-color: yellow;
-  border-width: 5px;
+  border: none;}
+.nodeSelected{
+  background-color: green;
 }
 
 
@@ -244,4 +241,12 @@ input {
 }
 .startPosition div {
   position: relative;
+}
+
+.yesNoTable button {
+  width: 75px;
+  height: 75px;
+}
+.yesNoTable th {
+  font-size: larger;
 }
