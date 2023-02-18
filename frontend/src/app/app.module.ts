@@ -12,6 +12,7 @@ import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PitListComponent } from './modules/pit-list/pit-list.component';
+import { Level2ListComponent } from './modules/level2-list/level2-list.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { PitListComponent } from './modules/pit-list/pit-list.component';
     Level2Component,
     PitComponent,
     AdminComponent,
-    PitListComponent
+    PitListComponent,
+    Level2ListComponent
   ],
   imports: [
     BrowserModule,
