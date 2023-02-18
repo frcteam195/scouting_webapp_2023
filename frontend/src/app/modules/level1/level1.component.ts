@@ -194,12 +194,17 @@ export class Level1Component implements OnInit {
 
   numPad(numb: string){
     for(let m of this.apiMatchL1_filter){
-        if(m.rampStartTime==null){
-            m.rampStartTime=Number(numb);
+        console.log("ramp start" + m.rampStartTime);
+        if (m.rampStartTime < 100 || m.rampStartTime==null){
+            if(m.rampStartTime==null){
+                m.rampStartTime=Number(numb);
+            } else {
+                m.rampStartTime = Number(m.rampStartTime.toString() + numb);
+            }
+            this.updateNumPad();
         } else {
-            m.rampStartTime = Number(m.rampStartTime.toString() + numb);
+            alert("Please do not exceed 999 seconds")
         }
-        this.updateNumPad();
     }
   }
 

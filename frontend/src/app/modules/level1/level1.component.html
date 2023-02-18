@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td class="blue" style="text-align: left;">{{ m.blue1 }}</td>
-                <td class="red" style="text-align: right;">{{ m.red1 }}</td>
+                <td class="red" style="text-align: right;">{{ m.red3 }}</td>
             </tr>
             <tr>
                 <td class="blue" style="text-align: left;">{{ m.blue2 }}</td>
@@ -37,12 +37,12 @@
             </tr>
             <tr>
                 <td class="blue" style="text-align: left;">{{ m.blue3 }}</td>
-                <td class="red" style="text-align: right;">{{ m.red3 }}</td>
+                <td class="red" style="text-align: right;">{{ m.red1 }}</td>
             </tr>
         </table>
         <table id="homeTable" align="center" [ngClass]="show('inverted')">
             <tr>
-                <td class="red" style="text-align: left;">{{ m.red3 }}</td>
+                <td class="red" style="text-align: left;">{{ m.red1 }}</td>
                 <td rowspan="4"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1074395520077926612/Scouting_Field_Layout_Diagram_inverted.png" height="200px"></td>
                 <td class="blue" style="text-align: right;">{{ m.blue3 }}</td>
             </tr>
@@ -51,7 +51,7 @@
                 <td class="blue" style="text-align: right;">{{ m.blue2 }}</td>
             </tr>
             <tr>
-                <td class="red" style="text-align: left;">{{ m.red1 }}</td>
+                <td class="red" style="text-align: left;">{{ m.red3 }}</td>
                 <td class="blue" style="text-align: right;">{{ m.blue1 }}</td>
             </tr>
             <tr>
@@ -347,7 +347,7 @@
         <br>
         <table style="width: 100%;" align="center">
             <tr>
-                <th style="width: 33%;">Charge Time</th>
+                <th style="width: 33%;">Charge Time(seconds)</th>
                 <th style="width: 33%; border-right: 4px solid black;">Charge Status</th>
                 <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)">Buddy Climb - Was Helped</button></td>
             </tr>
