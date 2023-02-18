@@ -27,6 +27,8 @@ export class Level1Component implements OnInit {
   nodePositions:number[] = [0, 0, 0, 0]; //array of positions of selected nodes
   nodesSelected: number=0; 
 
+  apiStoreL1: MatchScoutingL1[] = [];
+
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
     this.apiMatchL1_filter = [];
@@ -250,26 +252,71 @@ export class Level1Component implements OnInit {
     }
     console.log(this.stage);
     this.updateBox();
-}
+  }
 
-lastBox(){ //de increment stage by one till 0 and updates boxes
+  lastBox(){ //de increment stage by one till 0 and updates boxes
     this.stage--;
     if (this.stage < 0){
         this.stage = 0;
     }
     this.updateBox();
-}
-
-returnBox(){
-    this.stage = 0;
-    this.updateBox();
-} 
-save() {
-    this.apiService.saveLevel1Data(this.apiMatchL1_filter);
-
   }
 
-updateBox(){
+  returnBox(){
+    this.stage = 0;
+    this.updateBox();
+  } 
+  save( matchScoutingL1ID: number) {
+    // Update status in apiMatch record
+    for (const x of this.apiMatchL1) {
+
+        if (x.matchScoutingID == matchScoutingL1ID ) { 
+          // Set Status to 2
+          x.scoutingStatus = 2;
+        }
+      } 
+  
+      // Get responses from memory
+      this.apiService.StoredL1Replay.next(JSON.parse(localStorage.getItem('Level1')!) as MatchScoutingL1[]);
+  
+      //######################################################
+      // Start - Console Log Dump
+      
+      // Loop through to print localStorage
+      this.apiService.StoredL1Replay.subscribe(match => {
+        this.apiStoreL1 = match;
+      });
+  
+      for (const q of this.apiStoreL1) {
+        console.log("Match: " + q.matchNum + ", Team: " + q.team + ", Status: " + q.scoutingStatus);
+      }
+      // End - Console Log Dump
+      //######################################################
+  
+      for (const o of this.apiMatchL1_filter) {
+        this.apiStoreL1.push(o);
+      }
+  
+      // Write record to output filter  (Will need to move this to the "refresh" funtion later)
+      this.apiService.saveLevel1Data(this.apiStoreL1);
+  
+      // Write record to Local Storage
+      this.apiService.StoredL1Replay.next(this.apiStoreL1 as MatchScoutingL1[]);
+      localStorage.setItem('Level1', JSON.stringify(this.apiStoreL1));
+  
+      // run regenerate filter
+      this.regenerateFilter();
+  
+      // Set Display back to 1
+      this.stage = 0;
+
+      //reset node array
+      for (var i = 0; i < this.nodePositions.length; i++){
+        this.nodePositions[i]=0;
+      }
+  }
+
+  updateBox(){
   var homeBox = document.getElementById("home"); //get each box object
   var preBox = document.getElementById("pre");
   var autoBox = document.getElementById("auto");
@@ -309,7 +356,7 @@ updateBox(){
       finalBox!.style.display = "block";
       header!.style.display = "none"; //hide header
   }
-}
+  }
 
   
 

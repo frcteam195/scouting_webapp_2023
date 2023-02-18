@@ -7,7 +7,7 @@
                 <td rowspan="2"><button (click)="nextBox()" id="headerButton">Next</button></td> 
             </tr>
             <tr>
-                <th [ngClass]="getColor(m.team)" style="text-align: center;">Match: {{ m.teamMatchNum }} - Team: {{ m.team }}: {{ m.teamName }}</th>
+                <th [ngClass]="getColor(m.team)" style="text-align: center;">Match: {{ m.matchNum }} - Team: {{ m.team }}: {{ m.teamName }}</th>
             </tr>
         </table>
     </div>
@@ -454,7 +454,7 @@
                 <td><button (click)="returnBox()" style="margin: 0 auto; display: block;" id="initialNext">Return</button> </td>
             </tr>
             <tr>
-                <td><button (click)="save()" style="margin: 0 auto; display: block;" id="initialNext">Save</button></td>
+                <td><button (click)="save(m.matchScoutingID)" style="margin: 0 auto; display: block;" id="initialNext">Save</button></td>
             </tr>
         </table> 
     </div>
