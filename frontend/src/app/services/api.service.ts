@@ -12,6 +12,7 @@ import { ManipulatorTypes } from '../manipulatortypes';
 import { SuperClimbTypes } from '../superClimbTypes';
 import { BuildTypes } from '../buildTypes';
 import { CenterGravityTypes } from '../centerGravityTypes';
+import { AllianceStation } from '../allianceStation';
  
 
 @Injectable({
@@ -30,6 +31,7 @@ export class ApiService {
   public SuperClimbTypesReplay: ReplaySubject<SuperClimbTypes[]>;
   public BuildTypesReplay: ReplaySubject<BuildTypes[]>;
   public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
+  public AllianceReplay: ReplaySubject<AllianceStation[]>;
 
   public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
 
@@ -55,6 +57,7 @@ export class ApiService {
     this.SuperClimbTypesReplay = new ReplaySubject(1);
     this.BuildTypesReplay = new ReplaySubject(1);
     this.CenterGravityTypesReplay = new ReplaySubject(1);
+    this.AllianceReplay = new ReplaySubject(1);
 
     this.StoredL2Replay = new ReplaySubject(1);
 
@@ -116,6 +119,20 @@ export class ApiService {
       this.DriveBaseTypesReplay.next(response as DriveBaseTypes[]);
       // Might as well store it while we have it
       localStorage.setItem('DriveBaseTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.DriveBaseTypesReplay.next(JSON.parse(localStorage.getItem('DriveBaseTypes')!) as DriveBaseTypes[]);
+      } catch (err) {
+        console.error('Could not load Drive Base Types data from server or cache!');
+      }
+    });
+
+    this.http.get<AllianceStation[]>(this.apiUrl + '/alliance').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.AllianceReplay.next(response as AllianceStation[]);
+      // Might as well store it while we have it
+      localStorage.setItem('AllianceStation', JSON.stringify(response));
     }, () => {
       try {
         // Send the cached data
