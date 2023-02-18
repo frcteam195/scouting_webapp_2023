@@ -1,0 +1,30 @@
+<table>
+    <tr>
+    
+        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
+    
+    </tr>
+
+    <tr>
+        <td align="center" colspan="4">
+            <b>&nbsp;Scouter Name: </b><br>
+            <select class="form-control" type="text" name="Scouter" [(ngModel)]="scouter" (change)="select(scouter)">
+                <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" colspan="4">
+            <b>&nbsp;Alliance Station: </b><br>
+            <select class="form-control" type="text" name="Alliance" [(ngModel)]="alliance" (change)="select1(alliance)">
+                <option *ngFor="let a of apiAlliance;" [value]="a.allianceStationID">{{a.allianceStation}}</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="left" colspan="4">
+            <a routerLink="/"><button type="button" title="Close">Close</button></a>
+        </td>
+    </tr>
+</table>

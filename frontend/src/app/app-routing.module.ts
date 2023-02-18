@@ -6,6 +6,7 @@ import { AdminComponent } from './modules/admin/admin.component';
 import { PitComponent } from './modules/pit/pit.component';
 import { Level2Component } from './modules/level2/level2.component';
 import { Level1Component } from './modules/level1/level1.component';
+import { Level2ListComponent } from './modules/level2-list/level2-list.component';
 
 const routes: Routes = [{
       path: '',
@@ -16,7 +17,10 @@ const routes: Routes = [{
   }, {
     path: 'level1/:match',
     component: Level1Component
-  }, {
+  },{
+    path: 'level2list',
+    component: Level2ListComponent
+  },{
     path: 'level2',
     component: Level2Component    
   },{ 
