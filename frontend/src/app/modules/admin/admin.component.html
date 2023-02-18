@@ -1,7 +1,13 @@
-<p>admin works!</p>
-
-
-
+<table>
+<tr>
+<td>
+<h3 style="text-align: center;">Alliance Station: 
+    <select class="form-control" type="text" name="allianceStation" [(ngModel)] = "alliance" (ngModelChange)="select($event)">
+        <option *ngFor="let s of apiAlliance;" [value]="s.allianceStationID">{{s.allianceStation}}</option>
+    </select></h3>
+</td>
+</tr>
+</table>
 
 Field Orientation:
 
