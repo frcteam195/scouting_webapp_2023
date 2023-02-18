@@ -33,6 +33,7 @@ export class ApiService {
   public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
   public AllianceReplay: ReplaySubject<AllianceStation[]>;
 
+  public StoredL1Replay: ReplaySubject<MatchScoutingL1[]>;
   public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
 
 
@@ -59,6 +60,7 @@ export class ApiService {
     this.CenterGravityTypesReplay = new ReplaySubject(1);
     this.AllianceReplay = new ReplaySubject(1);
 
+    this.StoredL1Replay = new ReplaySubject(1);
     this.StoredL2Replay = new ReplaySubject(1);
 
 
