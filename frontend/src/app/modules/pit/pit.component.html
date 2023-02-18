@@ -1,291 +1,187 @@
 <div *ngFor="let p of apiPit_filter">
-
-
-    <!-- Pit - Robot Dimensions Page -->
-    <table *ngIf="display==1">
+    <table class="header" align="center" style="width: 100%;"> <!-- Header -->
         <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
+            <th>Pit Scouting</th>
         </tr>
         <tr>
-            <td align="center" colspan="2" height="40" class="heading"><b>Dimensions</b></td>
+            <td>{{ p.team }} - {{ p.teamName }}</td>
         </tr>
         <tr>
-            <td align="right"><b>Length</b></td>
-            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
-        </tr>
-        <tr>
-            <td align="right"><b>Width</b></td>
-            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
-        </tr>
-        <tr>
-            <td align="right"><b>Height</b></td>
-            <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <a routerLink="/pitlist"><button type="button" title="Back to Team List">Close</button></a>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
-            </td>
+            <td *ngIf="display==1">Dimensions</td>
+            <td *ngIf="display==2">Drive Base</td>
+            <td *ngIf="display==3">Climb</td>
+            <td *ngIf="display==4">Rating</td>
+            <td *ngIf="display==5">General Comments</td>
         </tr>
     </table>
-    
-    <!-- Pit - Drop Down 1 Page -->
-    
-    <table *ngIf="display==2">
-        <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;drivebasetype: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Drive Base Type" [(ngModel)] = "p.driveBaseTypeID"> 
-                    <option *ngFor="let d of apiDriveBaseTypes;" [value]="d.driveBaseTypeID">{{d.driveBaseType}}</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;drivemotortype: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Drive Motor Type" [(ngModel)] = "p.driveMotorTypeID"> 
-                    <option *ngFor="let d of apiDriveMotorTypes;" [value]="d.driveMotorTypeID">{{d.driveMotorType}}</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;manipulatortype: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Manipulator Type" [(ngModel)] = "p.manipulatorTypeID"> 
-                    <option *ngFor="let d of apiManipulatorTypes;" [value]="d.manipulatorTypeID">{{d.manipulatorType}}</option>
-                </select>
-            </td>
-        </tr>
-
-    
-        <tr>
-            <td colspan ="2" align="center">
-                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
-            </td>
-        </tr>
-    </table>
-    
-    
-    <!-- Pit - Drop Down 2 Page -->
-    
-    <table *ngIf="display==3">
-        <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;superclimbtype: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Super Climb Type" [(ngModel)] = "p.superClimbTypeID"> 
-                    <option *ngFor="let d of apiSuperClimbTypes;" [value]="d.superClimbTypeID">{{d.superClimbType}}</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;buildtype: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Build Type" [(ngModel)] = "p.buildTypeID"> 
-                    <option *ngFor="let d of apiBuildTypes;" [value]="d.buildTypeID">{{d.buildType}}</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr >
-            <td align="center">
-                <b>&nbsp;c.o.g.type: </b> 
-            </td>
-            <td>
-                <select class="form-control" type="text" name="Center of Gravity Type" [(ngModel)] = "p.centerGravityTypeID"> 
-                    <option *ngFor="let d of apiCenterGravityTypes;" [value]="d.centerGravityTypeID">{{d.centerGravityType}}</option>
-                </select>
-            </td>
-        </tr>
-    
-        <tr>
-            <td colspan ="2" align="center">
-                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
-            </td>
-        </tr>
-    </table>
-
-
-    <!-- Pit - Rating Page Page -->
-
-
-    <table *ngIf="display==4">
-        <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
-        </tr>
-
-
-        <tr>
-            <td >
-                <b>Durability</b>
-            </td>
-            <td>
-                <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
-                <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
-                <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
-                <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
-                <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
-                <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
-            </td>        
-        </tr>
-
-        <tr>
-            <td >
-                <b>Build<br>Quality</b>
-            </td>
-            <td>
-                <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
-                <button (click)="p.buildQuality = 1"  [ngClass]="getClass(p.buildQuality,1)">1</button>
-                <button (click)="p.buildQuality = 2"  [ngClass]="getClass(p.buildQuality,2)">2</button>
-                <button (click)="p.buildQuality = 3"  [ngClass]="getClass(p.buildQuality,3)">3</button>
-                <button (click)="p.buildQuality = 4"  [ngClass]="getClass(p.buildQuality,4)">4</button>
-                <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
-            </td>        
-        </tr>
-
-        <tr>
-            <td colspan="2"><b> Build Comments</b></td>
-        </tr>
-
-        <tr>
-            <td colspan="2" align="center">
-                <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
-            </td>
-       
-        </tr>
-
-        <tr>
-            <td >
-                <b>Electrical <br> Quality</b>
-            </td>
-            <td>
-                <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
-                <button (click)="p.electricalQuality = 1"  [ngClass]="getClass(p.electricalQuality,1)">1</button>
-                <button (click)="p.electricalQuality = 2"  [ngClass]="getClass(p.electricalQuality,2)">2</button>
-                <button (click)="p.electricalQuality = 3"  [ngClass]="getClass(p.electricalQuality,3)">3</button>
-                <button (click)="p.electricalQuality = 4"  [ngClass]="getClass(p.electricalQuality,4)">4</button>
-                <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
-            </td>        
-
+    <div style="position: absolute;top: 15%;bottom: 10%;right: 0;left: 0;">
+        <table *ngIf="display==1"> <!-- dimension page -->
             <tr>
-                <td colspan="2"><b> Electrical Comments</b></td>
+                <td align="right"><b>Length</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
+            </tr>
+            <tr>
+                <td align="right"><b>Width</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
+            </tr>
+            <tr>
+                <td align="right"><b>Height</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
+            </tr>
+        </table>
+        <table *ngIf="display==2"> <!-- Drive base  -->
+            <tr >
+                <td align="center">
+                    <b>&nbsp;drivebasetype: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Drive Base Type" [(ngModel)] = "p.driveBaseTypeID"> 
+                        <option *ngFor="let d of apiDriveBaseTypes;" [value]="d.driveBaseTypeID">{{d.driveBaseType}}</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr >
+                <td align="center">
+                    <b>&nbsp;drivemotortype: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Drive Motor Type" [(ngModel)] = "p.driveMotorTypeID"> 
+                        <option *ngFor="let d of apiDriveMotorTypes;" [value]="d.driveMotorTypeID">{{d.driveMotorType}}</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr >
+                <td align="center">
+                    <b>&nbsp;manipulatortype: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Manipulator Type" [(ngModel)] = "p.manipulatorTypeID"> 
+                        <option *ngFor="let d of apiManipulatorTypes;" [value]="d.manipulatorTypeID">{{d.manipulatorType}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="display==3"> <!-- Climb types -->
+            <tr >
+                <td align="center">
+                    <b>&nbsp;superclimbtype: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Super Climb Type" [(ngModel)] = "p.superClimbTypeID"> 
+                        <option *ngFor="let d of apiSuperClimbTypes;" [value]="d.superClimbTypeID">{{d.superClimbType}}</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr >
+                <td align="center">
+                    <b>&nbsp;buildtype: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Build Type" [(ngModel)] = "p.buildTypeID"> 
+                        <option *ngFor="let d of apiBuildTypes;" [value]="d.buildTypeID">{{d.buildType}}</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <tr >
+                <td align="center">
+                    <b>&nbsp;c.o.g.type: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Center of Gravity Type" [(ngModel)] = "p.centerGravityTypeID"> 
+                        <option *ngFor="let d of apiCenterGravityTypes;" [value]="d.centerGravityTypeID">{{d.centerGravityType}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table *ngIf="display==4"> <!-- Rating 1-->
+    
+    
+            <tr>
+                <td >
+                    <b>Durability</b>
+                </td>
+                <td>
+                    <button (click)="p.robotDurability = 0"  [ngClass]="getClass(p.robotDurability,0)">NA</button>
+                    <button (click)="p.robotDurability = 1"  [ngClass]="getClass(p.robotDurability,1)">1</button>
+                    <button (click)="p.robotDurability = 2"  [ngClass]="getClass(p.robotDurability,2)">2</button>
+                    <button (click)="p.robotDurability = 3"  [ngClass]="getClass(p.robotDurability,3)">3</button>
+                    <button (click)="p.robotDurability = 4"  [ngClass]="getClass(p.robotDurability,4)">4</button>
+                    <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
+                </td>        
+            </tr>
+    
+            <tr>
+                <td >
+                    <b>Build<br>Quality</b>
+                </td>
+                <td>
+                    <button (click)="p.buildQuality = 0"  [ngClass]="getClass(p.buildQuality,0)">NA</button>
+                    <button (click)="p.buildQuality = 1"  [ngClass]="getClass(p.buildQuality,1)">1</button>
+                    <button (click)="p.buildQuality = 2"  [ngClass]="getClass(p.buildQuality,2)">2</button>
+                    <button (click)="p.buildQuality = 3"  [ngClass]="getClass(p.buildQuality,3)">3</button>
+                    <button (click)="p.buildQuality = 4"  [ngClass]="getClass(p.buildQuality,4)">4</button>
+                    <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
+                </td>        
+            </tr>
+    
+            <tr>
+                <td colspan="2"><b> Build Comments</b></td>
             </tr>
     
             <tr>
                 <td colspan="2" align="center">
-                    <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
+                    <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
                 </td>
            
             </tr>
     
-        <tr>
-            <td colspan ="2" align="center">
-                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <button (click)="changeDisplay(1,p.scouterID)">Next</button>
-            </td>
-        </tr>
-
-    </table>
-
-
-
-
-     <!-- Pit - Rating Page Page -->
+            <tr>
+                <td >
+                    <b>Electrical <br> Quality</b>
+                </td>
+                <td>
+                    <button (click)="p.electricalQuality = 0"  [ngClass]="getClass(p.electricalQuality,0)">NA</button>
+                    <button (click)="p.electricalQuality = 1"  [ngClass]="getClass(p.electricalQuality,1)">1</button>
+                    <button (click)="p.electricalQuality = 2"  [ngClass]="getClass(p.electricalQuality,2)">2</button>
+                    <button (click)="p.electricalQuality = 3"  [ngClass]="getClass(p.electricalQuality,3)">3</button>
+                    <button (click)="p.electricalQuality = 4"  [ngClass]="getClass(p.electricalQuality,4)">4</button>
+                    <button (click)="p.electricalQuality = 5"  [ngClass]="getClass(p.electricalQuality,5)">5</button>
+                </td>        
     
+                <tr>
+                    <td colspan="2"><b> Electrical Comments</b></td>
+                </tr>
+        
+                <tr>
+                    <td colspan="2" align="center">
+                        <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
+                    </td>
+               
+                </tr>
     
-     <table *ngIf="display==5">
-        <tr>
-        
-            <td align="center" colspan="2" height="20"><b>Pit Scouting</b></td>    
-        
-        </tr>
-        <tr >
-        
-            <td align="center" colspan="2"  height="20">{{ p.team }} - {{ p.teamName }}</td>
-        
-        </tr>  
-
-        <tr>
-            <td align="center" colspan="3"><b>General Comments</b></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
-            </td>
-       
-
-        </tr>
-
-        <tr>
-            <td align="right">
-                <button (click)="changeDisplay(-1,p.scouterID)">Previous</button>
-            </td>
-            <td align="left">
-                <button (click)="save()">Save</button>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                &nbsp;
-            </td>
-            <td align="left">
-                <a routerLink="/pitlist"><button type="button" title="Team List">Close</button></a>
-            </td>
-        </tr>
-    </table>
-    
+        </table>
+        <table *ngIf="display==5" align="center"> <!-- General Comments-->
+            <tr>
+                <td colspan="2">
+                    <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
+                </td>
+            </tr>
+        </table>
     </div>
+    <table class="buttons" align="center" style="width: 100%; position: absolute; bottom: 0;text-align: center;"> <!-- Buttons -->
+        <tr>
+            <td style="width: 50%;" *ngIf="display==1"><a routerLink="/pitlist"><button class="buttons" title="Back to Team List">Close</button></a></td>
+
+            <td style="width: 50%;" *ngIf="display>1 && display<5"><button class="buttons" (click)="changeDisplay(-1,p.scouterID)">Previous</button></td>
+            <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,p.scouterID)">Next</button></td>
+
+            <td style="width: 33%;" *ngIf="display==5"><button class="buttons" (click)="changeDisplay(-1,p.scouterID)">Previous</button></td>
+            <td style="width: 33%;" *ngIf="display==5"><button class="buttons" (click)="save()">Save</button></td>
+            <td style="width: 33%;" *ngIf="display==5"><a routerLink="/pitlist"><button class="buttons" title="Team List">Close</button></a></td>
+        </tr>
+    </table>
+</div>
