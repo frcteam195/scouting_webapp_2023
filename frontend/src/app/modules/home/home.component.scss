@@ -2,7 +2,7 @@ button {
   text-align: center;
   background-color: purple;
   color: white;
-  width: 25%;
+  width: 160px;
   height: 40px;
   font-size: 20px;
   border-radius: 5px;
@@ -10,7 +10,8 @@ button {
 
 }
 .headingFont{
-  font-family:'Courier New';
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 60px;
 }
 body {
   margin-left:auto;
@@ -33,5 +34,15 @@ img {
 }
 .eventText{
   font:bolder;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+}
+.red_all {
+  color: red;
+  font-weight: bold;
+}
+
+.blue_all {
+  color: blue;
+  font-weight: bold;
 }
