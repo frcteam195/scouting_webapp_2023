@@ -10,10 +10,8 @@
 </table>
 
 <h3> Field Orientation:
-    <select class="form-control" type="text" name="Orientation" [(ngModel)] = "" (ngModelChange)="toggle($event)">
-        <option>Red On Left</option>
-        <option>Blue On Left</option>
-    </select></h3>
+    <select class="button" type="text" name="Orientation" [(ngModel)] = "orientation" (click)="toggle()">
+    </select>
 <br>
 Drive Station: 
 
