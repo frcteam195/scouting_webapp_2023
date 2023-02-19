@@ -1,4 +1,5 @@
-<div *ngFor="let m of apiMatchL2_filter">
+<div [ngClass]="getDarkMode()" id="question">
+<div  *ngFor="let m of apiMatchL2_filter">
 
     <table colspan="4" height="60">
         <tr>
@@ -17,8 +18,21 @@
         
         </tr>
     </table>
+    <div style="border: 1px solid blue; position: absolute;top: 15%;bottom: 10%; right: 0%; left: 0%;" >
 
-<!-- Main Level 2 Page -->
+
+    </div>
+    <table align="center" style="position: absolute; bottom: 0; text-align: center;border: 3px solid green;">
+        <tr><td>hehehehehe</td></tr>
+    </table>
+
+</div>
+</div>
+
+
+
+<div style="display: none;" *ngFor="let m of apiMatchL2_filter"> 
+    <!-- Main Level 2 Page -->
 <table *ngIf="display==1" height="360">
     
     <tr >
@@ -47,7 +61,7 @@
 
     <tr>
         <td align="center" colspan="4">
-            <a routerLink="/"><button type="button" title="Close">Close</button></a>
+            <a routerLink="/level2list"><button type="button" title="Close">Close</button></a>
             &nbsp;
             &nbsp;
             &nbsp;
@@ -294,5 +308,4 @@
         </td>
     </tr>
 </table>
-
 </div>

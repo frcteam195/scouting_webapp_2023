@@ -16,6 +16,7 @@ export class Level2Component implements OnInit {
   apiMatchL2_filter: MatchScoutingL2[] = [];
   scouter: number = -1;
   display: number = 1;
+  darkmode: number = 0;
 
   apiStoreL2: MatchScoutingL2[] = [];
 
@@ -39,6 +40,23 @@ export class Level2Component implements OnInit {
   ngOnInit(): void {
     // Get Scouter Number from Browser Cache
     this.scouter = Number(localStorage.getItem('scouter')) || -1;
+    this.darkmode = Number(localStorage.getItem('darkmode')) || 0;
+  }
+  setDarkMode(){
+    if (this.darkmode == 1) {
+        this.darkmode = 0;
+    } else {
+        this.darkmode = 1;
+    }
+    localStorage.setItem('darkmode', this.darkmode.toString());
+  }
+
+  getDarkMode(){
+    if (this.darkmode){
+        return "darkMode";
+    } else {
+        return "lightMode";
+    }
   }
 
   select(scouter: number) {

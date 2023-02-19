@@ -17,6 +17,8 @@ export class Level2ListComponent implements OnInit {
   apiAlliance: AllianceStation[] = [];
   scouter: number = -1;
   alliance: number = -1;
+  darkmode: number = 0;
+
 
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) { 
@@ -52,6 +54,51 @@ export class Level2ListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // Get Scouter Number from Browser Cache
+    this.scouter = Number(localStorage.getItem('scouter')) || -1;
+    this.alliance = Number(localStorage.getItem('alliance')) || -1;
+    this.darkmode = Number(localStorage.getItem('darkmode')) || 0;
   }
+
+  setDarkMode(){
+    if (this.darkmode == 1) {
+        this.darkmode = 0;
+        
+    } else {
+        this.darkmode = 1;
+    }
+    localStorage.setItem('darkmode', this.darkmode.toString());
+  }
+
+  getDarkMode(){
+    if (this.darkmode){
+        return "darkMode";
+    } else {
+        return "lightMode";
+    }
+  }
+
+
+level2Page( alliance: number, scouter: number) {
+
+  if (scouter < 1) {
+    alert("Please select a Scouter Name");
+  }
+
+  else if (alliance < 1) {
+    alert("Please select an alliance")
+  
+
+  } else {
+  
+    //console.log("Calling Pit Scouting Page with: team and scouterID)
+    //this.router.navigateByUrl('/pit/team/scouter);
+    // Opens in New Tab
+    //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
+    //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
+    // Opens in Existing Tab
+    this.router.navigate(["level2", alliance, scouter]); 
+  }
+}
 
 }

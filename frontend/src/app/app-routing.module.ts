@@ -24,7 +24,7 @@ const routes: Routes = [{
     path: 'level2',
     component: Level2Component    
   },{ 
-    path: 'level2/:match',
+    path: 'level2/:alliance/:scouter',
     component: Level2Component    
   },{
     path: 'pitlist',

@@ -1,12 +1,13 @@
-<table>
+<div id="question" [ngClass]="getDarkMode()">
+<table align="center">
     <tr>
     
-        <td align="center" colspan="4" height="20"><b>Level 2 Scouting</b></td>    
+        <td align="center" colspan="4" height="20" class="headerText" (click)="setDarkMode()"><b>Level 2 Scouting</b></td>    
     
     </tr>
 
     <tr>
-        <td align="center" colspan="4">
+        <td align="center" colspan="4" class="headerText2">
             <b>&nbsp;Scouter Name: </b><br>
             <select class="form-control" type="text" name="Scouter" [(ngModel)]="scouter" (change)="select(scouter)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
@@ -14,7 +15,7 @@
         </td>
     </tr>
     <tr>
-        <td align="center" colspan="4">
+        <td align="center" colspan="4" class="headerText2">
             <b>&nbsp;Alliance Station: </b><br>
             <select class="form-control" type="text" name="Alliance" [(ngModel)]="alliance" (change)="select1(alliance)">
                 <option *ngFor="let a of apiAlliance;" [value]="a.allianceStationID">{{a.allianceStation}}</option>
@@ -23,8 +24,11 @@
     </tr>
 
     <tr>
-        <td align="left" colspan="4">
-            <a routerLink="/"><button type="button" title="Close">Close</button></a>
+        <td align="center" colspan="2">
+            <a routerLink="/"><button type="button" title="Close" id="headerButton">Close</button></a>
+        </td>
+        <td align="center" colspan="2">
+            <a (click)="level2Page( alliance, scouter )"><button type="button" title="Next" id="headerButton">Next</button></a>
         </td>
     </tr>
 </table>
