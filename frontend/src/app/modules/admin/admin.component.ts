@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
 
   apiAlliance: AllianceStation[] = [];
   alliance: number = -1;
+  orientation: string = "show";
 
   constructor (private apiService: ApiService, private formBuilder: FormBuilder) { 
       
@@ -20,20 +21,44 @@ export class AdminComponent implements OnInit {
     this.apiService.AllianceReplay.subscribe(types => {
       this.apiAlliance = types;
 
+    
     });
 
   }
 
   select(alliance: number) {
-    // Sets Scouter to be passed to next record
     this.alliance = alliance;
-    // Write Scouter Number to Browser Cache
     localStorage.setItem('alliance', this.alliance.toString());
 
     console.log("alliance: [" + this.alliance + "]");
 
   }
 
+  show(num: string){
+    if (num=="normal"){
+        if(this.orientation=="show"){
+            return "show";
+        } else if (this.orientation=="hide") {
+            return "hide";
+        }
+    }
+    if (num=="inverted"){
+        if(this.orientation=="show"){
+            return "hide";
+        } else if (this.orientation=="hide") {
+            return "show";
+        }
+    }
+    return "show";
+  }
+
+  toggle() {
+    if(this.orientation=="show"){
+      this.orientation="hide";
+  } else {
+      this.orientation="show";
+  }
+}
   ngOnInit(): void {
   }
 

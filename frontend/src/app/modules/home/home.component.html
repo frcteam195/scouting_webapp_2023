@@ -4,9 +4,8 @@
     <link rel ="stylesheet" href="home.component.scss">
 </head>
 <body>
-<h1 class="headingFont">Harry Likes Pretzels!</h1>
+<h1 class="headingFont">The Cyberscouter!</h1>
 
-<br>
 <a routerLink="/level1"><button type="button" title="Level 1 Scouting">Level 1</button></a>
 <br>
 <a routerLink="/level2list"><button type="button" title="Level 2 Scouting">Level 2</button></a>
@@ -23,17 +22,22 @@
     <tr *ngFor="let e of apiEvent">
     
         <td align="center" class="eventText">
-            {{ e.BAeventID }} - {{ e.eventName }} <br>
+            {{ e.eventName }} <br>
             {{ e.eventLocation }} <br>
-            {{ this.eventDate }}            
+            {{ this.eventDate }} <br>           
         </td>
     </tr>
+        <tr *ngFor="let y of apiAlliance">
+            <td *ngIf="y.allianceStationID + '' == this.allianceStationID + ''" class ="eventText">
+                Station: <b [ngClass]="getClassColor(this.allianceStationID)">{{ y.allianceStation }}</b>
+            </td>
+        </tr>
 </table>
 <br>
 <div class="container">
-<div class="wrapper"><a href="https://ibb.co/8Ppp3fj"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813445767289/katherine.jpg" alt="katherine" border="0"></a></div>
-<div class="wrapper"><a href="https://imgbb.com/"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813185716265/hawy.png" alt="hawy" border="0"></a></div>
-<div class="wrapper"><a href="https://ibb.co/THhFr7f"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813718380594/aweckfenladwickner.jpg" alt="aweckfenladwickner" border="0"></a></div>
+<div class="wrapper"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813445767289/katherine.jpg" alt="katherine" border="0"></div>
+<div class="wrapper"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813185716265/hawy.png" alt="hawy" border="0"></a></div>
+<div class="wrapper"><img src="https://cdn.discordapp.com/attachments/1020128727994224700/1076287813718380594/aweckfenladwickner.jpg" alt="aweckfenladwickner" border="0"></div>
 </div>
 
 
