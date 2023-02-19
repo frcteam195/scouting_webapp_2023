@@ -15,35 +15,40 @@
         </tr>
     </table>
     <div style="position: absolute;top: 15%;bottom: 10%;right: 0;left: 0;">
-        <table *ngIf="display==1"> <!-- dimension page -->
+        <table align="center" *ngIf="display==1"> <!-- dimension page -->
+            <br>
             <tr>
                 <td align="right"><b>Length</b></td>
                 <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
             </tr>
+            <br>
             <tr>
                 <td align="right"><b>Width</b></td>
                 <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
             </tr>
+            <br>
             <tr>
                 <td align="right"><b>Height</b></td>
                 <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
             </tr>
         </table>
-        <table *ngIf="display==2"> <!-- Drive base  -->
+        <table align="center" *ngIf="display==2"> <!-- Drive base  -->
+            <br>
             <tr >
-                <td align="center">
-                    <b>&nbsp;drivebasetype: </b> 
+                <td align="right"  style="width:50%;">
+                    <b>&nbsp;Drive Base: </b> 
                 </td>
-                <td>
+                <td style="width:50%;">
                     <select class="form-control" type="text" name="Drive Base Type" [(ngModel)] = "p.driveBaseTypeID"> 
                         <option *ngFor="let d of apiDriveBaseTypes;" [value]="d.driveBaseTypeID">{{d.driveBaseType}}</option>
                     </select>
                 </td>
             </tr>
+            <br>
     
             <tr >
-                <td align="center">
-                    <b>&nbsp;drivemotortype: </b> 
+                <td align="right">
+                    <b>&nbsp;Drive Motor: </b> 
                 </td>
                 <td>
                     <select class="form-control" type="text" name="Drive Motor Type" [(ngModel)] = "p.driveMotorTypeID"> 
@@ -51,10 +56,10 @@
                     </select>
                 </td>
             </tr>
-    
+            <br>
             <tr >
-                <td align="center">
-                    <b>&nbsp;manipulatortype: </b> 
+                <td align="right">
+                    <b>&nbsp;Manipulator Type: </b> 
                 </td>
                 <td>
                     <select class="form-control" type="text" name="Manipulator Type" [(ngModel)] = "p.manipulatorTypeID"> 
@@ -63,10 +68,11 @@
                 </td>
             </tr>
         </table>
-        <table *ngIf="display==3"> <!-- Climb types -->
+        <table align="center" *ngIf="display==3"> <!-- Climb types -->
+            <br>
             <tr >
-                <td align="center">
-                    <b>&nbsp;superclimbtype: </b> 
+                <td align="right">
+                    <b>Super Climb: </b> 
                 </td>
                 <td>
                     <select class="form-control" type="text" name="Super Climb Type" [(ngModel)] = "p.superClimbTypeID"> 
@@ -74,10 +80,10 @@
                     </select>
                 </td>
             </tr>
-    
+            <br>
             <tr >
-                <td align="center">
-                    <b>&nbsp;buildtype: </b> 
+                <td align="right">
+                    <b>&nbsp;Build Type: </b> 
                 </td>
                 <td>
                     <select class="form-control" type="text" name="Build Type" [(ngModel)] = "p.buildTypeID"> 
@@ -85,10 +91,10 @@
                     </select>
                 </td>
             </tr>
-    
+            <br>
             <tr >
-                <td align="center">
-                    <b>&nbsp;c.o.g.type: </b> 
+                <td align="right">
+                    <b>&nbsp;C.O.G. type: </b> 
                 </td>
                 <td>
                     <select class="form-control" type="text" name="Center of Gravity Type" [(ngModel)] = "p.centerGravityTypeID"> 
@@ -96,10 +102,10 @@
                     </select>
                 </td>
             </tr>
+            <br>
         </table>
-        <table *ngIf="display==4"> <!-- Rating 1-->
-    
-    
+        <table align="center" *ngIf="display==4"> <!-- Rating 1-->
+            <br>
             <tr>
                 <td >
                     <b>Durability</b>
@@ -113,7 +119,7 @@
                     <button (click)="p.robotDurability = 5"  [ngClass]="getClass(p.robotDurability,5)">5</button>
                 </td>        
             </tr>
-    
+            <br>
             <tr>
                 <td >
                     <b>Build<br>Quality</b>
@@ -127,18 +133,18 @@
                     <button (click)="p.buildQuality = 5"  [ngClass]="getClass(p.buildQuality,5)">5</button>
                 </td>        
             </tr>
-    
+            <br>
             <tr>
                 <td colspan="2"><b> Build Comments</b></td>
             </tr>
-    
+            <br>
             <tr>
                 <td colspan="2" align="center">
                     <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
                 </td>
            
             </tr>
-    
+            <br>
             <tr>
                 <td >
                     <b>Electrical <br> Quality</b>
@@ -155,16 +161,16 @@
                 <tr>
                     <td colspan="2"><b> Electrical Comments</b></td>
                 </tr>
-        
+                <br>
                 <tr>
                     <td colspan="2" align="center">
                         <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
                     </td>
                
                 </tr>
-    
+                <br>
         </table>
-        <table *ngIf="display==5" align="center"> <!-- General Comments-->
+        <table *ngIf="display==5" align="center"> <b>General Comments</b>
             <tr>
                 <td colspan="2">
                     <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
