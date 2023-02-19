@@ -38,8 +38,8 @@ export class ApiService {
 
 
 
-  private apiUrl = 'http://localhost:5000';
-  //private apiUrl = 'http://scouting.team195.com:5000';
+  //private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'http://scouting.team195.com:5000';
   //private apiUrl = 'http://192.168.1.195:23450';  // Dave's House
   //private apiUrl = 'http://10.0.20.195:23450';     // Mark's House
 
@@ -138,7 +138,7 @@ export class ApiService {
     }, () => {
       try {
         // Send the cached data
-        this.DriveBaseTypesReplay.next(JSON.parse(localStorage.getItem('DriveBaseTypes')!) as DriveBaseTypes[]);
+        this.AllianceReplay.next(JSON.parse(localStorage.getItem('DriveBaseTypes')!) as AllianceStation[]);
       } catch (err) {
         console.error('Could not load Drive Base Types data from server or cache!');
       }
@@ -264,7 +264,7 @@ export class ApiService {
 
   }
   saveLevel2Data(level2: MatchScoutingL2[]){
-    localStorage.setItem('MatchL2', JSON.stringify(level2));
+    //localStorage.setItem('Level2', JSON.stringify(level2));
 
     //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
@@ -274,13 +274,13 @@ export class ApiService {
 
     console.log("Updating Level 2 Scouting Records");
 
-    let result = localStorage.getItem(('MatchL2'));
+    let result = localStorage.getItem(('Level2'));
 
     console.log(result);
 
   }
   saveLevel1Data(level1: MatchScoutingL1[]){
-    localStorage.setItem('MatchL1', JSON.stringify(level1));
+    //localStorage.setItem('Level1', JSON.stringify(level1));
 
     //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
@@ -289,6 +289,10 @@ export class ApiService {
     this.http.post<MatchScoutingL1[]>(this.apiUrl + '/level1-update', JSON.stringify(level1), options).subscribe();
 
     console.log("Updating Level 1 Scouting Records");
+
+    let result = localStorage.getItem(('Level1'));
+
+    console.log(result);
 
   }
 
