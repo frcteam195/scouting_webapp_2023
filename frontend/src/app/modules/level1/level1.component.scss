@@ -10,6 +10,18 @@
 button:active{
     transform: scale(0.98);
 }
+.backButton {
+  background-color: #500778;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  border-color: #500778;
+}
 .darkMode{
   background-color: #121212;
   color: white;
