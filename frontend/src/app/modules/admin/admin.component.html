@@ -9,8 +9,12 @@
 </tr>
 </table>
 
-Field Orientation:
-
+<h3> Field Orientation:
+    <select class="form-control" type="text" name="Orientation" [(ngModel)] = "" (ngModelChange)="toggle($event)">
+        <option>Red On Left</option>
+        <option>Blue On Left</option>
+    </select></h3>
+<br>
 Drive Station: 
 
 <a routerLink="/"><button type="button" title="Admin to home">Back to Home</button></a><br>
