@@ -279,8 +279,11 @@ export class Level1Component implements OnInit {
           // Set Status to 2
           x.scoutingStatus = 2;
         }
-      } 
-  
+    } 
+
+    if (!localStorage.getItem('Level1')) {
+    console.log("No Level 1 Records in Local Storage");
+    } else {
       // Get responses from memory
       this.apiService.StoredL1Replay.next(JSON.parse(localStorage.getItem('Level1')!) as MatchScoutingL1[]);
   
@@ -298,6 +301,8 @@ export class Level1Component implements OnInit {
       // End - Console Log Dump
       //######################################################
   
+    }
+    
       for (const o of this.apiMatchL1_filter) {
         this.apiStoreL1.push(o);
       }
