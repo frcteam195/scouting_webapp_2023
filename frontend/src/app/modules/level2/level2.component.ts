@@ -80,20 +80,26 @@ export class Level2Component implements OnInit {
       this.display = 1;
     }
   }
-  save(matchScoutingL2ID: number) {
 
-    // Update status in apiMatch record
-    for (const x of this.apiMatchL2) {
+save(matchScoutingL2ID: number) {
 
-      if (x.matchScoutingL2ID == matchScoutingL2ID ) { 
-        // Set Status to 2
-        x.scoutingStatus = 2;
-      }
-    } 
+  // Update status in apiMatch record
+  for (const x of this.apiMatchL2) {
+
+    if (x.matchScoutingL2ID == matchScoutingL2ID ) { 
+      // Set Status to 2
+      x.scoutingStatus = 2;
+    }
+  } 
+
+  if (!localStorage.getItem('Level2')) {
+    console.log("No Level 2 Records in Local Storage");
+  } else {
 
     // Get responses from memory
     this.apiService.StoredL2Replay.next(JSON.parse(localStorage.getItem('Level2')!) as MatchScoutingL2[]);
-
+    
+    
     //######################################################
     // Start - Console Log Dump
     
@@ -108,25 +114,27 @@ export class Level2Component implements OnInit {
     // End - Console Log Dump
     //######################################################
 
-    for (const o of this.apiMatchL2_filter) {
-      this.apiStoreL2.push(o);
-    }
-
-    // Write record to output filter  (Will need to move this to the "refresh" funtion later)
-    this.apiService.saveLevel2Data(this.apiStoreL2);
-
-    // Write record to Local Storage
-    this.apiService.StoredL2Replay.next(this.apiStoreL2 as MatchScoutingL2[]);
-    localStorage.setItem('Level2', JSON.stringify(this.apiStoreL2));
-
-    // run regenerate filter
-    this.regenerateFilter();
-
-    // Set Display back to 1
-    this.display = 1;
-
-
   }
+
+  for (const o of this.apiMatchL2_filter) {
+    this.apiStoreL2.push(o);
+  }
+
+  // Write record to output filter  (Will need to move this to the "refresh" funtion later)
+  this.apiService.saveLevel2Data(this.apiStoreL2);
+
+  // Write record to Local Storage
+  this.apiService.StoredL2Replay.next(this.apiStoreL2 as MatchScoutingL2[]);
+  localStorage.setItem('Level2', JSON.stringify(this.apiStoreL2));
+
+  // run regenerate filter
+  this.regenerateFilter();
+
+  // Set Display back to 1
+  this.display = 1;
+
+
+}
 
   getClass(value: number, b_type: number) {
 
