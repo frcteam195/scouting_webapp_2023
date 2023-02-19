@@ -1,14 +1,19 @@
-div {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifs
-}
 
-table { 
-    width: 320px;
-    //height: 420px;
-}
+#question {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+
+
 
 table, th, td {
-    border: 1px solid black;
+    border: 0px solid black;
 }
 
 .button_rank {
@@ -56,3 +61,13 @@ input[type=text] {
     color: blue;
     font-weight: bold;
 }
+.darkMode{
+    background-color: #121212;
+    color: white;
+    border-color: white;
+  }
+  .lightMode{
+    background-color: white;
+    color: black;
+    border-color: white;
+  }
