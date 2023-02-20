@@ -32,6 +32,9 @@ export class AdminComponent implements OnInit {
 
     console.log("alliance: [" + this.alliance + "]");
 
+    // Reload Website
+    window.location.reload();
+
   }
 
   show(num: string){
