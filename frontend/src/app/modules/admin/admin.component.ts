@@ -60,6 +60,7 @@ export class AdminComponent implements OnInit {
   }
 }
   ngOnInit(): void {
+    this.alliance = Number(localStorage.getItem('alliance')) || -1;
   }
 
 }

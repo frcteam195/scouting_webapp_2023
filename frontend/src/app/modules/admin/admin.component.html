@@ -1,18 +1,64 @@
 <table>
-<tr>
-<td>
-<h3 style="text-align: center;">Alliance Station: 
-    <select class="form-control" type="text" name="allianceStation" [(ngModel)] = "alliance" (ngModelChange)="select($event)">
-        <option *ngFor="let s of apiAlliance;" [value]="s.allianceStationID">{{s.allianceStation}}</option>
-    </select></h3>
-</td>
-</tr>
+    <tr>
+        <td width="35%">
+            <b>Drive Station: </b>
+        </td> 
+        <td>
+            <select class="form-control" type="text" name="allianceStation" [(ngModel)] = "alliance" (ngModelChange)="select($event)">
+                <option *ngFor="let s of apiAlliance;" [value]="s.allianceStationID">{{s.allianceStation}}</option>
+            </select>
+            
+        </td>
+    </tr>
+    <tr><td colspan="2"><b>Note:</b> Be sure to hit browser refresh button (or F5 key) after changing drive station.</td></tr>
+
+    <tr><td colspan="2"><hr></td></tr>
+
+    <tr>
+        <td>
+            <b>Field Orientation:</b>
+        </td>
+        <td>
+            <select class="button" type="text" name="Orientation" [(ngModel)] = "orientation" (click)="toggle()">
+            </select>
+        </td>
+    </tr>
+
+    <tr><td colspan="2"><hr></td></tr>
+
+    <tr>
+        <td colspan="2">
+            <b>Browser Memory:</b>  <i> (coming soon)</i>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td >
+            <button>Clear Completed Level 1 Data</button>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <button>Backup Level 1 Data to File</button>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td >
+            <button>Clear Completed Level 2 Data</button>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <button>Backup Level 2 Data to File</button>
+        </td>
+    </tr>
+
+    <tr><td colspan="2"><hr></td></tr>
 </table>
 
-<h3> Field Orientation:
-    <select class="button" type="text" name="Orientation" [(ngModel)] = "orientation" (click)="toggle()">
-    </select>
-<br>
-Drive Station: 
 
-<a routerLink="/"><button type="button" title="Admin to home">Back to Home</button></a><br>
+
+<a routerLink="/"><button type="button" title="Admin to home">Close</button></a><br>
