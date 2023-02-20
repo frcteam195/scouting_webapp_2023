@@ -28,6 +28,7 @@ export class Level1Component implements OnInit {
   nodesSelected: number=0; 
 
   apiStoreL1: MatchScoutingL1[] = [];
+  alliance: number = -1;
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -85,6 +86,9 @@ export class Level1Component implements OnInit {
   }
 
   ngOnInit(): void { 
+    this.scouter = Number(localStorage.getItem('scouter')) || -1;
+    this.alliance = Number(localStorage.getItem('alliance')) || -1;
+    console.log("Alliance Station: " + this.alliance);
   }
 
   setDarkMode(){
@@ -126,6 +130,7 @@ export class Level1Component implements OnInit {
         console.log("hi");
         if (m.scoutingStatus === null ) { 
           //Break out of for loop once the first unscouted record is found
+          m.scouterID = this.scouter;
           this.apiMatchL1_filter.push(m);
           break;
         }
@@ -324,6 +329,11 @@ export class Level1Component implements OnInit {
       for (var i = 0; i < this.nodePositions.length; i++){
         this.nodePositions[i]=0;
       }
+  }
+
+  sync() {
+    this.apiService.syncLevel1Data(this.alliance);
+
   }
 
   updateBox(){
