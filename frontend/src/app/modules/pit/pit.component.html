@@ -176,17 +176,24 @@
                     <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a routerLink="/pitlist"><button class="buttons" (click)="save(3)">Submit</button></a><br>
+                    <a routerLink="/pitlist"><button class="buttons" (click)="save(2)">Finish Later</button></a><br>
+                    <a routerLink="/pitlist"><button class="buttons" (click)="cancel(p.team)">Cancel</button></a>
+                </td>
+            </tr>
         </table>
     </div>
     <table class="buttons" align="center" style="width: 100%; position: absolute; bottom: 0;text-align: center;"> <!-- Buttons -->
         <tr>
-            <td style="width: 50%;" *ngIf="display==1"><a routerLink="/pitlist"><button class="buttons" title="Back to Team List">Close</button></a></td>
+            <td style="width: 50%;" *ngIf="display==1"><a routerLink="/pitlist"><button class="buttons" (click)="cancel(p.team)" title="Back to Team List">Close</button></a></td>
 
             <td style="width: 50%;" *ngIf="display>1 && display<5"><button class="buttons" (click)="changeDisplay(-1,p.scouterID)">Previous</button></td>
             <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,p.scouterID)">Next</button></td>
 
             <td style="width: 33%;" *ngIf="display==5"><button class="buttons" (click)="changeDisplay(-1,p.scouterID)">Previous</button></td>
-            <td style="width: 33%;" *ngIf="display==5"><button class="buttons" (click)="save()">Save</button></td>
+            <td style="width: 33%;" *ngIf="display==5"><button class="buttons" (click)="save(2)">Save</button></td>
             <td style="width: 33%;" *ngIf="display==5"><a routerLink="/pitlist"><button class="buttons" title="Team List">Close</button></a></td>
         </tr>
     </table>

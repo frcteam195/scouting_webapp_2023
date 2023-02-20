@@ -38,8 +38,8 @@ export class ApiService {
 
 
 
-  //private apiUrl = 'http://localhost:5000';
-  private apiUrl = 'http://scouting.team195.com:5000';
+  private apiUrl = 'http://localhost:5000';
+  //private apiUrl = 'http://scouting.team195.com:5000';
   //private apiUrl = 'http://192.168.1.195:23450';  // Dave's House
   //private apiUrl = 'http://10.0.20.195:23450';     // Mark's House
 
@@ -87,35 +87,6 @@ export class ApiService {
       }
     });
 
-    // First try to load a fresh copy of the data from the API
-    this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting').subscribe(response => {
-      // Store the response in the ReplaySubject, which components can use to access the data
-      this.MatchL1Replay.next(response as MatchScoutingL1[]);
-      // Might as well store it while we have it
-      localStorage.setItem('MatchL1', JSON.stringify(response));
-    }, () => {
-      try {
-        // Send the cached data
-        this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
-      } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
-      }
-    });
-
-    this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2').subscribe(response => {
-      // Store the response in the ReplaySubject, which components can use to access the data
-      this.MatchL2Replay.next(response as MatchScoutingL2[]);
-      // Might as well store it while we have it
-      localStorage.setItem('MatchL2', JSON.stringify(response));
-    }, () => {
-      try {
-        // Send the cached data
-        this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
-      } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
-      }
-    });
-
     this.http.get<DriveBaseTypes[]>(this.apiUrl + '/drivebasetypes').subscribe(response => {
       // Store the response in the ReplaySubject, which components can use to access the data
       this.DriveBaseTypesReplay.next(response as DriveBaseTypes[]);
@@ -138,7 +109,7 @@ export class ApiService {
     }, () => {
       try {
         // Send the cached data
-        this.AllianceReplay.next(JSON.parse(localStorage.getItem('DriveBaseTypes')!) as AllianceStation[]);
+        this.AllianceReplay.next(JSON.parse(localStorage.getItem('AllianceStation')!) as AllianceStation[]);
       } catch (err) {
         console.error('Could not load Drive Base Types data from server or cache!');
       }
@@ -244,10 +215,49 @@ export class ApiService {
     });
 
 
+    // First try to load a fresh copy of the data from the API
+    this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.MatchL1Replay.next(response as MatchScoutingL1[]);
+      // Might as well store it while we have it
+      localStorage.setItem('MatchL1', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
+      } catch (err) {
+        console.error('Could not load Matches data from server or cache!');
+      }
+    });
 
+    this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.MatchL2Replay.next(response as MatchScoutingL2[]);
+      // Might as well store it while we have it
+      localStorage.setItem('MatchL2', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
+      } catch (err) {
+        console.error('Could not load Matches data from server or cache!');
+      }
+    });
 
+  }
 
+  updatePitStatus(pit: PitScouting[]){
+    //localStorage.setItem('Pit', JSON.stringify(pit));
 
+    console.log("made it to pit status update!!!");
+
+    //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
+    
+    this.http.post<PitScouting[]>(this.apiUrl + '/pit-status', JSON.stringify(pit), options).subscribe();
+
+    console.log("Updating Pit Status Records");
   }
 
 
@@ -263,6 +273,9 @@ export class ApiService {
     console.log("Updating Pit Scouting Records");
 
   }
+
+
+
   saveLevel2Data(level2: MatchScoutingL2[]){
     //localStorage.setItem('Level2', JSON.stringify(level2));
 
@@ -279,6 +292,9 @@ export class ApiService {
     console.log(result);
 
   }
+
+
+
   saveLevel1Data(level1: MatchScoutingL1[]){
     //localStorage.setItem('Level1', JSON.stringify(level1));
 

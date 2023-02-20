@@ -13,11 +13,12 @@ table, th, td {
 
 .button0 {
     text-align: center;
-    background-color: purple;
+    background-color: #500778;
     color: white;
     width: 60px;
     height: 30px;
     font-size: 16px;
+    border-radius: 6px;
 }
 
 .button1 {
@@ -27,16 +28,31 @@ table, th, td {
     width: 60px;
     height: 30px;
     font-size: 16px;
+    border-radius: 6px;
 }
 
+
 .button2 {
+    text-align: center;
+    background-color: orange;
+    color: black;
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.button3 {
     text-align: center;
     background-color: grey;
     color: black;
     width: 60px;
     height: 30px;
     font-size: 16px;
+    border-radius: 6px;
 }
+
+
 .closeButton{
 background-color: #500778;
 color: white;

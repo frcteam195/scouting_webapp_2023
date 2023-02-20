@@ -23,7 +23,7 @@ export class PitComponent implements OnInit {
   apiScouters: Scouters[] = [];
   scouter: number = -1;
   display: number = 1;
-  team: string = '195';
+  team: string = '';
   apiDriveBaseTypes: DriveBaseTypes[] = [];
   apiDriveMotorTypes: DriveMotorTypes[] = [];
   apiManipulatorTypes: ManipulatorTypes[] = [];
@@ -104,8 +104,31 @@ export class PitComponent implements OnInit {
     }
   }
 
-  save() {
+  save(status: number) {
+
+    for (const x of this.apiPit) {
+ 
+      if (x.team == this.team ) { 
+        // Set scouter to existing scouter value
+        x.scoutingStatus = status;
+      }
+    } 
+
     this.apiService.savePitData(this.apiPit_filter);
+
+  }
+
+  cancel(team: string) {
+    for (const x of this.apiPit) {
+ 
+      if (x.team == team ) { 
+        // Set scouter to 0 - available to work
+        x.scoutingStatus = 0;
+        //console.log("Team: " + team + " Status: " + x.scoutingStatus);
+      }
+    } 
+
+    this.apiService.updatePitStatus(this.apiPit_filter);
 
   }
 
@@ -134,6 +157,9 @@ export class PitComponent implements OnInit {
           // Set scouter to existing scouter value
           p.scouterID = this.scouter;
 
+          // Set scouting status to 1 - checked out
+          p.scoutingStatus = 1;
+
           this.apiPit_filter.push(p);
           //Break out of for loop once the first unscouted record is found
           break;
@@ -142,6 +168,8 @@ export class PitComponent implements OnInit {
     } else {
       this.apiPit_filter = [];
     }
+
+    this.apiService.updatePitStatus(this.apiPit_filter);
   }
 
 }

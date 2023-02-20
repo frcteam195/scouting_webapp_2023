@@ -23,15 +23,17 @@ export class PitListComponent implements OnInit {
     
     this.apiService.PitReplay.subscribe(team => {
       this.apiPit = team;
+
+      // Sort by Team Number
+      this.apiPit.sort((a, b) => Number(a.team) - Number(b.team));
     });
 
-    // Sort Matches by MatchNum
-    this.apiPit.sort((a, b) => Number(a.team) - Number(b.team));
+
 
     this.apiService.ScouterReplay.subscribe(types => {
       this.apiScouters = types;
     });
-
+  
 
    }
 
@@ -53,7 +55,7 @@ export class PitListComponent implements OnInit {
 
   pitPage(team: string, scouter: number, status: number) {
 
-    if (status == 2) {
+    if (status == 3) {
     // do nothing if status is 2 (complete)
     }
     else if (scouter < 1) {
