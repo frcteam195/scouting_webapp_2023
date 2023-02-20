@@ -60,6 +60,8 @@ export class AdminComponent implements OnInit {
   }
 }
   ngOnInit(): void {
+    // Get Alliance Station from Memory if it exists
+    this.alliance = Number(localStorage.getItem('alliance')) || -1;
   }
 
 }
