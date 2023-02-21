@@ -262,3 +262,24 @@ input {
 .yesNoTable th {
   font-size: larger;
 }
+
+
+.button_offline {
+  background-color: red;
+  color: white;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-width: 3px;
+}
+
+.button_online {
+  background-color: green;
+  color: white;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-width: 3px;
+}

@@ -62,8 +62,7 @@
         </table>
         <div style="height: 20px;"></div>
         <button (click)="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
-        <button (click)="sync()" class="backButton">Sync</button>
-
+        <button (click)="onlineToggle(this.online)" [ngClass]="getOnlineClass()">{{ this.onlineText }}</button>
         
     </div>
     <div id="pre" style="display: none;">
