@@ -53,9 +53,40 @@ button:active{
     background-color: #121212;
     color: white;
     border-color: white;
-  }
-  .lightMode{
-    background-color: white;
-    color: black;
-    border-color: white;
-  }
+}
+
+.lightMode{
+background-color: white;
+color: black;
+border-color: white;
+}
+
+
+.buttonNormal {
+    background-color: lightGray;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.buttonRed {
+    background-color: red;
+    color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-width: 3px;
+}
+
+.buttonBlue {
+    background-color: blue;
+    color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-width: 3px;
+}

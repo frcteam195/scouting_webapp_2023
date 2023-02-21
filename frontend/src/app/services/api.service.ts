@@ -215,6 +215,10 @@ export class ApiService {
       }
     });
 
+  }
+
+
+  getLevel1Records() {
     this.alliance = Number(localStorage.getItem('alliance'));
     if(this.alliance > 0) {
         // First try to load a fresh copy of the data from the API
@@ -232,26 +236,30 @@ export class ApiService {
           }
         });
     }
-
-
-
-    
-
-    this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2').subscribe(response => {
-      // Store the response in the ReplaySubject, which components can use to access the data
-      this.MatchL2Replay.next(response as MatchScoutingL2[]);
-      // Might as well store it while we have it
-      localStorage.setItem('MatchL2', JSON.stringify(response));
-    }, () => {
-      try {
-        // Send the cached data
-        this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
-      } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
-      }
-    });
-
   }
+
+
+  getLevel2Records() {
+    this.alliance = Number(localStorage.getItem('alliance'));
+    if(this.alliance > 0)  {
+
+      this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2/'+this.alliance).subscribe(response => {
+        // Store the response in the ReplaySubject, which components can use to access the data
+        this.MatchL2Replay.next(response as MatchScoutingL2[]);
+        // Might as well store it while we have it
+        localStorage.setItem('MatchL2', JSON.stringify(response));
+      }, () => {
+        try {
+          // Send the cached data
+          this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
+        } catch (err) {
+          console.error('Could not load Matches data from server or cache!');
+        }
+      });
+  }
+  }
+
+
 
   updatePitStatus(pit: PitScouting[]){
     //localStorage.setItem('Pit', JSON.stringify(pit));

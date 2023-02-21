@@ -48,7 +48,10 @@ export class Level2ListComponent implements OnInit {
     // Write Scouter Number to Browser Cache
     localStorage.setItem('alliance', this.alliance.toString());
 
-    console.log("Scouter: [" + this.scouter + "]");
+    console.log("Alliance Station: [" + this.alliance + "]");
+
+    // Reload Website to get records specific to alliance station
+    this.apiService.getLevel2Records();
 
   }
 
@@ -78,27 +81,37 @@ export class Level2ListComponent implements OnInit {
     }
   }
 
-
-level2Page( alliance: number, scouter: number) {
-
-  if (scouter < 1) {
-    alert("Please select a Scouter Name");
+  buttonClass(value: number) {
+    if(this.alliance == value) {
+      if(value > 3) {
+        return 'buttonBlue';
+      } else {
+        return 'buttonRed';
+      }
+    }
+    return 'buttonNormal';
   }
 
-  else if (alliance < 1) {
-    alert("Please select an alliance")
-  
+  level2Page( alliance: number, scouter: number) {
 
-  } else {
-  
-    //console.log("Calling Pit Scouting Page with: team and scouterID)
-    //this.router.navigateByUrl('/pit/team/scouter);
-    // Opens in New Tab
-    //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
-    //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
-    // Opens in Existing Tab
-    this.router.navigate(["level2", alliance, scouter]); 
+    if (scouter < 1) {
+      alert("Please select a Scouter Name");
+    }
+
+    else if ((alliance < 1) || (alliance > 6)) {
+      alert("Please select an Alliance Station")
+    
+
+    } else {
+    
+      //console.log("Calling Pit Scouting Page with: team and scouterID)
+      //this.router.navigateByUrl('/pit/team/scouter);
+      // Opens in New Tab
+      //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
+      //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
+      // Opens in Existing Tab
+      this.router.navigate(["level2", alliance, scouter]); 
+    }
   }
-}
 
 }
