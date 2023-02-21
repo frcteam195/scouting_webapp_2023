@@ -70,7 +70,8 @@ export class Level2Component implements OnInit {
 
   changeDisplay(d_value: number, scouter: number) {
     this.display = this.display + d_value;  
-
+    
+    console.log("display; "+ this.display);
     if(this.display > 1 && scouter < 1) {
       alert("Please select a Scouter Name");
       this.display = 1;
