@@ -29,6 +29,8 @@ export class Level1Component implements OnInit {
 
   apiStoreL1: MatchScoutingL1[] = [];
   alliance: number = -1;
+  online: number = 1;
+  onlineText: string = "OnLine";
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -89,6 +91,8 @@ export class Level1Component implements OnInit {
     this.scouter = Number(localStorage.getItem('scouter')) || -1;
     this.alliance = Number(localStorage.getItem('alliance')) || -1;
     console.log("Alliance Station: " + this.alliance);
+    // Get Level 1 records specific to alliance station
+    this.apiService.getLevel1Records();
   }
 
   setDarkMode(){
@@ -331,9 +335,22 @@ export class Level1Component implements OnInit {
       }
   }
 
-  sync() {
-    this.apiService.syncLevel1Data(this.alliance);
+  onlineToggle(value: number) {
+    if(value == 1) {
+        this.online = 0;
+        this.onlineText = "Offline";
+    } else {
+        this.online = 1;
+        this.onlineText = "Online";
+    }
+  }
 
+  getOnlineClass() {
+    if(this.online == 0) {
+        return 'button_offline';
+    } else {
+        return 'button_online';
+    }
   }
 
   updateBox(){
