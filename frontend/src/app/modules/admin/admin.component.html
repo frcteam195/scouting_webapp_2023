@@ -16,11 +16,18 @@
 
     <tr>
         <td>
-            <b>Field Orientation:</b>
+            <b>Field Orientation</b>
         </td>
-        <td>
-            <select class="button" type="text" name="Orientation" [(ngModel)] = "orientation" (click)="toggle()">
-            </select>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td> 
+            <form>
+                <input type="radio" value="redOnLeft" name="fieldOrientationRadio" onclick="localStorage.setItem('orientation', 'L');">
+                <label for="redOnLeft">Red on Left</label><br>
+                <input type="radio" value="redOnRight" name="fieldOrientationRadio" onclick="localStorage.setItem('orientation', 'R');">
+                <label for="redOnRight">Red on Right</label><br>
+            </form>  
         </td>
     </tr>
 
@@ -58,7 +65,6 @@
 
     <tr><td colspan="2"><hr></td></tr>
 </table>
-
 
 
 <a routerLink="/"><button type="button" title="Admin to home">Close</button></a><br>
