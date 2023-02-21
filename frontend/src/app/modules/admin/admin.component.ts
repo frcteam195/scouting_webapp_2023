@@ -32,8 +32,8 @@ export class AdminComponent implements OnInit {
 
     console.log("alliance: [" + this.alliance + "]");
 
-    // Reload Website
-    window.location.reload();
+    // Get Level 1 records specific to alliance station
+    this.apiService.getLevel1Records();
 
   }
 
@@ -68,9 +68,3 @@ export class AdminComponent implements OnInit {
   }
 
 }
-// var currentValue = 0;
-// function handleClick(fieldOrientationRadio) {
-//     alert('Old value: ' + currentValue);
-//     alert('New value: ' + fieldOrientationRadio.value);
-//     currentValue = fieldOrientationRadio.value;
-// }
