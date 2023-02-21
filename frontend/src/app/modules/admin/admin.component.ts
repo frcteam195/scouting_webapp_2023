@@ -68,3 +68,9 @@ export class AdminComponent implements OnInit {
   }
 
 }
+// var currentValue = 0;
+// function handleClick(fieldOrientationRadio) {
+//     alert('Old value: ' + currentValue);
+//     alert('New value: ' + fieldOrientationRadio.value);
+//     currentValue = fieldOrientationRadio.value;
+// }
