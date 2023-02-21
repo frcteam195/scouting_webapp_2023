@@ -1,13 +1,13 @@
 <div id="question" [ngClass]="getDarkMode()">
-<table align="center">
+<table class="header" align="center" style="width: 100%;"> <!-- Header -->
     <tr>
-    
-        <td align="center" colspan="4" height="20" class="headerText" (click)="setDarkMode()"><b>Level 2 Scouting</b></td>    
-    
+        <th (click)="setDarkMode()"><b>Level 2 Scouting</b></th>    
     </tr>
-
+</table>
+<div style="position: absolute;top: 15%;bottom: 10%;right: 0;left: 0;">
+    <table align="center">
     <tr>
-        <td align="center" colspan="4" class="headerText2">
+        <td>
             <b>&nbsp;Scouter Name: </b><br>
             <select class="form-control" type="text" name="Scouter" [(ngModel)]="scouter" (change)="select(scouter)">
                 <option *ngFor="let s of apiScouters;" [value]="s.scouterID">{{s.firstName}} {{s.lastName}}</option>
@@ -15,20 +15,19 @@
         </td>
     </tr>
     <tr>
-        <td align="center" colspan="4" class="headerText2">
+        <td>
             <b>&nbsp;Alliance Station: </b><br>
             <select class="form-control" type="text" name="Alliance" [(ngModel)]="alliance" (change)="select1(alliance)">
                 <option *ngFor="let a of apiAlliance;" [value]="a.allianceStationID">{{a.allianceStation}}</option>
             </select>
         </td>
     </tr>
+    </table>
+</div>
 
+<table class="buttons" align="center" style="Width: 100%;height: 10%; position: absolute; bottom: 0; right: 0%; left: 0%; text-align: center;">
     <tr>
-        <td align="center" colspan="2">
-            <a routerLink="/"><button type="button" title="Close" id="headerButton">Close</button></a>
-        </td>
-        <td align="center" colspan="2">
-            <a (click)="level2Page( alliance, scouter )"><button type="button" title="Next" id="headerButton">Next</button></a>
-        </td>
+        <td style="width: 50%;"><a routerLink="/"><button type="button" title="Close" id="headerButton">Close</button></a></td>
+        <td style="width: 50%;"><a (click)="level2Page( alliance, scouter )"><button type="button" title="Next" id="headerButton">Next</button></a></td>
     </tr>
 </table>

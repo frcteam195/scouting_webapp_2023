@@ -9,20 +9,27 @@
     font-size: large;
     padding: 2px 2px;
     font-weight: bold;
-    width: 150px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     border-style: outset;
     border-color: #500778;
     border-width: 3px;
 }
-.headerText {
-    font-size: 40px;
-
+table { 
+    margin-top: 0%;
 }
 
-.headerText2 {
-    font-size: 30px;
+table.header,th.header,td.header {
+    text-align: center;
+    font-size: larger;
+    height: 15%;
+}
 
+table.buttons, th.buttons, td.buttons {
+    text-align: center;
+    border: 2px solid black;
+    height: 10%;
+    margin: 0;
 }
 .form-control {
     font-size: large;
