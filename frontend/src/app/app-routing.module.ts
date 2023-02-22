@@ -1,3 +1,4 @@
+import { DebugComponent } from './modules/debug/debug.component';
 import { PitListComponent } from './modules/pit-list/pit-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -38,6 +39,9 @@ const routes: Routes = [{
   },{
     path: 'admin',
     component: AdminComponent
+  },{
+    path: 'debug',
+    component: DebugComponent
   }];
 
 @NgModule({
