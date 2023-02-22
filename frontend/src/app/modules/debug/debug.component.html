@@ -1,0 +1,39 @@
+local.storage:
+<select class="form-control" type="text" name="Scouter" [(ngModel)]="memoryType" (change)="select(memoryType)">
+    <option *ngFor="let t of memoryTypes;" [value]="t.memoryTypeID">{{t.memoryType}}</option>
+</select>
+<div align="right"><a routerLink="/admin"><button type="button" title="Back to Admin Page">Close</button></a></div>
+
+<hr>
+<div>
+    <table>
+        <tr>
+            <th>matchScoutingID</th>
+            <th>eventID</th>
+            <th>matchID</th>
+            <th>matchNum</th>
+            <th>allianceStationID</th>
+            <th>team</th>
+            <th>scoutingStatus</th>
+            <th>scouterID</th>
+
+
+        </tr>
+        <tr *ngFor="let m of apiFilter1">
+            <td>{{ m.matchScoutingID }}</td>
+            <td>{{ m.eventID }}</td>
+            <td>{{ m.matchID }}</td>
+            <td>{{ m.matchNum }}</td>
+            <td>{{ m.allianceStationID }}</td>
+            <td>{{ m.team }}</td>
+            <td>{{ m.scoutingStatus }}</td>
+            <td>{{ m.scouterID }}</td>
+
+
+        </tr>
+    </table>
+
+    <p>{{ this.dumpMemory }}</p>
+    <br>
+    <a routerLink="/admin"><button type="button" title="Back to Admin Page">Close</button></a><br>
+</div>

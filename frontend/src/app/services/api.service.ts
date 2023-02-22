@@ -215,6 +215,36 @@ export class ApiService {
       }
     });
 
+
+    // Get Level 1 Scouted data from Cache
+    try {
+      this.StoredL1Replay.next(JSON.parse(localStorage.getItem('Level1')!) as MatchScoutingL1[]);
+    } catch (err) {
+      console.error('Could not load Matches data from server or cache!');
+    }
+
+    // Get Level 1 Records data from Cache
+    try {
+      this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
+    } catch (err) {
+      console.error('Could not load Matches data from server or cache!');
+    }
+
+    // Get Level 2 Scouted data from Cache
+    try {
+      this.StoredL2Replay.next(JSON.parse(localStorage.getItem('Level2')!) as MatchScoutingL2[]);
+    } catch (err) {
+      console.error('Could not load Matches data from server or cache!');
+    }
+
+    // Get Level 2 Records data from Cache
+    try {
+      this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
+    } catch (err) {
+      console.error('Could not load Matches data from server or cache!');
+    }
+
+
   }
   //######################
   //# End of loadData()

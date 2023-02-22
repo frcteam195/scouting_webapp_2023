@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PitListComponent } from './modules/pit-list/pit-list.component';
 import { Level2ListComponent } from './modules/level2-list/level2-list.component';
+import { DebugComponent } from './modules/debug/debug.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { Level2ListComponent } from './modules/level2-list/level2-list.component
     PitComponent,
     AdminComponent,
     PitListComponent,
-    Level2ListComponent
+    Level2ListComponent,
+    DebugComponent
   ],
   imports: [
     BrowserModule,
