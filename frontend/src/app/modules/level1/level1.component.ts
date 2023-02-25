@@ -117,6 +117,11 @@ export class Level1Component implements OnInit {
 
   select(scouterID: number) {
       this.scouter = scouterID;
+
+      localStorage.setItem('scouter', this.scouter.toString());
+
+      this.regenerateFilter();
+
   }
 
   regenerateFilter() {
