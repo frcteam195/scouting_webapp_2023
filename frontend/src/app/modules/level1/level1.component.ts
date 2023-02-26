@@ -282,7 +282,7 @@ export class Level1Component implements OnInit {
   }
 
   returnBox(){
-    this.stage = 0;
+    this.stage = 5;
     this.updateBox();
   } 
   save( matchScoutingL1ID: number) {
@@ -393,6 +393,7 @@ export class Level1Component implements OnInit {
       headerText!.innerHTML = "End Game";
   } else if(this.stage == 5){
       postBox!.style.display = "block";
+      header!.style.display = "block"; //show header if returning from last page
       headerText!.innerHTML = "Post Game";
   } else if(this.stage == 6){
       finalBox!.style.display = "block";
