@@ -31,8 +31,8 @@
                 <td><b><br><br><br>Did they show?<br></b></td>
             </tr>
             <tr align="center">
-                <td><button align="right">Y</button></td>
-                <td><button align="left">N</button></td>
+                <td><button align="right" (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
+                <td><button align="left" (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">N</button></td>
             </tr>
             <br>
         </table>
@@ -204,15 +204,13 @@
         </tr>
         <br>
     </table>
-
     <table align="center" *ngIf="display==5" height="360">   <!-- Save Page -->
-    
 
         <tr>
-            <td><button class="buttons" (click)="save(m.matchScoutingL2ID)">Save</button></td>
+            <td><h1 style="text-align: center;">Thank you for scouting the match!</h1></td>
         </tr>
         <tr>
-            <td><button class="buttons" (click)="changeDisplay(-1,m.scouterID)">Previous</button></td>
+            <td align="center"><img src="https://media.discordapp.net/attachments/709829587323977811/1032728164364992653/makesweet-y27of7.gif"></td>
         </tr>
     </table>
 
@@ -222,10 +220,10 @@
     <table class="buttons" align="center" style="Width: 100%;height: 10%; position: absolute; bottom: 0; right: 0%; left: 0%; text-align: center;">
         <tr>
             <td style="width: 50%;" *ngIf="display==1"><a routerLink="/level2list"><button class="buttons" title="Back to Level2 List">Close</button></a></td>
-            <td style="width: 50%;" *ngIf="display>1 && display<4"><button class="buttons" (click)="changeDisplay(-1,m.scouterID)">Previous</button></td>
-            <td style="width: 50%;" *ngIf="display==4"><button class="buttons" (click)="changeDisplay(-1,m.scouterID)">Previous</button></td>
-            <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,m.scouterID)">Next</button></td>
-            <!-- <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="save(m.matchScoutingL2ID)">Save</button></td> -->
+            <td style="width: 50%;" *ngIf="display>1 && display<5"><button class="buttons" (click)="changeDisplay(-1,m.scouterID, m.preNoShow)">Previous</button></td>
+            <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="changeDisplay(-1,m.scouterID, m.preNoShow)">Previous</button></td>
+            <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,m.scouterID, m.preNoShow)">Next</button></td>
+            <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="save(m.matchScoutingL2ID)">Save</button></td>
         </tr>
     </table>
 
