@@ -17,6 +17,7 @@ export class Level2Component implements OnInit {
   scouter: number = -1;
   display: number = 1;
   darkmode: number = 0;
+  matchComp: number[] = [];
 
   apiStoreL2: MatchScoutingL2[] = [];
 
@@ -25,6 +26,12 @@ export class Level2Component implements OnInit {
 
     this.apiMatchL2_filter = [];
     this.apiMatchL2 = [];
+
+    this.apiService.StoredL2Replay.subscribe(match => {
+      this.apiStoreL2 = match;
+      this.getMatchComp();
+    });
+ 
     
     this.apiService.MatchL2Replay.subscribe(match => {
       this.apiMatchL2 = match;
@@ -118,10 +125,15 @@ save(matchScoutingL2ID: number) {
   }
 
   for (const o of this.apiMatchL2_filter) {
+    // Add the matchScoutingL2 value to the matchComp array (May not need)
+        //this.matchComp.push(o.matchScoutingL2ID);
+        //console.log("Completed Matches: [" + this.matchComp + "]");
+
+    // Add the scouted match to the stored level2 array
     this.apiStoreL2.push(o);
   }
 
-  // Write record to output filter  (Will need to move this to the "refresh" funtion later)
+  // Write record to output filter  (Will need to move this to the "refresh" function later)
   this.apiService.saveLevel2Data(this.apiStoreL2);
 
   // Write record to Local Storage
@@ -133,7 +145,6 @@ save(matchScoutingL2ID: number) {
 
   // Set Display back to 1
   this.display = 1;
-
 
 }
 
@@ -169,6 +180,24 @@ save(matchScoutingL2ID: number) {
 
   }
 
+  getMatchComp() {
+    console.log("Getting list of Completed Matches");
+    if (this.apiStoreL2) {
+
+      this.matchComp = [];
+
+      for (const s of this.apiStoreL2) {
+        this.matchComp.push(s.matchScoutingL2ID);
+      }
+    } else {
+      this.matchComp = [];
+    }
+
+    console.log("Completed Matches: [" + this.matchComp + "]");
+  }
+
+
+
   regenerateFilter() {
     console.log("regenerateFilter: Start: ");
 
@@ -183,13 +212,15 @@ save(matchScoutingL2ID: number) {
       for (const m of this.apiMatchL2) {
 
         if (m.scoutingStatus === null ) { 
-          // Set scouter to existing scouter value
-          //m.scouterID = this.scouter;
-          m.scouterID = Number(localStorage.getItem('scouter')) || -1;
 
-          this.apiMatchL2_filter.push(m);
-          //Break out of for loop once the first unscouted record is found
-          break;
+          // Verify Match is not in the Completed Matches List
+          if(!this.matchComp.includes(m.matchScoutingL2ID)) {
+            // Set scouter to existing scouter value
+            m.scouterID = Number(localStorage.getItem('scouter')) || -1;
+            this.apiMatchL2_filter.push(m);
+            //Break out of for loop once the first unscouted record is found
+            break;
+          }
         }
        } 
     } else {
