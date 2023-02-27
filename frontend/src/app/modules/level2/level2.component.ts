@@ -75,7 +75,7 @@ export class Level2Component implements OnInit {
 
   }
 
-  changeDisplay(d_value: number, scouter: number) {
+  changeDisplay(d_value: number, scouter: number, preNoShow: number) {
     this.display = this.display + d_value;  
     
     console.log("display; "+ this.display);
@@ -86,6 +86,9 @@ export class Level2Component implements OnInit {
 
     if(this.display > 5) {
       this.display = 1;
+    }
+    if(preNoShow == 0) {
+      this.display = 5;
     }
   }
 
@@ -157,7 +160,15 @@ save(matchScoutingL2ID: number) {
     }
 
   }
-
+  getYesNoClass(value: number, actual: number){
+    if(value == actual && value == 1) {
+        return 'button_green';
+      } else if (value == actual && value == 0) {
+        return 'button_red';
+      } else {
+        return 'button_rank';
+      }
+  }
   getClass2(value: number, b_type: number) {
 
     if(value == b_type && value == 1) {

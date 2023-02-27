@@ -18,6 +18,7 @@ export class MatchScoutingL2 {
     matchNum: number;
     matchScoutingL2ID: number;
     maneuverability: number;
+    preNoShow: number;
     red1: string;
     red2: string;
     red3: string;
@@ -30,6 +31,7 @@ export class MatchScoutingL2 {
     team: string;
     teamName: string;
     teamMatchNum: number;
+    
 
 constructor(allianceStationID: number,
     blue1: string,
@@ -50,6 +52,7 @@ constructor(allianceStationID: number,
     matchNum: number,
     matchScoutingL2ID: number,
     maneuverability: number,
+    preNoShow: number,
     red1: string,
     red2: string,
     red3: string,
@@ -81,6 +84,7 @@ constructor(allianceStationID: number,
     this.matchNum = matchNum
     this.matchScoutingL2ID = matchScoutingL2ID
     this.maneuverability = maneuverability
+    this.preNoShow = preNoShow
     this.red1 = red1
     this.red2 = red2
     this.red3 = red3
