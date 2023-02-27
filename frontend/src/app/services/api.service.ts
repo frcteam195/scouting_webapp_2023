@@ -253,6 +253,7 @@ export class ApiService {
 
   getLevel1Records() {
     this.alliance = Number(localStorage.getItem('alliance'));
+    console.log("Getting Level 1 records for Alliance Station: " + this.alliance);
     if(this.alliance > 0) {
         // First try to load a fresh copy of the data from the API
         this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting/'+this.alliance).subscribe(response => {
@@ -274,6 +275,7 @@ export class ApiService {
 
   getLevel2Records() {
     this.alliance = Number(localStorage.getItem('alliance'));
+    console.log("Getting Level 2 records for Alliance Station: " + this.alliance);
     if(this.alliance > 0)  {
 
       this.http.get<MatchScoutingL2[]>(this.apiUrl + '/matchscoutingl2/'+this.alliance).subscribe(response => {
@@ -292,6 +294,23 @@ export class ApiService {
   }
   }
 
+
+  getPitRecords() {
+    this.http.get<PitScouting[]>(this.apiUrl + '/pitscouting').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.PitReplay.next(response as PitScouting[]);
+      // Might as well store it while we have it
+      localStorage.setItem('Pit', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.PitReplay.next(JSON.parse(localStorage.getItem('Pit')!) as PitScouting[]);
+      } catch (err) {
+        console.error('Could not load Matches data from server or cache!');
+      }
+    });
+
+  }
 
 
   updatePitStatus(pit: PitScouting[]){
@@ -362,24 +381,24 @@ export class ApiService {
 
 
 
-  syncLevel1Data(alliance: number) {
+  // syncLevel1Data(alliance: number) {
 
-    // First try to load a fresh copy of the data from the API
-    this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting/'+alliance).subscribe(response => {
-      // Store the response in the ReplaySubject, which components can use to access the data
-      this.MatchL1Replay.next(response as MatchScoutingL1[]);
-      // Might as well store it while we have it
-      localStorage.setItem('MatchL1', JSON.stringify(response));
-    }, () => {
-      try {
-        // Send the cached data
-        this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
-      } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
-      }
-    });
+  //   // First try to load a fresh copy of the data from the API
+  //   this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting/'+alliance).subscribe(response => {
+  //     // Store the response in the ReplaySubject, which components can use to access the data
+  //     this.MatchL1Replay.next(response as MatchScoutingL1[]);
+  //     // Might as well store it while we have it
+  //     localStorage.setItem('MatchL1', JSON.stringify(response));
+  //   }, () => {
+  //     try {
+  //       // Send the cached data
+  //       this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
+  //     } catch (err) {
+  //       console.error('Could not load Matches data from server or cache!');
+  //     }
+  //   });
 
-  }
+  // }
 
 
 }

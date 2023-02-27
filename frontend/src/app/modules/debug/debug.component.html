@@ -6,7 +6,8 @@ local.storage:
 
 <hr>
 <div>
-    <table>
+    <!-- Match Scouting Table -->
+    <table *ngIf="display==1">
         <tr>
             <th>matchScoutingID</th>
             <th>eventID</th>
@@ -30,6 +31,21 @@ local.storage:
             <td>{{ m.scouterID }}</td>
 
 
+        </tr>
+    </table>
+    <!-- Pit Data Table -->
+    <table *ngIf="display==2">
+        <tr>
+            <th>team</th>
+            <th>eventID</th>
+            <th>scoutingStatus</th>
+            <th>scouterID</th>
+        </tr>
+        <tr *ngFor="let m of apiPitFilter">
+            <td>{{ m.team }}</td>
+            <td>{{ m.eventID }}</td>
+            <td>{{ m.scoutingStatus }}</td>
+            <td>{{ m.scouterID }}</td>
         </tr>
     </table>
 

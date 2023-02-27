@@ -12,7 +12,8 @@ export class AdminComponent implements OnInit {
 
   apiAlliance: AllianceStation[] = [];
   alliance: number = -1;
-  orientation: string = "show";
+  orientation: string;
+  orientText: string;
 
   constructor (private apiService: ApiService, private formBuilder: FormBuilder) { 
       
@@ -20,10 +21,10 @@ export class AdminComponent implements OnInit {
 
     this.apiService.AllianceReplay.subscribe(types => {
       this.apiAlliance = types;
-
-    
     });
 
+    this.orientation = localStorage.getItem('orientation') || 'L';
+    this.orientText = this.getOrientText(this.orientation);
   }
 
   select(alliance: number) {
@@ -37,34 +38,59 @@ export class AdminComponent implements OnInit {
 
   }
 
-  show(num: string){
-    if (num=="normal"){
-        if(this.orientation=="show"){
-            return "show";
-        } else if (this.orientation=="hide") {
-            return "hide";
-        }
-    }
-    if (num=="inverted"){
-        if(this.orientation=="show"){
-            return "hide";
-        } else if (this.orientation=="hide") {
-            return "show";
-        }
-    }
-    return "show";
-  }
-
   toggle() {
     if(this.orientation=="show"){
       this.orientation="hide";
-  } else {
-      this.orientation="show";
+    } else {
+        this.orientation="show";
+    }
   }
-}
+
+  clearLocalStorage(node: string) {
+
+    //localStorage.setItem('alliance', this.alliance.toString());
+    const response = confirm("Are you sure you want to clear " + node + " local storage?");
+    
+
+    if (response) {
+        // add code if the user pressed the Ok button
+        alert(node + " local storage was cleared.");
+        console.log("Ok was pressed");
+        localStorage.setItem(node, "");
+    } else {
+        // add code if the user pressed the Cancel button
+        console.log("Cancel was pressed");
+    } 
+
+  }
+
+
+  orientToggle(side: string) {
+    
+    if(side == 'L') {
+        this.orientation = 'R';
+        this.orientText = "Red on Right";
+    } else {
+      this.orientation = 'L';
+      this.orientText = "Red on Left";
+    }
+    localStorage.setItem('orientation', this.orientation);
+  }
+
+  getOrientText(side: string) {
+    
+    if(side == 'L') {
+        return "Red on Left";
+    } else {
+      return "Red on Right";
+    }
+  }
+
   ngOnInit(): void {
     // Get Alliance Station from Memory if it exists
     this.alliance = Number(localStorage.getItem('alliance')) || -1;
+    this.orientation = localStorage.getItem('orientation') || 'L';
+    this.orientText = this.getOrientText(this.orientation);
   }
 
 }
