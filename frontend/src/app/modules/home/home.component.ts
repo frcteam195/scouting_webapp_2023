@@ -38,16 +38,15 @@ export class HomeComponent implements OnInit {
       
         // Logic to display date formats to console log for testing
         // Set a variable to put the date in Mon 1 - Mon 3, year (ex: "Jan 24 - Jan 25, 2023")
-        console.log("Start Date: [" + from_date + "]");
-        console.log("End Date: [" + from_date.toLocaleString('en-US', {month: 'short'}) + "]");
-        console.log("End Date: [" + ((from_date.getDate() > 9) ? from_date.getDate() : ('0' + from_date.getDate())) + "]");
+        // console.log("Start Date: [" + from_date + "]");
+        // console.log("End Date: [" + from_date.toLocaleString('en-US', {month: 'short'}) + "]");
+        // console.log("End Date: [" + ((from_date.getDate() > 9) ? from_date.getDate() : ('0' + from_date.getDate())) + "]");
 
-        console.log("To Date: [" + to_date + "]");
-        console.log("End Date: [" + to_date.toLocaleString('en-US', {month: 'short'}) + "]");
-        console.log("End Date: [" + ((to_date.getDate() > 9) ? to_date.getDate() : ('0' + to_date.getDate())) + "]");
-        console.log("EndDate: [" + to_date.getFullYear() + "]");
+        // console.log("To Date: [" + to_date + "]");
+        // console.log("End Date: [" + to_date.toLocaleString('en-US', {month: 'short'}) + "]");
+        // console.log("End Date: [" + ((to_date.getDate() > 9) ? to_date.getDate() : ('0' + to_date.getDate())) + "]");
+        // console.log("EndDate: [" + to_date.getFullYear() + "]");
         this.eventDate = from_date.toLocaleString('en-US', {month: 'short'}) + " " + ((from_date.getDate() > 9) ? from_date.getDate() : ('0' + from_date.getDate())) + " - " + to_date.toLocaleString('en-US', {month: 'short'}) + " " + ((to_date.getDate() > 9) ? to_date.getDate() : ('0' + to_date.getDate())) + ", " + to_date.getFullYear();
-
 
         console.log("eventDate [" + this.eventDate + "]");
         //e.eventStartDate = from_date.toLocaleString('en-US', {month: 'short'});

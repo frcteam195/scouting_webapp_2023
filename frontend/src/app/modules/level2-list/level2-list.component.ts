@@ -50,8 +50,8 @@ export class Level2ListComponent implements OnInit {
 
     console.log("Alliance Station: [" + this.alliance + "]");
 
-    // Reload Website to get records specific to alliance station
-    this.apiService.getLevel2Records();
+    // // Reload Website to get records specific to alliance station
+    // this.apiService.getLevel2Records();
 
   }
 
@@ -103,12 +103,10 @@ export class Level2ListComponent implements OnInit {
     
 
     } else {
+
+      // Reload Website to get records specific to alliance station
+      this.apiService.getLevel2Records();
     
-      //console.log("Calling Pit Scouting Page with: team and scouterID)
-      //this.router.navigateByUrl('/pit/team/scouter);
-      // Opens in New Tab
-      //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
-      //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
       // Opens in Existing Tab
       this.router.navigate(["level2", alliance, scouter]); 
     }

@@ -19,6 +19,8 @@ export class PitListComponent implements OnInit {
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private router: Router) {
 
+    //this.apiService.getPitRecords();
+
     this.apiPit = [];
     
     this.apiService.PitReplay.subscribe(team => {
@@ -27,7 +29,6 @@ export class PitListComponent implements OnInit {
       // Sort by Team Number
       this.apiPit.sort((a, b) => Number(a.team) - Number(b.team));
     });
-
 
 
     this.apiService.ScouterReplay.subscribe(types => {
