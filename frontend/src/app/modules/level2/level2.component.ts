@@ -83,7 +83,6 @@ export class Level2Component implements OnInit {
       alert("Please select a Scouter Name");
       this.display = 1;
     }
-
     if(this.display > 5) {
       this.display = 1;
     }

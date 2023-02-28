@@ -12,7 +12,7 @@
             <th [ngClass]="getClass3(m.allianceStationID)">{{ m.team }} - {{ m.teamName }}</th>
         </tr>
     </table>
-    <div style="position: absolute;top: 15%;bottom: 10%; right: 0%; left: 0%;" >
+    <div style="position: absolute;top: 15%;bottom: 10%; right: 0%; left: 0%; overflow-y: scroll;" >
         <table align="center" *ngIf="display==1">
             <br>
             <tr >
@@ -28,11 +28,11 @@
                 </td>
             </tr>
             <tr>
-                <td><b><br><br><br>Did they show?<br></b></td>
+                <td><b><br><br><br>Did Not Show?<br></b></td>
             </tr>
             <tr align="center">
-                <td><button align="right" (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
-                <td><button align="left" (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">N</button></td>
+                <td><button align="right" (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">Y</button></td>
+                <td><button align="left" (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">N</button></td>
             </tr>
             <br>
         </table>
