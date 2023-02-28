@@ -20,7 +20,7 @@ export class Level1Component implements OnInit {
   apiMatchL1: MatchScoutingL1[] = [];
   apiMatchL1_filter: MatchScoutingL1[] = [];
   scouter: number = 0;
-  orientation: string="show";
+  orientation: string="show"; //show for norm, hide for invert
   darkmode: boolean=false;
   stage: number=0; //variable to keep track of what is currently being displayed
   numberBox: number=6; //static value for total number of boxes - 1
@@ -32,6 +32,7 @@ export class Level1Component implements OnInit {
   online: number = 1;
   onlineText: string = "OnLine";
 
+
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
     this.apiMatchL1_filter = [];
@@ -41,6 +42,7 @@ export class Level1Component implements OnInit {
       this.apiMatchL1 = match;
       this.regenerateFilter();
     });
+
 
     this.apiService.ScouterReplay.subscribe(types => {
       this.apiScouters = types;
@@ -90,9 +92,16 @@ export class Level1Component implements OnInit {
   ngOnInit(): void { 
     this.scouter = Number(localStorage.getItem('scouter')) || -1;
     this.alliance = Number(localStorage.getItem('alliance')) || -1;
+    if (localStorage.getItem('orientation')=="L"){
+        this.orientation = "hide";
+    } else {
+        this.orientation = "show";
+    }
     console.log("Alliance Station: " + this.alliance);
     // Get Level 1 records specific to alliance station
     this.apiService.getLevel1Records();
+    // Get orientation
+
   }
 
   setDarkMode(){
