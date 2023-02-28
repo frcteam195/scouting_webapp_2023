@@ -21,7 +21,7 @@
 <table align="center">
     <tr *ngFor="let e of apiEvent">
     
-        <td align="center" class="eventText">
+        <td *ngIf="e.currentEvent==1" align="center" class="eventText">
             {{ e.eventName }} <br>
             {{ e.eventLocation }} <br>
             {{ this.eventDate }} <br>           
