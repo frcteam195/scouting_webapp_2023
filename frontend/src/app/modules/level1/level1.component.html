@@ -88,7 +88,7 @@
                             <td colspan="2"><b><br><br><br>Did Not Show<br></b></td>
                         </tr>
                         <tr align="center">
-                            <td><button (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
+                            <td><button (click)="m.preNoShow = 1; stage = 6;updateBox()" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
                             <td><button (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">N</button></td>
                         </tr>
                     </table>
