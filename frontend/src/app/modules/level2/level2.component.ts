@@ -86,7 +86,7 @@ export class Level2Component implements OnInit {
     if(this.display > 5) {
       this.display = 1;
     }
-    if(preNoShow == 0) {
+    if(preNoShow == 1) {
       this.display = 5;
     }
   }
@@ -163,9 +163,9 @@ save(matchScoutingL2ID: number) {
 
   }
   getYesNoClass(value: number, actual: number){
-    if(value == actual && value == 1) {
+    if(value == actual && value == 0) {
         return 'button_green';
-      } else if (value == actual && value == 0) {
+      } else if (value == actual && value == 1) {
         return 'button_red';
       } else {
         return 'button_rank';
