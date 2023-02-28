@@ -54,9 +54,9 @@ export class DebugComponent implements OnInit {
   display: number = 1;
 
   memoryTypes: MemoryTypes[] = [{memoryTypeID:"MatchL1",memoryType:"Match Records-Level 1"},
-                                {memoryTypeID:"Level1",memoryType:"Stored Records-Level 1"},
+                                {memoryTypeID:"StoredL1",memoryType:"Stored Records-Level 1"},
                                 {memoryTypeID:"MatchL2",memoryType:"Match Records-Level 2"},
-                                {memoryTypeID:"Level2",memoryType:"Stored Records-Level 2"},
+                                {memoryTypeID:"StoredL2",memoryType:"Stored Records-Level 2"},
                                 {memoryTypeID:"Pit",memoryType:"Pit Records"}];
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) { 
@@ -112,7 +112,7 @@ export class DebugComponent implements OnInit {
   regenerateFilter() {
     console.log("regenerateFilter: Start: ");
 
-    if (this.memoryType == "Level1" && this.apiLevel1) {
+    if (this.memoryType == "StoredL1" && this.apiLevel1) {
 
       this.apiFilter1 = [];
       this.apiPitFilter = [];
@@ -146,7 +146,7 @@ export class DebugComponent implements OnInit {
                               scoutingStatus:m.scoutingStatus,
                               scouterID:m.scouterID});
       } 
-    } else     if (this.memoryType == "Level2" && this.apiLevel2) {
+    } else     if (this.memoryType == "StoredL2" && this.apiLevel2) {
 
       this.apiFilter1 = [];
       this.apiPitFilter = [];

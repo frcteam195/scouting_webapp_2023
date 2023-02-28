@@ -304,11 +304,11 @@ export class Level1Component implements OnInit {
         }
     } 
 
-    if (!localStorage.getItem('Level1')) {
+    if (!localStorage.getItem('StoredL1')) {
     console.log("No Level 1 Records in Local Storage");
     } else {
       // Get responses from memory
-      this.apiService.StoredL1Replay.next(JSON.parse(localStorage.getItem('Level1')!) as MatchScoutingL1[]);
+      this.apiService.StoredL1Replay.next(JSON.parse(localStorage.getItem('StoredL1')!) as MatchScoutingL1[]);
   
       //######################################################
       // Start - Console Log Dump
@@ -335,7 +335,7 @@ export class Level1Component implements OnInit {
   
       // Write record to Local Storage
       this.apiService.StoredL1Replay.next(this.apiStoreL1 as MatchScoutingL1[]);
-      localStorage.setItem('Level1', JSON.stringify(this.apiStoreL1));
+      localStorage.setItem('StoredL1', JSON.stringify(this.apiStoreL1));
   
       // run regenerate filter
       this.regenerateFilter();
