@@ -218,7 +218,7 @@ export class ApiService {
 
     // Get Level 1 Scouted data from Cache
     try {
-      this.StoredL1Replay.next(JSON.parse(localStorage.getItem('Level1')!) as MatchScoutingL1[]);
+      this.StoredL1Replay.next(JSON.parse(localStorage.getItem('StoredL1')!) as MatchScoutingL1[]);
     } catch (err) {
       console.error('Could not load Matches data from server or cache!');
     }
@@ -232,7 +232,7 @@ export class ApiService {
 
     // Get Level 2 Scouted data from Cache
     try {
-      this.StoredL2Replay.next(JSON.parse(localStorage.getItem('Level2')!) as MatchScoutingL2[]);
+      this.StoredL2Replay.next(JSON.parse(localStorage.getItem('StoredL2')!) as MatchScoutingL2[]);
     } catch (err) {
       console.error('Could not load Matches data from server or cache!');
     }
@@ -344,17 +344,16 @@ export class ApiService {
 
 
   saveLevel2Data(level2: MatchScoutingL2[]){
-    //localStorage.setItem('Level2', JSON.stringify(level2));
+    //localStorage.setItem('StoredL2', JSON.stringify(level2));
 
     //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
     
     this.http.post<MatchScoutingL2[]>(this.apiUrl + '/level2-update', JSON.stringify(level2), options).subscribe();
 
     console.log("Updating Level 2 Scouting Records");
 
-    let result = localStorage.getItem(('Level2'));
+    let result = localStorage.getItem(('StoredL2'));
 
     console.log(result);
 
@@ -363,17 +362,16 @@ export class ApiService {
 
 
   saveLevel1Data(level1: MatchScoutingL1[]){
-    //localStorage.setItem('Level1', JSON.stringify(level1));
+    //localStorage.setItem('StoredL1', JSON.stringify(level1));
 
     //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    //this.http.delete(this.apiUrl + '/final24').subscribe(() => this.status = 'Delete successful');
     
     this.http.post<MatchScoutingL1[]>(this.apiUrl + '/level1-update', JSON.stringify(level1), options).subscribe();
 
     console.log("Updating Level 1 Scouting Records");
 
-    let result = localStorage.getItem(('Level1'));
+    let result = localStorage.getItem(('StoredL1'));
 
     console.log(result);
 

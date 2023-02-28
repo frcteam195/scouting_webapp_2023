@@ -102,12 +102,15 @@ save(matchScoutingL2ID: number) {
     }
   } 
 
-  if (!localStorage.getItem('Level2')) {
+
+
+  if (!localStorage.getItem('StoredL2')) {
     console.log("No Level 2 Records in Local Storage");
+    this.apiStoreL2 = [];
   } else {
 
     // Get responses from memory
-    this.apiService.StoredL2Replay.next(JSON.parse(localStorage.getItem('Level2')!) as MatchScoutingL2[]);
+    this.apiService.StoredL2Replay.next(JSON.parse(localStorage.getItem('StoredL2')!) as MatchScoutingL2[]);
     
     
     //######################################################
@@ -135,12 +138,12 @@ save(matchScoutingL2ID: number) {
     this.apiStoreL2.push(o);
   }
 
-  // Write record to output filter  (Will need to move this to the "refresh" function later)
-  this.apiService.saveLevel2Data(this.apiStoreL2);
-
   // Write record to Local Storage
   this.apiService.StoredL2Replay.next(this.apiStoreL2 as MatchScoutingL2[]);
-  localStorage.setItem('Level2', JSON.stringify(this.apiStoreL2));
+  localStorage.setItem('StoredL2', JSON.stringify(this.apiStoreL2));
+
+  // Write record to output filter  (Will need to move this to the "refresh" function later)
+  this.apiService.saveLevel2Data(this.apiStoreL2);
 
   // run regenerate filter
   this.regenerateFilter();
