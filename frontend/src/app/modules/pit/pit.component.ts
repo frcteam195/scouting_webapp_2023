@@ -38,7 +38,6 @@ export class PitComponent implements OnInit {
     
     this.apiService.PitReplay.subscribe(team => {
       this.apiPit = team;
-      this.regenerateFilter();
     });
 
     this.apiService.ScouterReplay.subscribe(types => {
@@ -144,7 +143,7 @@ export class PitComponent implements OnInit {
 
 
   regenerateFilter() {
-    console.log("regenerateFilter: Start: ");
+    console.log("regenerateFilter: Pit Component");
 
     if (this.apiPit) {
 

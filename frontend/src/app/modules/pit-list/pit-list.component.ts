@@ -25,7 +25,6 @@ export class PitListComponent implements OnInit {
     
     this.apiService.PitReplay.subscribe(team => {
       this.apiPit = team;
-
       // Sort by Team Number
       this.apiPit.sort((a, b) => Number(a.team) - Number(b.team));
     });
@@ -54,24 +53,32 @@ export class PitListComponent implements OnInit {
 
   }
 
-  pitPage(team: string, scouter: number, status: number) {
 
-    if (status == 3) {
-    // do nothing if status is 2 (complete)
-    }
-    else if (scouter < 1) {
-      alert("Please select a Scouter Name");
- 
-    } else {
-    
-      //console.log("Calling Pit Scouting Page with: team and scouterID)
-      //this.router.navigateByUrl('/pit/team/scouter);
-      // Opens in New Tab
-      //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
-      //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
-      // Opens in Existing Tab
-      this.router.navigate(["pit", team, scouter]); 
-    }
+refreshData() {
+  //console.log("Refreshing Pit List");
+  this.apiService.getPitRecords();
+}
+
+
+
+pitPage(team: string, scouter: number, status: number) {
+
+  if (status == 3) {
+  // do nothing if status is 2 (complete)
   }
+  else if (scouter < 1) {
+    alert("Please select a Scouter Name");
+
+  } else {
+  
+    //console.log("Calling Pit Scouting Page with: team and scouterID)
+    //this.router.navigateByUrl('/pit/team/scouter);
+    // Opens in New Tab
+    //this.router.navigate([]).then(result => { window.open('/pit/'+team, '_blank'); }); 
+    //this.router.navigate([]).then(result => { window.open('#/pit/'+team); });
+    // Opens in Existing Tab
+    this.router.navigate(["pit", team, scouter]); 
+  }
+}
 
 }
