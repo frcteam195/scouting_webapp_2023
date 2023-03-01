@@ -1,3 +1,4 @@
+import { Params } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,6 +19,7 @@ export class Level2Component implements OnInit {
   display: number = 1;
   darkmode: number = 0;
   matchComp: number[] = [];
+  missing: number = 0;
 
   apiStoreL2: MatchScoutingL2[] = [];
 
@@ -75,21 +77,117 @@ export class Level2Component implements OnInit {
 
   }
 
-  changeDisplay(d_value: number, scouter: number, preNoShow: number) {
-    this.display = this.display + d_value;  
+  changeDisplay(d_value: number, matchID: number, preNoShow: number) {
     
-    console.log("display; "+ this.display);
-    if(this.display > 1 && scouter < 1) {
-      alert("Please select a Scouter Name");
-      this.display = 1;
+    // Check for completed fields if moving to next page
+    // Should be allowed to move back a page.
+    if (this.checkRequired(this.display,matchID) > 0 && d_value > 0) {
+      // if a check is failed do not advance display
+      return;
     }
+
+    if((preNoShow == 1) && (this.display == 1)) {
+      const response = confirm("Selecting Team Did Not Show will bring you to the save page.");
+      if (response) {
+        this.display = 5;
+      } else { 
+        this.display = 1;
+      }
+      return;
+    }
+
     if(this.display > 5) {
       this.display = 1;
+      return
     }
-    if(preNoShow == 1) {
-      this.display = 5;
-    }
+        
+    this.display = this.display + d_value;  
   }
+
+  checkRequired(display: number, record: number) {
+    this.missing = 0;
+    for (const x of this.apiMatchL2) {
+      if (x.matchScoutingL2ID == record) {
+        // Checking values on Page 1
+        if (display == 1) {
+          if (x.preNoShow === null) {
+            this.missing = 11;
+            return 2;
+          }
+        }
+        // Checking values on Page 2
+        else if (display == 2) {
+          if (x.speed === null) {
+            this.missing = 21;
+            return 2;
+          }
+          else if (x.maneuverability === null) {
+            this.missing = 22;
+            return 2;
+          }
+          else if (x.sturdiness === null) {
+            this.missing = 23;
+            return 2;
+          }
+          else if (x.climb === null) {
+            this.missing = 24;
+            return 2;
+          }
+          else if (x.effort === null) {
+            this.missing = 25;
+            return 2;
+          }
+          else if (x.scoringEff === null) {
+            this.missing = 26;
+            return 2;
+          }
+          else if (x.intakeEff === null) {
+            this.missing = 27;
+            return 2;
+          }
+          
+        }
+        // Checking values on Page 3
+        else if (display == 3) {
+          if (x.goodOffBot === null) {
+            this.missing = 31;
+            return 2;
+          }
+          
+        }
+        // Checking values on Page 4
+        else if (display == 4) {
+          if (x.goodDefBot === null) {
+            this.missing = 41;
+            return 2;
+          }
+          else if (x.defCommunity === null) {
+            this.missing = 42;
+            return 2;
+          }
+          else if (x.defCenter === null) {
+            this.missing = 43;
+            return 2;
+          }
+          else if (x.defLZ === null) {
+            this.missing = 44;
+            return 2;
+          }
+          
+        }
+      }
+
+    }
+    return 0;
+  }
+
+getAlertClass(element: number) {
+  if (element == this.missing) {
+    return 'td_alert';
+  } else {
+    return 'td_normal';
+  }
+}
 
 save(matchScoutingL2ID: number) {
 
