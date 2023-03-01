@@ -73,14 +73,7 @@ export class Level1Component implements OnInit {
     } else { //if max amount is selected
         alert("Please select less than 4 nodes at any one time!");
     }
-    for(let m of this.apiMatchL1_filter){ //set database values
-        m.autoScore1 = this.nodePositions[0];
-        m.autoScore2 = this.nodePositions[1];
-        m.autoScore3 = this.nodePositions[2];
-        m.autoScore4 = this.nodePositions[3];
-    }
   }
-
   getNodeClass(node: number){
     if (this.nodePositions.includes(node)){
         return "nodeSelected";
@@ -295,12 +288,23 @@ export class Level1Component implements OnInit {
     this.updateBox();
   } 
   save( matchScoutingL1ID: number) {
+    //reset values
+    this.nodePositions=[0, 0, 0, 0];
+    this.nodesSelected=0;
+    
+    for(let m of this.apiMatchL1_filter){ //set database values
+        m.autoScore1 = this.nodePositions[0];
+        m.autoScore2 = this.nodePositions[1];
+        m.autoScore3 = this.nodePositions[2];
+        m.autoScore4 = this.nodePositions[3];
+    }
+  
     // Update status in apiMatch record
     for (const x of this.apiMatchL1) {
 
         if (x.matchScoutingID == matchScoutingL1ID ) { 
           // Set Status to 2
-          x.scoutingStatus = 2;
+          x.scoutingStatus = 1;
         }
     } 
 

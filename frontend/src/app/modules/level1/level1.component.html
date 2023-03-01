@@ -378,7 +378,7 @@
             <tr>
                 <th style="width: 33%;">Charge Time(seconds)</th>
                 <th style="width: 33%; border-right: 4px solid black;height: 66px;">Charge Status</th>
-                <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)" *ngIf="m.ramp > 2">Buddy Climb - Was Helped</button></td>
+                <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)" *ngIf="m.ramp > 3">Buddy Climb - Was Helped</button></td>
             </tr>
             <tr>
                 <td rowspan="6">
@@ -411,27 +411,27 @@
 
                 </td>
                 <td style="border-right: 4px solid black;"><button (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
-                <td><button (click)="m.rampAssist = 1"  [ngClass]="getRankClass(m.rampAssist,1)" *ngIf="m.ramp > 2">Buddy Climb - Helped</button></td>
+                <td><button (click)="m.rampAssist = 1"  [ngClass]="getRankClass(m.rampAssist,1)" *ngIf="m.ramp > 3">Buddy Climb - Helped</button></td>
             </tr>
             <tr>
                 <td style="border-right: 4px solid black;"><button (click)="m.ramp = 4"  [ngClass]="getRankClass(m.ramp,4)">Docked - Not Engaged</button></td>
-                <td><button (click)="m.rampAssist = 0"  [ngClass]="getRankClass(m.rampAssist,0)" *ngIf="m.ramp > 2">No Buddy Climb</button></td>
+                <td><button (click)="m.rampAssist = 0"  [ngClass]="getRankClass(m.rampAssist,0)" *ngIf="m.ramp > 3">No Buddy Climb</button></td>
             </tr>
             <tr>
                 <td style="border-right: 4px solid black;"><button (click)="m.ramp = 3"  [ngClass]="getRankClass(m.ramp,3)">Parked</button></td>
-                <th style="border-top: 4px solid black; padding-top: 4px;" *ngIf="m.ramp > 2">Climb Position</th>
+                <th style="border-top: 4px solid black; padding-top: 4px;" *ngIf="m.ramp > 3">Climb Position</th>
             </tr>
             <tr>
                 <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">No Attempt - Kept Scoring</button></td>
-                <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)" *ngIf="m.ramp > 2">Fully On - Side</button></td>
+                <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)" *ngIf="m.ramp > 3">Fully On - Side</button></td>
             </tr>
             <tr>
                 <td style="border-right: 4px solid black;"><button (click)="m.ramp = 1"  [ngClass]="getRankClass(m.ramp,1)">Failed Attempt</button></td>
-                <td><button (click)="m.rampPos = 1"  [ngClass]="getRankClass(m.rampPos,1)" *ngIf="m.ramp > 2">Fully On - Center</button></td>
+                <td><button (click)="m.rampPos = 1"  [ngClass]="getRankClass(m.rampPos,1)" *ngIf="m.ramp > 3">Fully On - Center</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">Not Attemp</button></td>
-                <td><button (click)="m.rampPos = 0"  [ngClass]="getRankClass(m.rampPos,0)" *ngIf="m.ramp > 2">Hanging Off</button></td>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">No Attempt</button></td>
+                <td><button (click)="m.rampPos = 0"  [ngClass]="getRankClass(m.rampPos,0)" *ngIf="m.ramp > 3">Hanging Off</button></td>
             </tr>
         </table>
     </div>
