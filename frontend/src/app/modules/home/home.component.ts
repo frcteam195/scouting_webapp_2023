@@ -56,7 +56,9 @@ export class HomeComponent implements OnInit {
 
   getClassColor(value: number) {
 
-    if(value > 3) {
+    if(value == 7) {
+      return 'black_all';
+    } else if(value > 3) {
       return 'blue_all';
     } else {
       return 'red_all';

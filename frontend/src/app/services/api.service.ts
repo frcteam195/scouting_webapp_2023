@@ -273,6 +273,26 @@ export class ApiService {
   }
 
 
+  getLevel1Review() {
+
+      // First try to load a fresh copy of the data from the API
+    this.http.get<MatchScoutingL1[]>(this.apiUrl + '/matchscouting/').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.MatchL1Replay.next(response as MatchScoutingL1[]);
+      // Might as well store it while we have it
+      localStorage.setItem('MatchL1', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
+      } catch (err) {
+        console.error('Could not load Matches data from server or cache!');
+      }
+    });
+
+  }
+
+
   getLevel2Records() {
     this.alliance = Number(localStorage.getItem('alliance'));
     console.log("Getting Level 2 records for Alliance Station: " + this.alliance);

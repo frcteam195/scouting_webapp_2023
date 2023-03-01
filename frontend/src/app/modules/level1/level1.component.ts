@@ -91,8 +91,12 @@ export class Level1Component implements OnInit {
         this.orientation = "show";
     }
     console.log("Alliance Station: " + this.alliance);
-    // Get Level 1 records specific to alliance station
-    this.apiService.getLevel1Records();
+    // Get Level 1 records specific to alliance station 
+    if (this.alliance == 7) {
+        this.apiService.getLevel1Review();
+    } else {
+        this.apiService.getLevel1Records();
+    }
     // Get orientation
 
   }
@@ -139,12 +143,24 @@ export class Level1Component implements OnInit {
       // Filter
       for (const m of this.apiMatchL1) {
         console.log("hi");
-        if (m.scoutingStatus === null ) { 
-          //Break out of for loop once the first unscouted record is found
-          m.scouterID = this.scouter;
-          this.apiMatchL1_filter.push(m);
-          break;
+        if (this.alliance == 7) { // Reviewer
+            if (m.scoutingStatus == 2) { 
+                //Break out of for loop once the first review record is found
+                m.scouterID = this.scouter;
+                this.apiMatchL1_filter.push(m);
+                break;
+              }
         }
+        else {
+            if (m.scoutingStatus === null ) { 
+                //Break out of for loop once the first unscouted record is found
+                m.scouterID = this.scouter;
+                this.apiMatchL1_filter.push(m);
+                break;
+              }
+        }
+        
+
        } 
     } else {
       this.apiMatchL1_filter = [];
@@ -303,8 +319,13 @@ export class Level1Component implements OnInit {
     for (const x of this.apiMatchL1) {
 
         if (x.matchScoutingID == matchScoutingL1ID ) { 
-          // Set Status to 2
-          x.scoutingStatus = 1;
+            if (this.alliance == 7) {
+                // Set Status to 3 - complete after review
+                x.scoutingStatus = 3;
+            } else {
+                // Set Status to 1 - complete
+                x.scoutingStatus = 1;
+            }
         }
     } 
 
