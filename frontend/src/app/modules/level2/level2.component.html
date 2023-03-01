@@ -27,8 +27,9 @@
                     {{ m.blue3 }}<br>
                 </td>
             </tr>
+            <tr><td><br><br><br></td></tr>
             <tr>
-                <td><b><br><br><br>Did Not Show?<br></b></td>
+                <td  [ngClass]="getAlertClass(11)"><b>Did Not Show?<br></b></td>
             </tr>
             <tr align="center">
                 <td><button align="right" (click)="m.preNoShow = 1" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
@@ -39,7 +40,7 @@
     <table align="center" *ngIf="display==2"> <!-- Rating page -->
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(21)">
                 <b>Speed</b>
             </td>
             <td>
@@ -53,7 +54,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(22)">
                 <b>Manuver</b>
             </td>
             <td>
@@ -67,7 +68,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(23)">
                 <b>Sturdy</b>
             </td>
             <td>
@@ -81,7 +82,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(24)">
                 <b>Climb</b>
             </td>
             <td>
@@ -95,7 +96,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(25)">
                 <b>Effort</b>
             </td>
             <td>
@@ -109,7 +110,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(26)">
                 <b>Scoring Eff</b>
             </td>
             <td>
@@ -123,7 +124,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(27)">
                 <b>Intake Eff</b>
             </td>
             <td>
@@ -151,7 +152,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(31)">
                 <b>Good Offensive Bot:</b>
             </td>
             <td><button (click)="m.goodOffBot = 1"  [ngClass]="getClass2(m.goodOffBot,1)">Y</button></td>
@@ -172,7 +173,7 @@
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(41)">
                 <b>Good Defensive Bot:</b>
             </td>
             <td><button (click)="m.goodDefBot = 1"  [ngClass]="getClass2(m.goodDefBot,1)">Y</button></td>
@@ -180,15 +181,15 @@
         </tr>
         <br>
         <tr>
-            <td>
-                <b>Played defense in community:</b>
+            <td [ngClass]="getAlertClass(42)">
+                <b>Played defense near community:</b>
             </td>
             <td><button (click)="m.defCommunity = 1"  [ngClass]="getClass2(m.defCommunity,1)">Y</button></td>
             <td><button (click)="m.defCommunity = 0"  [ngClass]="getClass2(m.defCommunity,0)">N</button></td>  
         </tr>
         <br>
         <tr>
-            <td>
+            <td [ngClass]="getAlertClass(43)">
                 <b>Played defense in center field:</b>
             </td>
             <td><button (click)="m.defCenter = 1"  [ngClass]="getClass2(m.defCenter,1)">Y</button></td>
@@ -196,8 +197,8 @@
         </tr>
         <br>
         <tr>
-            <td>
-                <b>Played defense in loading zone:</b>
+            <td [ngClass]="getAlertClass(44)">
+                <b>Played defense near loading zone:</b>
             </td>
             <td><button (click)="m.defLZ = 1"  [ngClass]="getClass2(m.defLZ,1)">Y</button></td>
             <td><button (click)="m.defLZ = 0"  [ngClass]="getClass2(m.defLZ,0)">N</button></td>  
@@ -220,9 +221,9 @@
     <table class="buttons" align="center" style="Width: 100%;height: 10%; position: absolute; bottom: 0; right: 0%; left: 0%; text-align: center;">
         <tr>
             <td style="width: 50%;" *ngIf="display==1"><a routerLink="/level2list"><button class="buttons" title="Back to Level2 List">Close</button></a></td>
-            <td style="width: 50%;" *ngIf="display>1 && display<5"><button class="buttons" (click)="changeDisplay(-1,m.scouterID, m.preNoShow)">Previous</button></td>
-            <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="changeDisplay(-1,m.scouterID, m.preNoShow)">Previous</button></td>
-            <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,m.scouterID, m.preNoShow)">Next</button></td>
+            <td style="width: 50%;" *ngIf="display>1 && display<5"><button class="buttons" (click)="changeDisplay(-1,m.matchScoutingL2ID,m.preNoShow)">Previous</button></td>
+            <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="changeDisplay(-1,m.matchScoutingL2ID, m.preNoShow)">Previous</button></td>
+            <td style="width: 50%;" *ngIf="display<5"><button class="buttons" (click)="changeDisplay(1,m.matchScoutingL2ID,m.preNoShow)">Next</button></td>
             <td style="width: 50%;" *ngIf="display==5"><button class="buttons" (click)="save(m.matchScoutingL2ID)">Save</button></td>
         </tr>
     </table>
