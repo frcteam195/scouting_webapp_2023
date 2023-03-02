@@ -19,7 +19,8 @@ export class Level2Component implements OnInit {
   display: number = 1;
   darkmode: number = 0;
   matchComp: number[] = [];
-  missing: number = 0;
+  missing: number[] = [];
+  missing_return: number = 0;
 
   apiStoreL2: MatchScoutingL2[] = [];
 
@@ -105,84 +106,85 @@ export class Level2Component implements OnInit {
   }
 
   checkRequired(display: number, record: number) {
-    this.missing = 0;
+    this.missing = [];
+    this.missing_return = 0;
     for (const x of this.apiMatchL2) {
       if (x.matchScoutingL2ID == record) {
         // Checking values on Page 1
         if (display == 1) {
           if (x.preNoShow === null) {
-            this.missing = 11;
-            return 2;
+            this.missing.push(11);
+            this.missing_return = 1;
           }
         }
         // Checking values on Page 2
         else if (display == 2) {
           if (x.speed === null) {
-            this.missing = 21;
-            return 2;
+            this.missing.push(21);
+            this.missing_return = 1;
           }
-          else if (x.maneuverability === null) {
-            this.missing = 22;
-            return 2;
+          if (x.maneuverability === null) {
+            this.missing.push(22);
+            this.missing_return = 1;
           }
-          else if (x.sturdiness === null) {
-            this.missing = 23;
-            return 2;
+          if (x.sturdiness === null) {
+            this.missing.push(23);
+            this.missing_return = 1;
           }
-          else if (x.climb === null) {
-            this.missing = 24;
-            return 2;
+          if (x.climb === null) {
+            this.missing.push(24);
+            this.missing_return = 1;
           }
-          else if (x.effort === null) {
-            this.missing = 25;
-            return 2;
+          if (x.effort === null) {
+            this.missing.push(25);
+            this.missing_return = 1;
           }
-          else if (x.scoringEff === null) {
-            this.missing = 26;
-            return 2;
+          if (x.scoringEff === null) {
+            this.missing.push(26);
+            this.missing_return = 1;
           }
-          else if (x.intakeEff === null) {
-            this.missing = 27;
-            return 2;
+          if (x.intakeEff === null) {
+            this.missing.push(27);
+            this.missing_return = 1;
           }
           
         }
         // Checking values on Page 3
         else if (display == 3) {
           if (x.goodOffBot === null) {
-            this.missing = 31;
-            return 2;
+            this.missing.push(31);
+            this.missing_return = 1;
           }
           
         }
         // Checking values on Page 4
         else if (display == 4) {
           if (x.goodDefBot === null) {
-            this.missing = 41;
-            return 2;
+            this.missing.push(41);
+            this.missing_return = 1;
           }
-          else if (x.defCommunity === null) {
-            this.missing = 42;
-            return 2;
+          if (x.defCommunity === null) {
+            this.missing.push(42);
+            this.missing_return = 1;
           }
-          else if (x.defCenter === null) {
-            this.missing = 43;
-            return 2;
+          if (x.defCenter === null) {
+            this.missing.push(43);
+            this.missing_return = 1;
           }
-          else if (x.defLZ === null) {
-            this.missing = 44;
-            return 2;
+          if (x.defLZ === null) {
+            this.missing.push(44);
+            this.missing_return = 1;
           }
           
         }
       }
 
     }
-    return 0;
+    return this.missing_return;
   }
 
 getAlertClass(element: number) {
-  if (element == this.missing) {
+  if (this.missing.includes(element)) {
     return 'td_alert';
   } else {
     return 'td_normal';
