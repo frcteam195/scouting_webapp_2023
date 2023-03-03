@@ -197,8 +197,8 @@ save(matchScoutingL2ID: number) {
   for (const x of this.apiMatchL2) {
 
     if (x.matchScoutingL2ID == matchScoutingL2ID ) { 
-      // Set Status to 2
-      x.scoutingStatus = 2;
+      // Set Status to 1
+      x.scoutingStatus = 1;
     }
   } 
 

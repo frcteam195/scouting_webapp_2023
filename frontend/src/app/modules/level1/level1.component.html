@@ -4,7 +4,7 @@
             <tr>
                 <td rowspan="2"><button (click)="lastBox()" id="headerButton">Previous</button></td> 
                 <td style="text-align: center;width: 800px; font-weight: bold; font-size: larger;" id="headerText"><h1 >Title</h1></td>
-                <td rowspan="2"><button (click)="nextBox()" id="headerButton">Next</button></td> 
+                <td rowspan="2"><button (click)="nextBox(m.matchScoutingID)" id="headerButton">Next</button></td> 
             </tr>
             <tr>
                 <th [ngClass]="getColor(m.team)" style="text-align: center;">Match: {{ m.matchNum }} - Team: {{ m.team }}: {{ m.teamName }}</th>
@@ -61,7 +61,7 @@
             </tr>
         </table>
         <div style="height: 20px;"></div>
-        <button (click)="nextBox()" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
+        <button (click)="nextBox(m.matchScoutingID)" style="margin: 0 auto; display: block;" id="initialNext">Next</button>
         <button (click)="onlineToggle(this.online)" [ngClass]="getOnlineClass()">{{ this.onlineText }}</button>
         
     </div>
@@ -71,21 +71,21 @@
         <table id="preTable" style="width: 100%;" border="0">
             
             <tr>
-                <th align="center" style="width:33%;font-size: xx-large;">Starting Position</th>
+                <th align="center" style="width:33%;font-size: xx-large;" [ngClass]="getAlertClass(11)">Starting Position</th>
                 <td align="center" rowspan="4" style="width:33%px;">
                     <img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px">
                 </td>
                 <td rowspan="2" style="text-align: center;font-size: xx-large;">
                     <table align="center" border="0" class="preYesNo">
                         <tr>
-                            <td colspan="2"><b>Preload?<br></b></td>
+                            <td colspan="2" [ngClass]="getAlertClass(12)"><b>Preload?<br></b></td>
                         </tr>
                         <tr align="center">
                             <td><button (click)="m.preLoad = 1" [ngClass]="getYesNoClass(m.preLoad, 1)">Y</button></td>
                             <td><button (click)="m.preLoad = 0" [ngClass]="getYesNoClass(m.preLoad, 0)">N</button></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><b><br><br><br>Did Not Show<br></b></td>
+                            <td colspan="2" [ngClass]="getAlertClass(13)"><b><br><br><br>Did Not Show<br></b></td>
                         </tr>
                         <tr align="center">
                             <td><button (click)="m.preNoShow = 1; stage = 6;updateBox()" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
@@ -168,7 +168,7 @@
         <br>
         <table id="autoDropdownTable" border="0">
             <tr>
-                <td>
+                <td [ngClass]="getAlertClass(21)">
                     <h2>Move Bonus:</h2>
                     <!-- <form>
                         <label for="moveBns"><h2>Move Bonus:</h2></label>
@@ -180,7 +180,7 @@
                         </select>
                     </form> -->
                 </td>
-                <td>
+                <td [ngClass]="getAlertClass(22)">
                     <h2>Charge Station:</h2>
                     <!-- <form>
                         <label for="chargestn"><h2>Charge Station:</h2></label>
@@ -193,7 +193,7 @@
                         </select>
                     </form> -->
                 </td>
-                <td>
+                <td [ngClass]="getAlertClass(23)">
                     <h2>Penalties:</h2>
                     <!-- <form>
                         <label for="penalties"><h2>Penalties:</h2></label>
@@ -377,7 +377,7 @@
         <table style="width: 100%;" align="center">
             <tr>
                 <th style="width: 33%;">Charge Time(seconds)</th>
-                <th style="width: 33%; border-right: 4px solid black;height: 66px;">Charge Status</th>
+                <th style="width: 33%; border-right: 4px solid black;height: 66px;" [ngClass]="getAlertClass(41)">Charge Status</th>
                 <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)" *ngIf="m.ramp > 3">Buddy Climb - Was Helped</button></td>
             </tr>
             <tr>
@@ -440,22 +440,27 @@
         <br>
         <table align="center" class="yesNoTable">
             <tr>
-                <th>Subsystem Broke?</th>
+                <th [ngClass]="getAlertClass(51)">Subsystem Broke?</th>
                 <td><button (click)="m.postSubsystemBroke = 1" [ngClass]="getYesNoClass(m.postSubsystemBroke, 1)">Y</button></td>
                 <td><button (click)="m.postSubsystemBroke = 0" [ngClass]="getYesNoClass(m.postSubsystemBroke, 0)">N</button></td>
             </tr>
             <tr>
-                <th>Broke Down?</th>
+                <th [ngClass]="getAlertClass(52)">Broke Down?</th>
                 <td><button (click)="m.postBrokeDown = 1" [ngClass]="getYesNoClass(m.postBrokeDown, 1)">Y</button></td>
                 <td><button (click)="m.postBrokeDown = 0" [ngClass]="getYesNoClass(m.postBrokeDown, 0)">N</button></td>
             </tr>
             <tr>
-                <th>Reorient Cone?</th>
+                <th [ngClass]="getAlertClass(53)">Tipped Over</th>
+                <td><button (click)="m.postTippedOver = 1" [ngClass]="getYesNoClass(m.postTippedOver, 1)">Y</button></td>
+                <td><button (click)="m.postTippedOver = 0" [ngClass]="getYesNoClass(m.postTippedOver, 0)">N</button></td>
+            </tr>
+            <tr>
+                <th [ngClass]="getAlertClass(54)">Reorient Cone?</th>
                 <td><button (click)="m.postReorientCone = 1" [ngClass]="getYesNoClass(m.postReorientCone, 1)">Y</button></td>
                 <td><button (click)="m.postReorientCone = 0" [ngClass]="getYesNoClass(m.postReorientCone, 0)">N</button></td>
             </tr>
             <tr>
-                <th>Shelf Pickup?</th>
+                <th [ngClass]="getAlertClass(55)">Shelf Pickup?</th>
                 <td><button (click)="m.postShelfPickup = 1" [ngClass]="getYesNoClass(m.postShelfPickup, 1)">Y</button></td>
                 <td><button (click)="m.postShelfPickup = 0" [ngClass]="getYesNoClass(m.postShelfPickup, 0)">N</button></td>
             </tr>
@@ -465,7 +470,7 @@
                 <td><button (click)="m.postGroundPickup = 0" [ngClass]="getYesNoClass(m.postGroundPickup, 0)">N</button></td>
             </tr> -->
             <tr>
-                <th>Good Partner?</th>
+                <th [ngClass]="getAlertClass(56)">Good Partner?</th>
                 <td><button (click)="m.postGoodPartner = 1" [ngClass]="getYesNoClass(m.postGoodPartner, 1)">Y</button></td>
                 <td><button (click)="m.postGoodPartner = 0" [ngClass]="getYesNoClass(m.postGoodPartner, 0)">N</button></td>
             </tr>
@@ -483,7 +488,10 @@
                 <td><button (click)="returnBox()" style="margin: 0 auto; display: block;" id="initialNext">Return</button> </td>
             </tr>
             <tr>
-                <td><button (click)="save(m.matchScoutingID)" style="margin: 0 auto; display: block;" id="initialNext">Save</button></td>
+                <td><button (click)="save(m.matchScoutingID,2)" style="margin: 0 auto; display: block;" id="initialNext">Review</button></td>
+            </tr>
+            <tr>
+                <td><button (click)="save(m.matchScoutingID,1)" style="margin: 0 auto; display: block;" id="initialNext">Save</button></td>
             </tr>
         </table> 
     </div>
