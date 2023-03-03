@@ -32,6 +32,9 @@ export class Level1Component implements OnInit {
   online: number = 1;
   onlineText: string = "OnLine";
 
+  missing: number[] = [];
+  missing_return: number = 0;
+
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
 
@@ -134,15 +137,15 @@ export class Level1Component implements OnInit {
     console.log("regenerateFilter: Start: ");
 
     if (this.apiMatchL1) {
-        console.log("hello");
+
       this.apiMatchL1_filter = [];
-      console.log("hello2");
+
       // Sort Matches by MatchNum
       this.apiMatchL1.sort((a, b) => a.matchNum - b.matchNum);
-      console.log("hello3");
+
       // Filter
       for (const m of this.apiMatchL1) {
-        console.log("hi");
+
         if (this.alliance == 7) { // Reviewer
             if (m.scoutingStatus == 2) { 
                 //Break out of for loop once the first review record is found
@@ -282,7 +285,14 @@ export class Level1Component implements OnInit {
     }
   }
 
-  nextBox(){ //increment stage by one till a max and update boxes
+  nextBox(matchID: number){ //increment stage by one till a max and update boxes
+
+    // Check for completed fields if moving to next page
+    if (this.checkRequired(this.stage,matchID) > 0) {
+        // if a check is failed do not advance display
+        return;
+    }
+
     this.stage++;
     if (this.stage > this.numberBox){
         this.stage = this.numberBox;
@@ -303,7 +313,112 @@ export class Level1Component implements OnInit {
     this.stage = 5;
     this.updateBox();
   } 
-  save( matchScoutingL1ID: number) {
+
+  checkRequired(display: number, record: number) {
+    this.missing = [];
+    this.missing_return = 0;
+    for (const x of this.apiMatchL1) {
+      if (x.matchScoutingID == record) {
+        // Checking values on Page 1
+        if (display == 0) {
+          if (x.scouterID < 1) {
+            this.missing.push(1);
+            this.missing_return = 1;
+          }
+        }
+        // Checking values on Page 2 (PreGame)
+        else if (display == 1) {
+          if (x.preStartPos === null) {
+            this.missing.push(11);
+            this.missing_return = 1;
+          }
+          if (x.preLoad === null) {
+            this.missing.push(12);
+            this.missing_return = 1;
+          }
+          if (x.preNoShow === null) {
+            this.missing.push(13);
+            this.missing_return = 1;
+          }
+
+          
+        }
+        // Checking values on Page 3 (Auto)
+        else if (display == 2) {
+          if (x.autoMB === null) {
+            this.missing.push(21);
+            this.missing_return = 1;
+          }
+          if (x.autoRamp === null) {
+            this.missing.push(22);
+            this.missing_return = 1;
+          }
+          if (x.autoPen === null) {
+            this.missing.push(23);
+            this.missing_return = 1;
+          }
+        }
+        // Checking values on Page 5 (Ramp)
+        else if (display == 4) {
+          if (x.ramp === null) {
+            this.missing.push(41);
+            this.missing_return = 1;
+          }
+        }
+        // Checking values on Page 6 (Post Game)
+        else if (display == 5) {
+            if (x.postSubsystemBroke === null) {
+                this.missing.push(51);
+                this.missing_return = 1;
+            }
+            if (x.postBrokeDown === null) {
+                this.missing.push(52);
+                this.missing_return = 1;
+            }
+            if (x.postTippedOver === null) {
+                this.missing.push(53);
+                this.missing_return = 1;
+            }
+            if (x.postReorientCone === null) {
+                this.missing.push(54);
+                this.missing_return = 1;
+            }
+            if (x.postShelfPickup === null) {
+                this.missing.push(55);
+                this.missing_return = 1;
+            }
+            if (x.postGoodPartner === null) {
+                this.missing.push(56);
+                this.missing_return = 1;
+            }
+        }
+      }
+
+    }
+    return this.missing_return;
+  }
+
+getAlertClass(element: number) {
+  if (this.missing.includes(element)) {
+    return 'td_alert';
+  } else {
+    return 'td_normal';
+  }
+}
+
+
+
+  save( matchScoutingL1ID: number, status: number) {
+
+    // If Review is selected, have scouter confirm
+    if (status == 2) {
+        const response = confirm("Are you sure you want to post this match for review? \
+(This should only be done if you made major error, like watching the wrong robot.)");
+        if (!response) {
+          return;
+        }
+    }
+
     //reset values
     this.nodePositions=[0, 0, 0, 0];
     this.nodesSelected=0;
@@ -319,12 +434,12 @@ export class Level1Component implements OnInit {
     for (const x of this.apiMatchL1) {
 
         if (x.matchScoutingID == matchScoutingL1ID ) { 
-            if (this.alliance == 7) {
+            if (status == 1 && this.alliance == 7) {
                 // Set Status to 3 - complete after review
                 x.scoutingStatus = 3;
             } else {
-                // Set Status to 1 - complete
-                x.scoutingStatus = 1;
+                // Set Status to 1: complete or 2: review
+                x.scoutingStatus = status;
             }
         }
     } 

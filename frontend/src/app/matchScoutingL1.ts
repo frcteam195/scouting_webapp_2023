@@ -23,6 +23,7 @@ export class MatchScoutingL1 {
     postReorientCone: number;
     postShelfPickup: number;
     postSubsystemBroke: number;
+    postTippedOver: number;
     preLoad: number;
     preNoShow: number;
     preStartPos: number;
@@ -74,6 +75,7 @@ constructor(allianceStationID: number,
     postReorientCone: number,
     postShelfPickup: number,
     postSubsystemBroke: number,
+    postTippedOver: number,
     preLoad: number,
     preNoShow: number,
     preStartPos: number,
@@ -124,6 +126,7 @@ constructor(allianceStationID: number,
     this.postReorientCone = postReorientCone
     this.postShelfPickup = postShelfPickup
     this.postSubsystemBroke = postSubsystemBroke
+    this.postTippedOver = postTippedOver
     this.preLoad = preLoad
     this.preNoShow = preNoShow
     this.preStartPos = preStartPos
