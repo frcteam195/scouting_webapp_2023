@@ -96,6 +96,12 @@ export class AdminComponent implements OnInit {
 
 
   saveFile(value: string) {
+
+    const response = confirm("Are you sure you want to download " + value + " data?");
+    if (!response) {
+      return;
+    }
+
     let now = new Date();
     let date = formatDate(now, 'MMddhhmm', 'en-US');
 
