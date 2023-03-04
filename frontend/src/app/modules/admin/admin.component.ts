@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AllianceStation } from 'src/app/allianceStation';
 import { ApiService } from 'src/app/services/api.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -91,6 +92,22 @@ export class AdminComponent implements OnInit {
     this.alliance = Number(localStorage.getItem('alliance')) || -1;
     this.orientation = localStorage.getItem('orientation') || 'L';
     this.orientText = this.getOrientText(this.orientation);
+  }
+
+
+  saveFile(value: string) {
+    let now = new Date();
+    let date = formatDate(now, 'MMddhhmm', 'en-US');
+
+    let filename = value + '.' + date + '.txt';
+    let fileContent = localStorage.getItem(value) || '';
+    const file = new Blob([fileContent], { type: "text/plain" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = filename;
+    link.click();
+    link.remove();
   }
 
 }

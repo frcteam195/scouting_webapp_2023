@@ -42,7 +42,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <button>Backup Level 1 Data to File</button>
+            <button (click)="saveFile('StoredL1')">Backup Level 1 Data to File</button>
         </td>
     </tr>
     <tr>
@@ -54,19 +54,19 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <button>Backup Level 2 Data to File</button>
+            <button (click)="saveFile('StoredL2')">Backup Level 2 Data to File</button>
         </td>
     </tr>
     <tr>
         <td>&nbsp;</td>
         <td >
-            <button  (click)="clearLocalStorage('Pit')">Clear Pit Data</button>
+            <button (click)="clearLocalStorage('Pit')">Clear Pit Data</button>
         </td>
     </tr>
     <tr>
         <td>&nbsp;</td>
         <td>
-            <button>Backup Pit Data to File</button>
+            <button (click)="saveFile('Pit')">Backup Pit Data to File</button>
         </td>
     </tr>
 
