@@ -130,7 +130,7 @@
     </div>
     <div id="auto" style="display: none;">
         <p></p>
-        <table id="nodeTable" align="center">
+        <table id="nodeTable" align="center" *ngIf=" m.allianceStationID > 3">
             <tr>
                 <td><button class="cone" (click)="nodeSelect(1)" [ngClass]="getNodeClass(1)">1</button></td>
                 <td><button class="cube" (click)="nodeSelect(2)" [ngClass]="getNodeClass(2)">2</button></td>
@@ -165,6 +165,41 @@
                 <td><button class="other" (click)="nodeSelect(27)" [ngClass]="getNodeClass(27)">27</button></td>
             </tr>
         </table>
+        <table id="nodeTable" align="center" *ngIf=" m.allianceStationID < 4 ">
+            <tr>
+              <td><button class="cone" (click)="nodeSelect(9)" [ngClass]="getNodeClass(9)">9</button></td>
+              <td><button class="cube" (click)="nodeSelect(8)" [ngClass]="getNodeClass(8)">8</button></td>
+              <td><button class="cone" (click)="nodeSelect(7)" [ngClass]="getNodeClass(7)">7</button></td>
+              <td><button class="cone" (click)="nodeSelect(6)" [ngClass]="getNodeClass(6)">6</button></td>
+              <td><button class="cube" (click)="nodeSelect(5)" [ngClass]="getNodeClass(5)">5</button></td>
+              <td><button class="cone" (click)="nodeSelect(4)" [ngClass]="getNodeClass(4)">4</button></td>
+              <td><button class="cone" (click)="nodeSelect(3)" [ngClass]="getNodeClass(3)">3</button></td>
+              <td><button class="cube" (click)="nodeSelect(2)" [ngClass]="getNodeClass(2)">2</button></td>
+              <td><button class="cone" (click)="nodeSelect(1)" [ngClass]="getNodeClass(1)">1</button></td>
+            </tr>
+            <tr>
+              <td><button class="cone" (click)="nodeSelect(18)" [ngClass]="getNodeClass(18)">18</button></td>
+              <td><button class="cube" (click)="nodeSelect(17)" [ngClass]="getNodeClass(17)">17</button></td>
+              <td><button class="cone" (click)="nodeSelect(16)" [ngClass]="getNodeClass(16)">16</button></td>
+              <td><button class="cone" (click)="nodeSelect(15)" [ngClass]="getNodeClass(15)">15</button></td>
+              <td><button class="cube" (click)="nodeSelect(14)" [ngClass]="getNodeClass(14)">14</button></td>
+              <td><button class="cone" (click)="nodeSelect(13)" [ngClass]="getNodeClass(13)">13</button></td>
+              <td><button class="cone" (click)="nodeSelect(12)" [ngClass]="getNodeClass(12)">12</button></td>
+              <td><button class="cube" (click)="nodeSelect(11)" [ngClass]="getNodeClass(11)">11</button></td>
+              <td><button class="cone" (click)="nodeSelect(10)" [ngClass]="getNodeClass(10)">10</button></td>
+            </tr>
+            <tr>
+                <td><button class="other" (click)="nodeSelect(27)" [ngClass]="getNodeClass(27)">27</button></td>
+                <td><button class="other" (click)="nodeSelect(26)" [ngClass]="getNodeClass(26)">26</button></td>
+                <td><button class="other" (click)="nodeSelect(25)" [ngClass]="getNodeClass(25)">25</button></td>
+                <td><button class="other" (click)="nodeSelect(24)" [ngClass]="getNodeClass(24)">24</button></td>
+                <td><button class="other" (click)="nodeSelect(23)" [ngClass]="getNodeClass(23)">23</button></td>
+                <td><button class="other" (click)="nodeSelect(22)" [ngClass]="getNodeClass(22)">22</button></td>
+                <td><button class="other" (click)="nodeSelect(21)" [ngClass]="getNodeClass(21)">21</button></td>
+                <td><button class="other" (click)="nodeSelect(20)" [ngClass]="getNodeClass(20)">20</button></td>
+                <td><button class="other" (click)="nodeSelect(19)" [ngClass]="getNodeClass(19)">19</button></td>
+            </tr>
+        </table>            
         <br>
         <table id="autoDropdownTable" border="0">
             <tr>
