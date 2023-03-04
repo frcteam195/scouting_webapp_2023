@@ -13,6 +13,7 @@ import { SuperClimbTypes } from '../superClimbTypes';
 import { BuildTypes } from '../buildTypes';
 import { CenterGravityTypes } from '../centerGravityTypes';
 import { AllianceStation } from '../allianceStation';
+import { environment } from '../../environments/environment';
  
 
 @Injectable({
@@ -39,7 +40,8 @@ export class ApiService {
   alliance: number = -1;
 
 
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = environment.apiUrl;
+  //private apiUrl = 'http://localhost:5000';
   //private apiUrl = 'http://scouting.team195.com:5000';
   //private apiUrl = 'http://192.168.1.195:23450';  // Dave's House
   //private apiUrl = 'http://10.0.20.195:23450';     // Mark's House
