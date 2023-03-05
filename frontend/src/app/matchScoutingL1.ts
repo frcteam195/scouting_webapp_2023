@@ -20,6 +20,7 @@ export class MatchScoutingL1 {
     matchScoutingID: number;
     postBrokeDown: number;
     postGoodPartner: number;
+    postGroundPickup: number;
     postReorientCone: number;
     postShelfPickup: number;
     postSubsystemBroke: number;
@@ -72,6 +73,7 @@ constructor(allianceStationID: number,
     matchScoutingID: number,
     postBrokeDown: number,
     postGoodPartner: number,
+    postGroundPickup: number,
     postReorientCone: number,
     postShelfPickup: number,
     postSubsystemBroke: number,
@@ -123,6 +125,7 @@ constructor(allianceStationID: number,
     this.matchScoutingID = matchScoutingID
     this.postBrokeDown = postBrokeDown
     this.postGoodPartner = postGoodPartner
+    this.postGroundPickup = postGroundPickup
     this.postReorientCone = postReorientCone
     this.postShelfPickup = postShelfPickup
     this.postSubsystemBroke = postSubsystemBroke

@@ -88,8 +88,8 @@
                             <td colspan="2" [ngClass]="getAlertClass(13)"><b><br><br><br>Did Not Show<br></b></td>
                         </tr>
                         <tr align="center">
-                            <td><button (click)="m.preNoShow = 1; stage = 6;updateBox()" [ngClass]="getYesNoClass(m.preNoShow, 1)">Y</button></td>
-                            <td><button (click)="m.preNoShow = 0" [ngClass]="getYesNoClass(m.preNoShow, 0)">N</button></td>
+                            <td><button (click)="m.preNoShow = 1; stage = 6;updateBox(1)" [ngClass]="getYesNoClassOpp(m.preNoShow, 1)">Y</button></td>
+                            <td><button (click)="m.preNoShow = 0" [ngClass]="getYesNoClassOpp(m.preNoShow, 0)">N</button></td>
                         </tr>
                     </table>
                 </td>
@@ -345,6 +345,9 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="7"><b>CMTY</b> - Robot leaves cones/cubes in the teams Community Zone.</td>
+            </tr>
+            <tr>
                 <td>
                     <button class="button_rank" (click)="m.teleConeCMTY > 0 && m.teleConeCMTY = m.teleConeCMTY - 1">-</button>
                 </td>
@@ -457,7 +460,7 @@
                 <th style="border-top: 4px solid black; padding-top: 4px;" *ngIf="m.ramp > 3">Climb Position</th>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">No Attempt - Kept Scoring</button></td>
+                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">Failed, but Parked</button></td>
                 <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)" *ngIf="m.ramp > 3">Fully On - Side</button></td>
             </tr>
             <tr>
@@ -474,21 +477,26 @@
         <br>
         <br>
         <table align="center" class="yesNoTable">
+            <tr><td>
+            <table>
             <tr>
                 <th [ngClass]="getAlertClass(51)">Subsystem Broke?</th>
-                <td><button (click)="m.postSubsystemBroke = 1" [ngClass]="getYesNoClass(m.postSubsystemBroke, 1)">Y</button></td>
-                <td><button (click)="m.postSubsystemBroke = 0" [ngClass]="getYesNoClass(m.postSubsystemBroke, 0)">N</button></td>
+                <td><button (click)="m.postSubsystemBroke = 1" [ngClass]="getYesNoClassOpp(m.postSubsystemBroke, 1)">Y</button></td>
+                <td><button (click)="m.postSubsystemBroke = 0" [ngClass]="getYesNoClassOpp(m.postSubsystemBroke, 0)">N</button></td>
             </tr>
             <tr>
                 <th [ngClass]="getAlertClass(52)">Broke Down?</th>
-                <td><button (click)="m.postBrokeDown = 1" [ngClass]="getYesNoClass(m.postBrokeDown, 1)">Y</button></td>
-                <td><button (click)="m.postBrokeDown = 0" [ngClass]="getYesNoClass(m.postBrokeDown, 0)">N</button></td>
+                <td><button (click)="m.postBrokeDown = 1" [ngClass]="getYesNoClassOpp(m.postBrokeDown, 1)">Y</button></td>
+                <td><button (click)="m.postBrokeDown = 0" [ngClass]="getYesNoClassOpp(m.postBrokeDown, 0)">N</button></td>
             </tr>
             <tr>
                 <th [ngClass]="getAlertClass(53)">Tipped Over</th>
-                <td><button (click)="m.postTippedOver = 1" [ngClass]="getYesNoClass(m.postTippedOver, 1)">Y</button></td>
-                <td><button (click)="m.postTippedOver = 0" [ngClass]="getYesNoClass(m.postTippedOver, 0)">N</button></td>
+                <td><button (click)="m.postTippedOver = 1" [ngClass]="getYesNoClassOpp(m.postTippedOver, 1)">Y</button></td>
+                <td><button (click)="m.postTippedOver = 0" [ngClass]="getYesNoClassOpp(m.postTippedOver, 0)">N</button></td>
             </tr>
+        </table>
+        </td><td>
+        <table>
             <tr>
                 <th [ngClass]="getAlertClass(54)">Reorient Cone?</th>
                 <td><button (click)="m.postReorientCone = 1" [ngClass]="getYesNoClass(m.postReorientCone, 1)">Y</button></td>
@@ -499,16 +507,18 @@
                 <td><button (click)="m.postShelfPickup = 1" [ngClass]="getYesNoClass(m.postShelfPickup, 1)">Y</button></td>
                 <td><button (click)="m.postShelfPickup = 0" [ngClass]="getYesNoClass(m.postShelfPickup, 0)">N</button></td>
             </tr>
-            <!-- <tr>
-                <th>Ground Pickup?</th>
+            <tr>
+                <th [ngClass]="getAlertClass(56)">Ground Pickup?</th>
                 <td><button (click)="m.postGroundPickup = 1" [ngClass]="getYesNoClass(m.postGroundPickup, 1)">Y</button></td>
                 <td><button (click)="m.postGroundPickup = 0" [ngClass]="getYesNoClass(m.postGroundPickup, 0)">N</button></td>
-            </tr> -->
-            <tr>
-                <th [ngClass]="getAlertClass(56)">Good Partner?</th>
+            </tr>
+            <!-- <tr>
+                <th [ngClass]="getAlertClass(57)">Good Partner?</th>
                 <td><button (click)="m.postGoodPartner = 1" [ngClass]="getYesNoClass(m.postGoodPartner, 1)">Y</button></td>
                 <td><button (click)="m.postGoodPartner = 0" [ngClass]="getYesNoClass(m.postGoodPartner, 0)">N</button></td>
-            </tr>
+            </tr> -->
+        </table>
+        </td></tr>
         </table>
     </div>
     <div id="final" style="display: none;">
@@ -519,9 +529,9 @@
             <tr>
                 <td align="center"><img src="https://media.discordapp.net/attachments/709829587323977811/1032728164364992653/makesweet-y27of7.gif"></td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td><button (click)="returnBox()" style="margin: 0 auto; display: block;" id="initialNext">Return</button> </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td><button (click)="save(m.matchScoutingID,2)" style="margin: 0 auto; display: block;" id="initialNext">Review</button></td>
             </tr>

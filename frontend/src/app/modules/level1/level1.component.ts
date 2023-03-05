@@ -219,6 +219,16 @@ export class Level1Component implements OnInit {
       }
   }
 
+  getYesNoClassOpp(value: number, actual: number){
+    if(value == actual && value == 1) {
+        return 'button_red';
+      } else if (value == actual && value == 0) {
+        return 'button_green';
+      } else {
+        return 'button_rank';
+      }
+  }
+
   getRankClass(value: number, acutal: number){
     if(value == acutal) {
         return 'button_green';
@@ -298,7 +308,7 @@ export class Level1Component implements OnInit {
         this.stage = this.numberBox;
     }
     console.log(this.stage);
-    this.updateBox();
+    this.updateBox(0);
   }
 
   lastBox(){ //de increment stage by one till 0 and updates boxes
@@ -306,12 +316,12 @@ export class Level1Component implements OnInit {
     if (this.stage < 0){
         this.stage = 0;
     }
-    this.updateBox();
+    this.updateBox(0);
   }
 
   returnBox(){
     this.stage = 5;
-    this.updateBox();
+    this.updateBox(0);
   } 
 
   checkRequired(display: number, record: number) {
@@ -387,10 +397,14 @@ export class Level1Component implements OnInit {
                 this.missing.push(55);
                 this.missing_return = 1;
             }
-            if (x.postGoodPartner === null) {
+            if (x.postGroundPickup === null) {
                 this.missing.push(56);
                 this.missing_return = 1;
             }
+            // if (x.postGoodPartner === null) {
+            //     this.missing.push(57);
+            //     this.missing_return = 1;
+            // }
         }
       }
 
@@ -419,16 +433,23 @@ getAlertClass(element: number) {
         }
     }
 
-    //reset values
-    this.nodePositions=[0, 0, 0, 0];
-    this.nodesSelected=0;
+
     
     for(let m of this.apiMatchL1_filter){ //set database values
+        
+
+        console.log("Got to autoScore assignment");
+        console.log("nodes:  [" + this.nodePositions[0] +"," + this.nodePositions[1] +"," + this.nodePositions[2] +"," + this.nodePositions[3] +"]");
         m.autoScore1 = this.nodePositions[0];
         m.autoScore2 = this.nodePositions[1];
         m.autoScore3 = this.nodePositions[2];
         m.autoScore4 = this.nodePositions[3];
+        console.log("values: ["+m.autoScore1+","+m.autoScore2+","+m.autoScore3+","+m.autoScore4+"]");
     }
+
+    //reset values
+    this.nodePositions=[0, 0, 0, 0];
+    this.nodesSelected=0;
   
     // Update status in apiMatch record
     for (const x of this.apiMatchL1) {
@@ -441,7 +462,17 @@ getAlertClass(element: number) {
                 // Set Status to 1: complete or 2: review
                 x.scoutingStatus = status;
             }
+
+            // console.log("Got to autoScore assignment");
+            // console.log("nodes:  [" + this.nodePositions[0] +"," + this.nodePositions[1] +"," + this.nodePositions[2] +"," + this.nodePositions[3] +"]");
+            // x.autoScore1 = this.nodePositions[0];
+            // x.autoScore2 = this.nodePositions[1];
+            // x.autoScore3 = this.nodePositions[2];
+            // x.autoScore4 = this.nodePositions[3];
+            // console.log("values: [" + x.autoScore1+"," + x.autoScore2+"," + x.autoScore3+"," + x.autoScore4+"]");
         }
+
+
     } 
 
     if (!localStorage.getItem('StoredL1')) {
@@ -470,8 +501,11 @@ getAlertClass(element: number) {
         this.apiStoreL1.push(o);
       }
   
-      // Write record to output filter  (Will need to move this to the "refresh" funtion later)
-      this.apiService.saveLevel1Data(this.apiStoreL1);
+      if (this.online == 1) {
+        // Write record to output filter  (Will need to move this to the "refresh" funtion later)
+        this.apiService.saveLevel1Data(this.apiStoreL1);
+      }
+
   
       // Write record to Local Storage
       this.apiService.StoredL1Replay.next(this.apiStoreL1 as MatchScoutingL1[]);
@@ -507,7 +541,19 @@ getAlertClass(element: number) {
     }
   }
 
-  updateBox(){
+  updateBox(dns: number){
+
+  // Confirm User wants to Select Did Not Show
+  if (dns == 1) {
+    const response = confirm("Selecting Team Did Not Show will bring you to the save page.");
+    if (!response) {
+        this.stage = 1;
+        return;
+    }
+  }
+
+
+
   var homeBox = document.getElementById("home"); //get each box object
   var preBox = document.getElementById("pre");
   var autoBox = document.getElementById("auto");
@@ -546,7 +592,9 @@ getAlertClass(element: number) {
       headerText!.innerHTML = "Post Game";
   } else if(this.stage == 6){
       finalBox!.style.display = "block";
-      header!.style.display = "none"; //hide header
+      //header!.style.display = "none"; //hide header
+      header!.style.display = "block"; 
+      headerText!.innerHTML = "Save";
   }
   }
 

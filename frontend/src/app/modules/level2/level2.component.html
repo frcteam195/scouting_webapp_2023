@@ -147,7 +147,7 @@
         </tr>
         <tr>
             <td colspan="3">
-                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentOff">{{ m.commentOff }}</textarea>
+                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentOff" oninput="this.value=this.value.replace(/\&quot;/g, '\'')">{{ m.commentOff }}</textarea>
             </td>
         </tr>
         <br>
@@ -167,7 +167,7 @@
         </tr>
         <tr>
             <td colspan="3">
-                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentDef">{{ m.commentDef }}</textarea>
+                <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="m.commentDef" oninput="this.value=this.value.replace(/\&quot;/g, '\'')">{{ m.commentDef }}</textarea>
             </td>
        
         </tr>

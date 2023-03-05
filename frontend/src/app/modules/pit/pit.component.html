@@ -140,7 +140,7 @@
             <br>
             <tr>
                 <td colspan="2" align="center">
-                    <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments">{{ p.buildComments }}</textarea>
+                    <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.buildComments" oninput="this.value=this.value.replace(/\&quot;/g, '\'')">{{ p.buildComments }}</textarea>
                 </td>
            
             </tr>
@@ -164,7 +164,7 @@
                 <br>
                 <tr>
                     <td colspan="2" align="center">
-                        <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments">{{ p.electricalComments }}</textarea>
+                        <textarea cols="38" rows="3" maxlength="255" [(ngModel)]="p.electricalComments" oninput="this.value=this.value.replace(/\&quot;/g, '\'')">{{ p.electricalComments }}</textarea>
                     </td>
                
                 </tr>
@@ -173,7 +173,7 @@
         <table *ngIf="display==5" align="center"> <b>General Comments</b>
             <tr>
                 <td colspan="2">
-                    <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments">{{ p.generalComments }}</textarea>
+                    <textarea cols="38" rows="10" maxlength="255" [(ngModel)]="p.generalComments" oninput="this.value=this.value.replace(/\&quot;/g, '\'')">{{ p.generalComments }}</textarea>
                 </td>
             </tr>
             <tr>
