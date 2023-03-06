@@ -401,6 +401,22 @@ export class ApiService {
 
 
 
+  // getUserAccess(user: string, password: string) {
+  //   console.log("Getting Access Level for: " + user);
+
+  //   // First try to load a fresh copy of the data from the API
+  //   this.http.get<User[]>(this.apiUrl + '/access/'+this.alliance+"/"+password).subscribe(response => {
+  //     // Store the response in the ReplaySubject, which components can use to access the data
+  //     this.UserReplay.next(response as User[]);
+  //     // Might as well store it while we have it
+  //     localStorage.setItem('access', response());
+  //     localStorage.setItem('alliance', this.alliance.toString());
+  //   }
+
+  // }
+
+
+
   // syncLevel1Data(alliance: number) {
 
   //   // First try to load a fresh copy of the data from the API
