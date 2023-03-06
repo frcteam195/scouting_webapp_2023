@@ -1,6 +1,6 @@
 import { MatchScoutingL1 } from '../matchScoutingL1';
 import { MatchScoutingL2 } from '../matchScoutingL2';
-import { Scouters } from './../scouters';
+import { Scouters } from '../scouters';
 import {Injectable} from '@angular/core';
 import {ReplaySubject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
@@ -14,6 +14,7 @@ import { BuildTypes } from '../buildTypes';
 import { CenterGravityTypes } from '../centerGravityTypes';
 import { AllianceStation } from '../allianceStation';
 import { environment } from '../../environments/environment';
+import { User } from '../user';
  
 
 @Injectable({
@@ -401,19 +402,28 @@ export class ApiService {
 
 
 
-  // getUserAccess(user: string, password: string) {
-  //   console.log("Getting Access Level for: " + user);
+  getUserAccess(user: User[]) {
 
-  //   // First try to load a fresh copy of the data from the API
-  //   this.http.get<User[]>(this.apiUrl + '/access/'+this.alliance+"/"+password).subscribe(response => {
-  //     // Store the response in the ReplaySubject, which components can use to access the data
-  //     this.UserReplay.next(response as User[]);
-  //     // Might as well store it while we have it
-  //     localStorage.setItem('access', response());
-  //     localStorage.setItem('alliance', this.alliance.toString());
-  //   }
+    console.log("Getting Access Level for: " + user);
 
-  // }
+    //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {params: new HttpParams().append('user', 'scouter1')};
+
+    // First try to load a fresh copy of the data from the API
+    this.http.get(this.apiUrl + '/access', options);
+
+
+    console.log("Response: [" + "]");
+
+      //console.log("Response: [" + response + "]");
+      // localStorage.setItem('access', response());
+      // localStorage.setItem('alliance', this.alliance.toString());
+    }
+
+  }
+
+
+ 
 
 
 
@@ -437,4 +447,4 @@ export class ApiService {
   // }
 
 
-}
+
