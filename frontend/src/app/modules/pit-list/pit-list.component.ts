@@ -81,4 +81,17 @@ pitPage(team: string, scouter: number, status: number) {
   }
 }
 
+// Open page even if it's in a completed status
+pitPage2x(team: string, scouter: number) {
+
+  if (scouter < 1) {
+      alert("Please select a Scouter Name");
+
+  } else {
+  
+    // Opens in Existing Tab
+    this.router.navigate(["pit", team, scouter]); 
+  }
+}
+
 }

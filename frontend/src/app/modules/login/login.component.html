@@ -1,0 +1,10 @@
+<h1 class="headingFont">The Cyberscouter!</h1>
+
+<table align="center">
+    <tr><td align="right"><b>User Name:</b></td><td><input type=text [(ngModel)]="this.user" required></td></tr>
+    <tr><td align="right"><b>Password:</b></td><td><input type=password [(ngModel)]="this.pass" required></td></tr>
+    <tr><td>&nbsp;</td><td><button (click)="clickLogin(this.user,this.pass)">Login</button></td></tr>
+    <tr><td>&nbsp;</td><td><a routerLink="/"><button type="button" title="Hone Page">Close</button></a></td></tr>
+</table>
+
+
