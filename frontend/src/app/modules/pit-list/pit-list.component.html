@@ -21,25 +21,26 @@
     </tr>
 
     <tr>
-        <td>&nbsp;</td>
-        <td align="center">
-            <div *ngFor="let p of apiPit; let i = index">
-                
-                <div *ngIf="i%2 == 0">
-                    <!-- <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a> -->
-                    <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
-                </div>
+        <td align="center" valign="top">
+            <div *ngFor="let p of apiPit| slice:0:16">
+                <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
             </div>
         </td>
-        <td align="center">
-            <div *ngFor="let p of apiPit; let i = index">
-                <div *ngIf="i%2 != 0">
-                    <!-- <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><div class="bg{{ p?.scoutingStatus }}">{{p.team}}</div></a> -->
-                    <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
-                </div>
-            </div>
+        <td align="center" valign="top">
+            <div *ngFor="let p of apiPit| slice:16:32"> 
+                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+           </div>
         </td>
-        <td>&nbsp;</td>
+        <td align="center" valign="top">
+            <div *ngFor="let p of apiPit| slice:32:48"> 
+                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+           </div>
+        </td>
+        <td align="center" valign="top">
+            <div *ngFor="let p of apiPit| slice:48:64"> 
+                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+           </div>
+        </td>
     </tr>
 </table>
 
