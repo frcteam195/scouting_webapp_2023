@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PitListComponent } from './modules/pit-list/pit-list.component';
 import { Level2ListComponent } from './modules/level2-list/level2-list.component';
 import { DebugComponent } from './modules/debug/debug.component';
+import { LoginComponent } from './modules/login/login.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DebugComponent } from './modules/debug/debug.component';
     AdminComponent,
     PitListComponent,
     Level2ListComponent,
-    DebugComponent
+    DebugComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

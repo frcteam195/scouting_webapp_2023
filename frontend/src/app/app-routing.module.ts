@@ -8,6 +8,7 @@ import { PitComponent } from './modules/pit/pit.component';
 import { Level2Component } from './modules/level2/level2.component';
 import { Level1Component } from './modules/level1/level1.component';
 import { Level2ListComponent } from './modules/level2-list/level2-list.component';
+import { LoginComponent } from './modules/login/login.component';
 
 const routes: Routes = [{
       path: '',
@@ -42,6 +43,9 @@ const routes: Routes = [{
   },{
     path: 'debug',
     component: DebugComponent
+  },{
+    path: 'login',
+    component: LoginComponent
   }];
 
 @NgModule({

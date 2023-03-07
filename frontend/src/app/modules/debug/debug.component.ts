@@ -5,7 +5,6 @@ import { MatchScoutingL2 } from 'src/app/matchScoutingL2';
 import { ApiService } from 'src/app/services/api.service';
 import { MatchScoutingL1 } from '../../matchScoutingL1';
 
-import { User } from '../../user';
 
 
 
@@ -56,7 +55,6 @@ export class DebugComponent implements OnInit {
   display: number = 1;
 
 
-  userInfo: User[] = [{userName:"scouter1",userPass:"team195a"}];
 
   memoryTypes: MemoryTypes[] = [{memoryTypeID:"MatchL1",memoryType:"Match Records-Level 1"},
                                 {memoryTypeID:"StoredL1",memoryType:"Stored Records-Level 1"},
@@ -206,10 +204,6 @@ export class DebugComponent implements OnInit {
 
 
 
-  clickLogin() {
-
-    this.apiService.getUserAccess(this.userInfo);
-  }
-  
+ 
 
 }

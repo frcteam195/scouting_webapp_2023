@@ -2,7 +2,7 @@ import { MatchScoutingL1 } from '../matchScoutingL1';
 import { MatchScoutingL2 } from '../matchScoutingL2';
 import { Scouters } from '../scouters';
 import {Injectable} from '@angular/core';
-import {ReplaySubject} from 'rxjs';
+import {catchError, Observable, ReplaySubject, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Event } from '../event';
 import { PitScouting } from '../pitScouting';
@@ -14,7 +14,7 @@ import { BuildTypes } from '../buildTypes';
 import { CenterGravityTypes } from '../centerGravityTypes';
 import { AllianceStation } from '../allianceStation';
 import { environment } from '../../environments/environment';
-import { User } from '../user';
+import { Access } from '../access';
  
 
 @Injectable({
@@ -39,6 +39,11 @@ export class ApiService {
   public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
 
   alliance: number = -1;
+
+  loading: boolean = true;
+  errorMessage: string = "";
+  repos: string = "";
+  apiAccess: Access[]=[];
 
 
   private apiUrl = environment.apiUrl;
@@ -400,24 +405,37 @@ export class ApiService {
 
   }
 
+  getUserAccess(user: string, pass: string) {
 
-
-  getUserAccess(user: User[]) {
+    this.loading = true;
+    this.errorMessage = "";
 
     console.log("Getting Access Level for: " + user);
 
     //const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-    const options = {params: new HttpParams().append('user', 'scouter1')};
+    const options = {params: new HttpParams().append('userName', user).append('userPass', pass)};
 
     // First try to load a fresh copy of the data from the API
-    this.http.get(this.apiUrl + '/access', options);
+    this.http.get<Access[]>(this.apiUrl + '/access', options).subscribe(
+      (response)=> { this.apiAccess = response
 
+        console.log('responce received')
 
-    console.log("Response: [" + "]");
+        // Write Scouting Access to Local Storage
+        for (const a of this.apiAccess) {
+          console.log("Access Level: " + a.scoutingAccess);
+          localStorage.setItem('access', a.scoutingAccess.toString());
+        }
 
-      //console.log("Response: [" + response + "]");
-      // localStorage.setItem('access', response());
-      // localStorage.setItem('alliance', this.alliance.toString());
+        },
+        (error) => {                              
+          console.error('error caught in component')
+          this.errorMessage = error;
+          this.loading = false; 
+        }
+
+      )
+
     }
 
   }

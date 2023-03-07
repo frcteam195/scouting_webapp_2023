@@ -23,22 +23,22 @@
     <tr>
         <td align="center" valign="top">
             <div *ngFor="let p of apiPit| slice:0:16">
-                <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+                <a (click)="pitPage(p.team,scouter,p.scoutingStatus)" (dblclick)="pitPage2x(p.team,scouter)"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
             </div>
         </td>
         <td align="center" valign="top">
             <div *ngFor="let p of apiPit| slice:16:32"> 
-                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+                     <a (click)="pitPage(p.team,scouter,p.scoutingStatus)" (dblclick)="pitPage2x(p.team,scouter)"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
            </div>
         </td>
         <td align="center" valign="top">
             <div *ngFor="let p of apiPit| slice:32:48"> 
-                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+                     <a (click)="pitPage(p.team,scouter,p.scoutingStatus)" (dblclick)="pitPage2x(p.team,scouter)"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
            </div>
         </td>
         <td align="center" valign="top">
             <div *ngFor="let p of apiPit| slice:48:64"> 
-                     <a (click)="pitPage( p.team, scouter, p.scoutingStatus )"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
+                     <a (click)="pitPage(p.team,scouter,p.scoutingStatus)" (dblclick)="pitPage2x(p.team,scouter)"><button class="button{{ p?.scoutingStatus }}">{{p.team}}</button></a>
            </div>
         </td>
     </tr>
