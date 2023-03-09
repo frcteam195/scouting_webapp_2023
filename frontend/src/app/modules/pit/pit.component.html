@@ -19,17 +19,17 @@
             <br>
             <tr>
                 <td align="right"><b>Length</b></td>
-                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" min=0 max=99 name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotLength"><b>in</b></td>
             </tr>
             <br>
             <tr>
                 <td align="right"><b>Width</b></td>
-                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" min=0 max=99 name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWidth"><b>in</b></td>
             </tr>
             <br>
             <tr>
                 <td align="right"><b>Height</b></td>
-                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" min=0 max=99 name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotHeight"><b>in</b></td>
             </tr>
         </table>
         <table align="center" *ngIf="display==2"> <!-- Drive base  -->
