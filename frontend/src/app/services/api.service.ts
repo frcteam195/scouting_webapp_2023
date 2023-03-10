@@ -92,7 +92,7 @@ export class ApiService {
         // Send the cached data
         this.ScouterReplay.next(JSON.parse(localStorage.getItem('Scouters')!) as Scouters[]);
       } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
+        console.error('Could not load Scouter data from server or cache!');
       }
     });
 
@@ -204,7 +204,7 @@ export class ApiService {
         // Send the cached data
         this.EventReplay.next(JSON.parse(localStorage.getItem('Event')!) as Event[]);
       } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
+        console.error('Could not load Event data from server or cache!');
       }
     });
 
@@ -219,7 +219,7 @@ export class ApiService {
         // Send the cached data
         this.PitReplay.next(JSON.parse(localStorage.getItem('Pit')!) as PitScouting[]);
       } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
+        console.error('Could not load Pit Scouting data from server or cache!');
       }
     });
 
@@ -228,29 +228,33 @@ export class ApiService {
     try {
       this.StoredL1Replay.next(JSON.parse(localStorage.getItem('StoredL1')!) as MatchScoutingL1[]);
     } catch (err) {
-      console.error('Could not load Matches data from server or cache!');
+      console.error('Could not load Level 1 Stored for debug data from server or cache!');
     }
 
     // Get Level 1 Records data from Cache
     try {
       this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
     } catch (err) {
-      console.error('Could not load Matches data from server or cache!');
+      console.error('Could not load Level 1 for debug data from server or cache!');
     }
 
     // Get Level 2 Scouted data from Cache
     try {
       this.StoredL2Replay.next(JSON.parse(localStorage.getItem('StoredL2')!) as MatchScoutingL2[]);
     } catch (err) {
-      console.error('Could not load Matches data from server or cache!');
+      console.error('Could not load Level 2 Stored for debug data from server or cache!');
     }
 
     // Get Level 2 Records data from Cache
     try {
       this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
     } catch (err) {
-      console.error('Could not load Matches data from server or cache!');
+      console.error('Could not load Level 2 for debug data from server or cache!');
     }
+
+
+
+
 
 
   }
@@ -274,7 +278,7 @@ export class ApiService {
             // Send the cached data
             this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
           } catch (err) {
-            console.error('Could not load Matches data from server or cache!');
+            console.error('Could not load Level 1 data from server or cache!');
           }
         });
     }
@@ -294,7 +298,7 @@ export class ApiService {
         // Send the cached data
         this.MatchL1Replay.next(JSON.parse(localStorage.getItem('MatchL1')!) as MatchScoutingL1[]);
       } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
+        console.error('Could not load Level 1 Review data from server or cache!');
       }
     });
 
@@ -316,7 +320,7 @@ export class ApiService {
           // Send the cached data
           this.MatchL2Replay.next(JSON.parse(localStorage.getItem('MatchL2')!) as MatchScoutingL2[]);
         } catch (err) {
-          console.error('Could not load Matches data from server or cache!');
+          console.error('Could not load Level2 data from server or cache!');
         }
       });
   }
@@ -334,9 +338,15 @@ export class ApiService {
         // Send the cached data
         this.PitReplay.next(JSON.parse(localStorage.getItem('Pit')!) as PitScouting[]);
       } catch (err) {
-        console.error('Could not load Matches data from server or cache!');
+        console.error('Could not load Pit Records data from server or cache!');
       }
     });
+
+    this.http.get(this.apiUrl + '/image').subscribe(response => {
+      localStorage.setItem('Image', JSON.stringify(response));
+    });
+  
+  
 
   }
 
@@ -456,6 +466,8 @@ export class ApiService {
 
 
     }
+
+
 
 
 

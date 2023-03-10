@@ -68,3 +68,19 @@ input[type='number']{
 .file-input {
     display: none;
 }
+
+button.buttons_off{
+    background-color: grey;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    padding: 2px 2px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border-style: outset;
+    border-width: 3px;
+        
+}
