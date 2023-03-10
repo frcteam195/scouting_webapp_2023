@@ -438,6 +438,27 @@ export class ApiService {
 
     }
 
+    uploadFile(file: any, team: string){
+      
+      console.log("Uploading Robot Picture for " + team);
+
+      const options = {headers: new HttpHeaders({'enctype': 'multipart/form-data'})};
+
+      const formData = new FormData();
+
+      formData.append("robotImage", file);
+
+      console.log("api.service: formData: " , formData)
+
+      const upload$ = this.http.post(this.apiUrl + "/upload/"+team, formData, options);
+
+      upload$.subscribe();
+
+
+    }
+
+
+
   }
 
 

@@ -30,6 +30,8 @@ export class PitComponent implements OnInit {
   apiBuildTypes: BuildTypes[] = [];
   apiSuperClimbTypes: SuperClimbTypes[] = [];
   apiCenterGravityTypes: CenterGravityTypes[] = [];
+  
+  fileName = "";
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
 
@@ -169,6 +171,27 @@ export class PitComponent implements OnInit {
     }
 
     this.apiService.updatePitStatus(this.apiPit_filter);
+  }
+
+
+  
+  onFileSelected(event: any, team: string) {
+
+    const file:File = event.target.files[0];
+
+    if (file) {
+
+        // this.fileName = file.name;
+
+        // const formData = new FormData();
+
+        // formData.append('robotPic', file);
+
+        // console.log("File Upload: ", formData);
+
+        this.apiService.uploadFile(file, team);
+
+      }
   }
 
 }

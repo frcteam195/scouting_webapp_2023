@@ -11,7 +11,7 @@ button:active{
     transform: scale(0.98);
 }
 .backButton {
-  background-color: #500778;
+  background-color: #5C068C;
   color: white;
   padding: 4px 8px;
   text-align: center;
@@ -20,7 +20,7 @@ button:active{
   font-size: 8px;
   border-radius: 6px;
   font-weight: bold;
-  border-color: #500778;
+  border-color: #5C068C;
 }
 .darkMode{
   background-color: #121212;
@@ -78,7 +78,7 @@ button:active{
 
 
 #initialNext {
-  background-color: #500778;
+  background-color: #5C068C;
   color: white;
   padding: 16px 32px;
   text-align: center;
@@ -87,14 +87,14 @@ button:active{
   font-size: 16px;
   border-radius: 12px;
   font-weight: bold;
-  border-color: #500778;
+  border-color: #5C068C;
 }
 #initialNext:hover {
   background-color: white;
-  color: #500778;
+  color: #5C068C;
 }
 #headerButton {
-  background-color: #500778;
+  background-color: #5C068C;
   color: white;
   text-align: center;
   text-decoration: none;
@@ -105,14 +105,14 @@ button:active{
   width: 150px;
   height: 50px;
   border-style: outset;
-  border-color: #500778;
+  border-color: #5C068C;
   border-width: 3px;
 }
 #header table, #header td, #header tr, #header th {
   padding: 0;
   overflow: hidden;
   border-collapse: collapse;
-  border: 3px solid #500778;
+  border: 3px solid #5C068C;
 }
 #nodeTable, #nodeTable td, #nodeTable tr {
   border: 6px solid black;
