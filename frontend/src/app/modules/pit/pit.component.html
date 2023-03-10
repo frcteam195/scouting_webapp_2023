@@ -178,6 +178,10 @@
             </tr>
             <tr>
                 <td>
+                    <input type="file" class="file-input" (change)="onFileSelected($event,team)" #fileUpload>
+                    <button  class="buttons" (click)="fileUpload.click()">Robot Photo</button><br>
+                    <!-- {{fileName || "- select file -"}} -->
+                    <br><br>                    
                     <a routerLink="/pitlist"><button class="buttons" (click)="save(3)">Submit</button></a><br>
                     <a routerLink="/pitlist"><button class="buttons" (click)="save(2)">Finish Later</button></a><br>
                     <a routerLink="/pitlist"><button class="buttons" (click)="cancel(p.team)">Cancel</button></a>

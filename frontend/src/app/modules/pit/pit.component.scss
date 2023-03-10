@@ -26,7 +26,7 @@ table.buttons, th.buttons, td.buttons {
     margin: 0;
 }
 button.buttons{
-    background-color: #500778;
+    background-color: #5C068C;
     color: white;
     text-align: center;
     text-decoration: none;
@@ -63,4 +63,8 @@ input[type='number']{
 }
 .heading{
     font-size: larger;
+}
+
+.file-input {
+    display: none;
 }
