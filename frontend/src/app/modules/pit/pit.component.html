@@ -179,7 +179,7 @@
             <tr>
                 <td>
                     <input type="file" class="file-input" (change)="onFileSelected($event,team)" #fileUpload>
-                    <button  class="buttons" (click)="fileUpload.click()">Robot Photo</button><br>
+                    <button  [ngClass]="buttonClass(imageMessage)" (click)="fileUpload.click()">Robot Photo</button><br>
                     <!-- {{fileName || "- select file -"}} -->
                     <br><br>                    
                     <a routerLink="/pitlist"><button class="buttons" (click)="save(3)">Submit</button></a><br>

@@ -11,6 +11,12 @@ import { BuildTypes } from '../../buildTypes'
 import { SuperClimbTypes } from '../../superClimbTypes'
 import { CenterGravityTypes } from '../../centerGravityTypes'
 
+export interface Image {
+  sequence: number;
+  file: string;
+}
+
+
 @Component({
   selector: 'app-pit',
   templateUrl: './pit.component.html',
@@ -30,8 +36,11 @@ export class PitComponent implements OnInit {
   apiBuildTypes: BuildTypes[] = [];
   apiSuperClimbTypes: SuperClimbTypes[] = [];
   apiCenterGravityTypes: CenterGravityTypes[] = [];
+  apiImage: string = "";
   
   fileName = "";
+  imageList: string[] = [];
+  imageMessage: number = 0;
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
 
@@ -69,6 +78,10 @@ export class PitComponent implements OnInit {
     this.apiService.CenterGravityTypesReplay.subscribe(types => {
       this.apiCenterGravityTypes = types;
     });
+
+    this.apiImage = JSON.parse(localStorage.getItem('Image')!) || "";
+
+    this.createImageList();
 
    }
 
@@ -146,7 +159,7 @@ export class PitComponent implements OnInit {
 
   regenerateFilter() {
     console.log("regenerateFilter: Pit Component");
-
+    this.imageMessage = 0;
     if (this.apiPit) {
 
       this.apiPit_filter = [];
@@ -161,6 +174,14 @@ export class PitComponent implements OnInit {
           // Set scouting status to 1 - checked out
           p.scoutingStatus = 1;
 
+          // Check if Picture has been uploaded
+          if(this.imageList.includes(p.team)) {
+            this.imageMessage = 1;
+          } else {
+            this.imageMessage = 0;
+          }
+
+
           this.apiPit_filter.push(p);
           //Break out of for loop once the first unscouted record is found
           break;
@@ -169,6 +190,9 @@ export class PitComponent implements OnInit {
     } else {
       this.apiPit_filter = [];
     }
+
+
+
 
     this.apiService.updatePitStatus(this.apiPit_filter);
   }
@@ -190,8 +214,40 @@ export class PitComponent implements OnInit {
         // console.log("File Upload: ", formData);
 
         this.apiService.uploadFile(file, team);
+        
+        this.imageMessage = 1;
 
       }
+  }
+
+  createImageList() {
+    console.log("creatImageList: generate list of robots with images");
+
+    if (this.apiImage) {
+
+      this.imageList = [];
+
+      // Filter
+      for (const i of this.apiImage) {
+
+        var image = i.split(".")[0];
+        var team = image.substring(3);
+        // console.log("Image: "+team)
+        this.imageList.push(team);
+       } 
+    } else {
+      this.imageList = [];
+    }
+    console.log("Image List: " , this.imageList);
+
+  }
+
+  buttonClass(value: number) {
+    if(value == 0) {
+      return "buttons";
+    } else {
+      return "buttons_off";
+    }
   }
 
 }
