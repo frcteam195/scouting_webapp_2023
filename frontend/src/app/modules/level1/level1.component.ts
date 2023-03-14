@@ -298,10 +298,9 @@ export class Level1Component implements OnInit {
   nextBox(matchID: number){ //increment stage by one till a max and update boxes
 
     // Check for completed fields if moving to next page
-    if (this.checkRequired(this.stage,matchID) > 0) {
-        // if a check is failed do not advance display
+    /* if (this.checkRequired(this.stage,matchID) > 0) {
         return;
-    }
+    } */
 
     this.stage++;
     if (this.stage > this.numberBox){
