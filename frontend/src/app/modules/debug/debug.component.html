@@ -2,13 +2,16 @@ local.storage:
 <select class="form-control" type="text" name="Scouter" [(ngModel)]="memoryType" (change)="select(memoryType)">
     <option *ngFor="let t of memoryTypes;" [value]="t.memoryTypeID">{{t.memoryType}}</option>
 </select>
-<div align="right"><a routerLink="/admin"><button type="button" title="Back to Admin Page">Close</button></a></div>
-
 <hr>
 <div>
+    <button (click)="updateRecord()">Save to Database</button>&nbsp;
+    <button (click)="removeRecord()">Remove from Memory</button>&nbsp;
+    <a routerLink="/admin"><button type="button" title="Back to Admin Page">Close</button></a>
+    <br><br>
     <!-- Match Scouting Table -->
     <table *ngIf="display==1">
         <tr>
+            <th>&nbsp;</th>
             <th>matchScoutingID</th>
             <th>eventID</th>
             <th>matchID</th>
@@ -16,11 +19,13 @@ local.storage:
             <th>allianceStationID</th>
             <th>team</th>
             <th>scoutingStatus</th>
+            <th>preNoShow</th>
             <th>scouterID</th>
 
 
         </tr>
-        <tr *ngFor="let m of apiFilter1">
+        <tr *ngFor="let m of apiFilter1; let i = index">
+            <td><input type=checkbox (change)="updateCheckedOptions(i,0)"></td>
             <td>{{ m.matchScoutingID }}</td>
             <td>{{ m.eventID }}</td>
             <td>{{ m.matchID }}</td>
@@ -28,6 +33,7 @@ local.storage:
             <td>{{ m.allianceStationID }}</td>
             <td>{{ m.team }}</td>
             <td>{{ m.scoutingStatus }}</td>
+            <td>{{ m.preNoShow }}</td>
             <td>{{ m.scouterID }}</td>
 
 
@@ -48,6 +54,13 @@ local.storage:
             <td>{{ m.scouterID }}</td>
         </tr>
     </table>
+    <div align="left">
+        <br>
+        <button (click)="updateRecord()">Save to Database</button>&nbsp;
+        <button (click)="removeRecord()">Remove from Memory</button>&nbsp;
+        <a routerLink="/admin"><button type="button" title="Back to Admin Page">Close</button></a>
+        
+    </div>
 
     <p>{{ this.dumpMemory }}</p>
     <br>
