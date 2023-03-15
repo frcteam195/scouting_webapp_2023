@@ -30,6 +30,13 @@ export class LoginComponent implements OnInit {
   clickLogin(user: string, pass: string) {
 
     this.apiService.getUserAccess(user,pass);
+
+  }
+
+  clickLogout() {
+
+    localStorage.setItem('alliance', '0');
+
   }
 
 
