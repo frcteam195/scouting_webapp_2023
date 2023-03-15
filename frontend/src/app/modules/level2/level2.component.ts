@@ -127,16 +127,8 @@ export class Level2Component implements OnInit {
             this.missing.push(22);
             this.missing_return = 1;
           }
-          if (x.sturdiness === null) {
-            this.missing.push(23);
-            this.missing_return = 1;
-          }
           if (x.climb === null) {
             this.missing.push(24);
-            this.missing_return = 1;
-          }
-          if (x.effort === null) {
-            this.missing.push(25);
             this.missing_return = 1;
           }
           if (x.scoringEff === null) {
