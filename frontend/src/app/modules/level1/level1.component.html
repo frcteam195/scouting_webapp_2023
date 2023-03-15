@@ -73,7 +73,7 @@
             <tr>
                 <th align="center" style="width:33%;font-size: xx-large;" [ngClass]="getAlertClass(11)">Starting Position</th>
                 <td align="center" rowspan="4" style="width:33%px;">
-                    <img src="https://cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png" width="300px">
+                    <img src="https:/scouting.team195.com/images/frc{{ m.team }}.jpg" onerror="this.src='https:/cdn.discordapp.com/attachments/855979035846246440/1071955262317011014/error_robot_not_found.png'" alt="robot picture not avalible" width="300px">
                 </td>
                 <td rowspan="2" style="text-align: center;font-size: xx-large;">
                     <table align="center" border="0" class="preYesNo">
@@ -277,15 +277,15 @@
         <table align="center"><tr><td>
         <table id="teleTable" border="0" style="left: 300px;">
             <tr>
-                <th colspan="3">CONE</th>
+                <th colspan="3" style="font-size: larger;">CONE</th>
                 <th></th>
-                <th colspan="3">CUBE</th>
+                <th colspan="3" style="font-size: larger;">CUBE</th>
             </tr>
             <tr>
                 <td>
                     <button class="button_rank" (click)="m.teleConeHigh > 0 && m.teleConeHigh = m.teleConeHigh - 1">-</button>
                 </td>
-                <td>
+                <td class="cone">
                     <input type="text" class="form-control" id="teleConeHigh" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeHigh" name="teleConeHigh">
                 </td>
                 <td>
@@ -295,7 +295,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleCubeHigh > 0 && m.teleCubeHigh = m.teleCubeHigh - 1">-</button>
                 </td>
-                <td>
+                <td class="cube">
                     <input type="text" class="form-control" id="teleCubeHigh" readonly #ctrl="ngModel" [(ngModel)]="m.teleCubeHigh" name="teleCubeHigh">
                 </td>
                 <td>
@@ -306,8 +306,8 @@
                 <td>
                     <button class="button_rank" (click)="m.teleConeMid > 0 && m.teleConeMid = m.teleConeMid - 1">-</button>
                 </td>
-                <td>
-                    <input type="text" class="form-control" id="teleConeMid" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeMid" name="teleConeMid">
+                <td class="cone">
+                    <input  type="text" class="form-control" id="teleConeMid" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeMid" name="teleConeMid">
                 </td>
                 <td>
                     <button class="button_rank" (click)="m.teleConeMid = m.teleConeMid + 1">+</button>
@@ -316,7 +316,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleCubeMid > 0 && m.teleCubeMid = m.teleCubeMid - 1">-</button>
                 </td>
-                <td>
+                <td class="cube">
                     <input type="text" class="form-control" id="teleCubeMid" readonly #ctrl="ngModel" [(ngModel)]="m.teleCubeMid" name="teleCubeMid">
                 </td>
                 <td>
@@ -327,7 +327,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleConeLow > 0 && m.teleConeLow = m.teleConeLow - 1">-</button>
                 </td>
-                <td>
+                <td class="cone">
                     <input type="text" class="form-control" id="teleConeLow" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeLow" name="teleConeLow">
                 </td>
                 <td>
@@ -337,7 +337,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleCubeLow > 0 && m.teleCubeLow = m.teleCubeLow - 1">-</button>
                 </td>
-                <td>
+                <td class="cube">
                     <input type="text" class="form-control" id="teleCubeLow" readonly #ctrl="ngModel" [(ngModel)]="m.teleCubeLow" name="teleCubeLow">
                 </td>
                 <td>
@@ -351,7 +351,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleConeCMTY > 0 && m.teleConeCMTY = m.teleConeCMTY - 1">-</button>
                 </td>
-                <td>
+                <td class="cone">
                     <input type="text" class="form-control" id="teleConeCMTY" readonly #ctrl="ngModel" [(ngModel)]="m.teleConeCMTY" name="teleConeCMTY">
                 </td>
                 <td>
@@ -361,7 +361,7 @@
                 <td>
                     <button class="button_rank" (click)="m.teleCubeCMTY > 0 && m.teleCubeCMTY = m.teleCubeCMTY - 1">-</button>
                 </td>
-                <td>
+                <td class="cube">
                     <input type="text" class="form-control" id="teleCubeCMTY" readonly #ctrl="ngModel" [(ngModel)]="m.teleCubeCMTY" name="teleCubeCMTY">
                 </td>
                 <td>
@@ -395,18 +395,6 @@
                     <button class="button_rank" (click)="m.teleObstructed = m.teleObstructed + 1">+</button>
                 </td>
             </tr>
-            <tr><th colspan="3">Was Obstructed</th></tr>
-            <tr>
-                <td>
-                    <button class="button_rank" (click)="m.teleWasObstructed > 0 && m.teleWasObstructed = m.teleWasObstructed - 1">-</button>
-                </td>
-                <td>
-                    <input type="text" class="form-control" id="teleWasObstructed" readonly #ctrl="ngModel" [(ngModel)]="m.teleWasObstructed" name="teleWasObstructed">
-                </td>
-                <td>
-                    <button class="button_rank" (click)="m.teleWasObstructed = m.teleWasObstructed + 1">+</button>
-                </td>
-            </tr>
         </table></td></tr></table>
     </div>
     <div id="end" style="display: none;">
@@ -414,9 +402,8 @@
         <br>
         <table style="width: 100%;" align="center">
             <tr>
-                <th style="width: 33%;">Charge Time(seconds)</th>
-                <th style="width: 33%; border-right: 4px solid black;height: 66px;" [ngClass]="getAlertClass(41)">Charge Status</th>
-                <td style="width: 33%;"><button (click)="m.rampAssist = 2"  [ngClass]="getRankClass(m.rampAssist,2)" *ngIf="m.ramp > 3">Buddy Climb - Was Helped</button></td>
+                <th style="width: 50%;">Charge Time(seconds)</th>
+                <th style="width: 50%; height: 66px;" [ngClass]="getAlertClass(41)">Charge Status</th>
             </tr>
             <tr>
                 <td rowspan="6">
@@ -448,28 +435,22 @@
                     </table>
 
                 </td>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
-                <td><button (click)="m.rampAssist = 1"  [ngClass]="getRankClass(m.rampAssist,1)" *ngIf="m.ramp > 3">Buddy Climb - Helped</button></td>
+                <td><button style="width: 75%;" (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 4"  [ngClass]="getRankClass(m.ramp,4)">Docked - Not Engaged</button></td>
-                <td><button (click)="m.rampAssist = 0"  [ngClass]="getRankClass(m.rampAssist,0)" *ngIf="m.ramp > 3">No Buddy Climb</button></td>
+                <td><button style="width: 75%;" (click)="m.ramp = 4"  [ngClass]="getRankClass(m.ramp,4)">Docked - Not Engaged</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 3"  [ngClass]="getRankClass(m.ramp,3)">Parked</button></td>
-                <th style="border-top: 4px solid black; padding-top: 4px;" *ngIf="m.ramp > 3">Climb Position</th>
+                <td><button style="width: 75%;" (click)="m.ramp = 3"  [ngClass]="getRankClass(m.ramp,3)">Parked</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">Failed, but Parked</button></td>
-                <td><button (click)="m.rampPos = 2"  [ngClass]="getRankClass(m.rampPos,2)" *ngIf="m.ramp > 3">Fully On - Side</button></td>
+                <td><button style="width: 75%;" (click)="m.ramp = 2"  [ngClass]="getRankClass(m.ramp,2)">Failed, but Parked</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 1"  [ngClass]="getRankClass(m.ramp,1)">Failed Attempt</button></td>
-                <td><button (click)="m.rampPos = 1"  [ngClass]="getRankClass(m.rampPos,1)" *ngIf="m.ramp > 3">Fully On - Center</button></td>
+                <td><button style="width: 75%;" (click)="m.ramp = 1"  [ngClass]="getRankClass(m.ramp,1)">Failed Attempt</button></td>
             </tr>
             <tr>
-                <td style="border-right: 4px solid black;"><button (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">No Attempt</button></td>
-                <td><button (click)="m.rampPos = 0"  [ngClass]="getRankClass(m.rampPos,0)" *ngIf="m.ramp > 3">Hanging Off</button></td>
+                <td><button style="width: 75%;" (click)="m.ramp = 0"  [ngClass]="getRankClass(m.ramp,0)">No Attempt</button></td>
             </tr>
         </table>
     </div>
@@ -498,9 +479,9 @@
         </td><td>
         <table>
             <tr>
-                <th [ngClass]="getAlertClass(54)">Reorient Cone?</th>
-                <td><button (click)="m.postReorientCone = 1" [ngClass]="getYesNoClass(m.postReorientCone, 1)">Y</button></td>
-                <td><button (click)="m.postReorientCone = 0" [ngClass]="getYesNoClass(m.postReorientCone, 0)">N</button></td>
+                <th [ngClass]="getAlertClass(54)">Was Defended?</th>
+                <td><button (click)="m.teleWasObstructed = 1" [ngClass]="getYesNoClass(m.teleWasObstructed, 1)">Y</button></td>
+                <td><button (click)="m.teleWasObstructed = 0" [ngClass]="getYesNoClass(m.teleWasObstructed, 0)">N</button></td>
             </tr>
             <tr>
                 <th [ngClass]="getAlertClass(55)">Shelf Pickup?</th>
