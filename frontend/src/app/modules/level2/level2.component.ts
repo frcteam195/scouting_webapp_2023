@@ -269,6 +269,8 @@ save(matchScoutingL2ID: number) {
       return 'button_green';
     } else if (value == b_type && value == 0) {
       return 'button_red';
+    } else if (value == b_type && value == 2) {
+      return 'button_black';
     } else {
       return 'button_rank';
     }
