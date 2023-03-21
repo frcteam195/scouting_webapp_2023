@@ -254,12 +254,12 @@
             </tr>
             <tr>
                 <td><button (click)="m.autoMB = 2" [ngClass]="getRankClass(m.autoMB, 2)">Moved WITH Bonus</button></td>
-                <td><button (click)="m.autoRamp = 2" [ngClass]="getRankClass(m.autoRamp, 2)">Docked NOT Engage</button></td>
+                <td><button (click)="m.autoRamp = 2" [ngClass]="getRankClass(m.autoRamp, 2)">Docked NOT Engaged</button></td>
                 <td><button (click)="m.autoPen = 2" [ngClass]="getRankClass(m.autoPen, 2)">Touched Pieces</button></td>
             </tr>
             <tr>
                 <td></td>
-                <td><button (click)="m.autoRamp = 3" [ngClass]="getRankClass(m.autoRamp, 3)">Docked AND Engage</button></td>
+                <td><button (click)="m.autoRamp = 3" [ngClass]="getRankClass(m.autoRamp, 3)">Docked AND Engaged</button></td>
             </tr>
         </table>
         <br>
@@ -403,11 +403,11 @@
         <br>
         <table style="width: 100%;" align="center">
             <tr>
-                <th style="width: 50%;">Charge Time(seconds)</th>
+                <!-- <th style="width: 50%;">Charge Time(seconds)</th> -->
                 <th style="width: 50%; height: 66px;" [ngClass]="getAlertClass(41)">Charge Status</th>
             </tr>
             <tr>
-                <td rowspan="6">
+                <!-- <td rowspan="6">
 
                     <table align="center" class="numpad">
                         <tr>
@@ -435,7 +435,7 @@
                         </tr>
                     </table>
 
-                </td>
+                </td> -->
                 <td><button style="width: 75%;" (click)="m.ramp = 5"  [ngClass]="getRankClass(m.ramp,5)">Docked - Engaged</button></td>
             </tr>
             <tr>
