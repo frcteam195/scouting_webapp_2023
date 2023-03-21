@@ -16,6 +16,7 @@ export class PitScouting {
     robotHeight: number;
     robotLength: number;
     robotWidth: number;
+    robotWeight: number;
     scouterID: number;
     scoutingStatus: number;
     superClimbTypeID: number;
@@ -40,6 +41,7 @@ constructor(
     robotLength: number,
     robotHeight: number,
     robotWidth: number,
+    robotWeight: number, 
     scouterID: number,
     scoutingStatus: number,
     superClimbTypeID: number,
@@ -62,6 +64,7 @@ constructor(
     this.robotHeight = robotHeight
     this.robotLength = robotLength
     this.robotWidth = robotWidth
+    this.robotWeight = robotWeight 
     this.scouterID = scouterID
     this.scoutingStatus = scoutingStatus
     this.superClimbTypeID = superClimbTypeID
