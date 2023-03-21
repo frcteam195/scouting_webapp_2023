@@ -155,18 +155,6 @@ export class Level2Component implements OnInit {
             this.missing.push(41);
             this.missing_return = 1;
           }
-          if (x.defCommunity === null) {
-            this.missing.push(42);
-            this.missing_return = 1;
-          }
-          if (x.defCenter === null) {
-            this.missing.push(43);
-            this.missing_return = 1;
-          }
-          if (x.defLZ === null) {
-            this.missing.push(44);
-            this.missing_return = 1;
-          }
           
         }
       }
