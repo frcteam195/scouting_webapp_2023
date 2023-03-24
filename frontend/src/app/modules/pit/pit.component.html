@@ -34,7 +34,7 @@
             <br>
             <tr>
                 <td align="right"><b>Weight</b></td>
-                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" min=0 max=99 name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWeight"><b>in</b></td>
+                <td><input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" min=0 max=199 name="itemConsumption" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="p.robotWeight"><b>lbs</b></td>
             </tr>
         </table>
         <table align="center" *ngIf="display==2"> <!-- Drive base  -->
