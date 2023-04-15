@@ -10,6 +10,7 @@ import { Scouters } from '../../scouters';
 import { BuildTypes } from '../../buildTypes'
 import { SuperClimbTypes } from '../../superClimbTypes'
 import { CenterGravityTypes } from '../../centerGravityTypes'
+import { BrakeModeTypes } from 'src/app/brakeModeTypes';
 
 export interface Image {
   sequence: number;
@@ -37,6 +38,7 @@ export class PitComponent implements OnInit {
   apiSuperClimbTypes: SuperClimbTypes[] = [];
   apiCenterGravityTypes: CenterGravityTypes[] = [];
   apiImage: string = "";
+  apiBrakeModeTypes: BrakeModeTypes[] = [];
   
   fileName = "";
   imageList: string[] = [];
@@ -69,6 +71,10 @@ export class PitComponent implements OnInit {
 
     this.apiService.BuildTypesReplay.subscribe(types => {
       this.apiBuildTypes = types;
+    });
+
+    this.apiService.BrakeModeTypesReplay.subscribe(types => {
+      this.apiBrakeModeTypes = types;
     });
 
     this.apiService.SuperClimbTypesReplay.subscribe(types => {

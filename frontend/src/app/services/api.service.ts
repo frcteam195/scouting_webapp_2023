@@ -15,6 +15,7 @@ import { CenterGravityTypes } from '../centerGravityTypes';
 import { AllianceStation } from '../allianceStation';
 import { environment } from '../../environments/environment';
 import { Access } from '../access';
+import { BrakeModeTypes } from '../brakeModeTypes';
  
 
 @Injectable({
@@ -34,6 +35,7 @@ export class ApiService {
   public BuildTypesReplay: ReplaySubject<BuildTypes[]>;
   public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
   public AllianceReplay: ReplaySubject<AllianceStation[]>;
+  public BrakeModeTypesReplay: ReplaySubject<BrakeModeTypes[]>;
 
   public StoredL1Replay: ReplaySubject<MatchScoutingL1[]>;
   public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
@@ -68,6 +70,7 @@ export class ApiService {
     this.BuildTypesReplay = new ReplaySubject(1);
     this.CenterGravityTypesReplay = new ReplaySubject(1);
     this.AllianceReplay = new ReplaySubject(1);
+    this.BrakeModeTypesReplay = new ReplaySubject(1);
 
     this.StoredL1Replay = new ReplaySubject(1);
     this.StoredL2Replay = new ReplaySubject(1);
@@ -135,6 +138,20 @@ export class ApiService {
         this.DriveMotorTypesReplay.next(JSON.parse(localStorage.getItem('DriveMotorTypes')!) as DriveMotorTypes[]);
       } catch (err) {
         console.error('Could not load Drive Motor Types data from server or cache!');
+      }
+    });
+
+    this.http.get<BrakeModeTypes[]>(this.apiUrl + '/brake').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.BrakeModeTypesReplay.next(response as BrakeModeTypes[]);
+      // Might as well store it while we have it
+      localStorage.setItem('BrakeModeTypes', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.BrakeModeTypesReplay.next(JSON.parse(localStorage.getItem('BrakeModeTypes')!) as BrakeModeTypes[]);
+      } catch (err) {
+        console.error('Could not load Brake Mode Types data from server or cache!');
       }
     });
 

@@ -22,6 +22,7 @@ export class PitScouting {
     superClimbTypeID: number;
     team: string;
     teamName: string;
+    brakeModeTypeID: number;
 
 constructor(
     buildComments: string,
@@ -45,6 +46,7 @@ constructor(
     scouterID: number,
     scoutingStatus: number,
     superClimbTypeID: number,
+    brakeModeTypeID: number,
     team: string,
     teamName: string){
     this.buildComments = buildComments
@@ -69,6 +71,7 @@ constructor(
     this.scoutingStatus = scoutingStatus
     this.superClimbTypeID = superClimbTypeID
     this.team = team
+    this.brakeModeTypeID = brakeModeTypeID
     this.teamName = teamName
     }
 
