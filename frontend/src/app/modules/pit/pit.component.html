@@ -108,6 +108,17 @@
                 </td>
             </tr>
             <br>
+            <tr >
+                <td align="right">
+                    <b>&nbsp;Brake Mode type: </b> 
+                </td>
+                <td>
+                    <select class="form-control" type="text" name="Brake Mode Type" [(ngModel)] = "p.brakeModeTypeID"> 
+                        <option *ngFor="let d of apiBrakeModeTypes;" [value]="d.brakeModeTypeID">{{d.brakeModeType}}</option>
+                    </select>
+                </td>
+            </tr>
+            <br>
         </table>
         <table align="center" *ngIf="display==4"> <!-- Rating 1-->
             <br>
