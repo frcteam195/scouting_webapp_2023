@@ -16,6 +16,7 @@ import { AllianceStation } from '../allianceStation';
 import { environment } from '../../environments/environment';
 import { Access } from '../access';
 import { BrakeModeTypes } from '../brakeModeTypes';
+import { Matches } from '../matches';
  
 
 @Injectable({
@@ -36,6 +37,7 @@ export class ApiService {
   public CenterGravityTypesReplay: ReplaySubject<CenterGravityTypes[]>;
   public AllianceReplay: ReplaySubject<AllianceStation[]>;
   public BrakeModeTypesReplay: ReplaySubject<BrakeModeTypes[]>;
+  public MatchReplay: ReplaySubject<Matches[]>;
 
   public StoredL1Replay: ReplaySubject<MatchScoutingL1[]>;
   public StoredL2Replay: ReplaySubject<MatchScoutingL2[]>;
@@ -71,6 +73,7 @@ export class ApiService {
     this.CenterGravityTypesReplay = new ReplaySubject(1);
     this.AllianceReplay = new ReplaySubject(1);
     this.BrakeModeTypesReplay = new ReplaySubject(1);
+    this.MatchReplay = new ReplaySubject(1);
 
     this.StoredL1Replay = new ReplaySubject(1);
     this.StoredL2Replay = new ReplaySubject(1);
@@ -224,6 +227,24 @@ export class ApiService {
         console.error('Could not load Event data from server or cache!');
       }
     });
+
+
+
+  
+    this.http.get<Matches[]>(this.apiUrl + '/matches').subscribe(response => {
+      // Store the response in the ReplaySubject, which components can use to access the data
+      this.MatchReplay.next(response as Matches[]);
+      // Might as well store it while we have it
+      localStorage.setItem('FanMatches', JSON.stringify(response));
+    }, () => {
+      try {
+        // Send the cached data
+        this.MatchReplay.next(JSON.parse(localStorage.getItem('FanMatches')!) as Matches[]);
+      } catch (err) {
+        console.error('Could not load Match Records from server or cache!');
+      }
+    });
+
 
 
     this.http.get<PitScouting[]>(this.apiUrl + '/pitscouting').subscribe(response => {

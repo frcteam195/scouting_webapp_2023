@@ -15,6 +15,7 @@ import { PitListComponent } from './modules/pit-list/pit-list.component';
 import { Level2ListComponent } from './modules/level2-list/level2-list.component';
 import { DebugComponent } from './modules/debug/debug.component';
 import { LoginComponent } from './modules/login/login.component';
+import { FanInputComponent } from './fan-input/fan-input.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LoginComponent } from './modules/login/login.component';
     PitListComponent,
     Level2ListComponent,
     DebugComponent,
-    LoginComponent
+    LoginComponent,
+    FanInputComponent
   ],
   imports: [
     BrowserModule,
