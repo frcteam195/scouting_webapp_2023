@@ -1,0 +1,56 @@
+
+<table class="center">
+    <tr>
+        <td>
+            <b>Match: </b>
+            <select list="productName" name="matchSelect" ngModel (ngModelChange)="getMatch($event)">
+                <option *ngFor="let m of apiMatchList" [ngValue]="m.matchNum">{{ m.matchNum }}</option>
+            </select>
+
+        </td>
+    </tr>
+</table>
+
+
+
+<table border="1" class="center" *ngFor="let t of apiMatchList_filter">
+    <tr>
+
+        <td>
+            <button (click)="rankR1 = 1" (dblclick)="rankR1 = 0" [ngClass]="getClass(rankR1,1)">&nbsp;</button><br>
+            <button (click)="rankR1 = -1" (dblclick)="rankR1 = 0" [ngClass]="getClass(rankR1,-1)">&nbsp;</button>
+        </td>
+        <td class="red_team">{{ t.red1 }}</td>
+        <td class="blue_team">{{ t.blue1 }}</td>
+        <td>
+            <button (click)="rankB1 = 1" (dblclick)="rankB1 = 0" [ngClass]="getClass(rankB1,1)">&nbsp;</button><br>
+            <button (click)="rankB1 = -1" (dblclick)="rankB1 = 0" [ngClass]="getClass(rankB1,-1)">&nbsp;</button>
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <button (click)="rankR2 = 1" (dblclick)="rankR2 = 0" [ngClass]="getClass(rankR2,1)">&nbsp;</button><br>
+            <button (click)="rankR2 = -1" (dblclick)="rankR2 = 0" [ngClass]="getClass(rankR2,-1)">&nbsp;</button>
+        </td>
+        <td class="red_team">{{ t.red2 }}</td>
+        <td class="blue_team">{{ t.blue2 }}</td>
+        <td>
+            <button (click)="rankB2 = 1" (dblclick)="rankB2 = 0" [ngClass]="getClass(rankB2,1)">&nbsp;</button><br>
+            <button (click)="rankB2 = -1" (dblclick)="rankB2 = 0" [ngClass]="getClass(rankB2,-1)">&nbsp;</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="rankR3 = 1" (dblclick)="rankR3 = 0" [ngClass]="getClass(rankR3,1)">&nbsp;</button><br>
+            <button (click)="rankR3 = -1" (dblclick)="rankR3 = 0" [ngClass]="getClass(rankR3,-1)">&nbsp;</button>
+        </td>
+        <td class="red_team">{{ t.red3 }}</td>
+        <td class="blue_team">{{ t.blue3 }}</td>
+        <td>
+            <button (click)="rankB3 = 1" (dblclick)="rankB3 = 0" [ngClass]="getClass(rankB3,1)">&nbsp;</button><br>
+            <button (click)="rankB3 = -1" (dblclick)="rankB3 = 0" [ngClass]="getClass(rankB3,-1)">&nbsp;</button>
+        </td>
+    </tr>
+</table>
+
