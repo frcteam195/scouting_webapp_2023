@@ -392,14 +392,14 @@ export class Level1Component implements OnInit {
                 this.missing.push(54);
                 this.missing_return = 1;
             }
-            if (x.postShelfPickup === null) {
+            if (x.commentGen === "") {
                 this.missing.push(55);
                 this.missing_return = 1;
             }
-            if (x.postGroundPickup === null) {
-                this.missing.push(56);
-                this.missing_return = 1;
-            }
+            // if (x.postGroundPickup === null) {
+            //     this.missing.push(56);
+            //     this.missing_return = 1;
+            // }
             // if (x.postGoodPartner === null) {
             //     this.missing.push(57);
             //     this.missing_return = 1;
@@ -418,6 +418,7 @@ getAlertClass(element: number) {
     return 'td_normal';
   }
 }
+
 
 
 

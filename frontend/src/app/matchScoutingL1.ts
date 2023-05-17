@@ -14,6 +14,7 @@ export class MatchScoutingL1 {
     blue1: string;
     blue2: string;
     blue3: string;
+    commentGen: string;
     eventID: number;
     matchID: number;
     matchNum: number;
@@ -67,6 +68,7 @@ constructor(allianceStationID: number,
     blue1: string,
     blue2: string,
     blue3: string,
+    commentGen: string,
     eventID: number,
     matchID: number,
     matchNum: number,
@@ -119,6 +121,7 @@ constructor(allianceStationID: number,
     this.blue1 = blue1
     this.blue2 = blue2
     this.blue3 = blue3
+    this.commentGen = commentGen
     this.eventID = eventID
     this.matchID = matchID
     this.matchNum = matchNum
